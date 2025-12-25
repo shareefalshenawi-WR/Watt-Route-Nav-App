@@ -1,0 +1,31 @@
+@import "./assets/styles/variables.css";
+@import "./assets/styles/global.css";
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+/* RTL Support */
+html[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+html[dir="rtl"] .app {
+  direction: rtl;
+}
+
+html[dir="ltr"] {
+  direction: ltr;
+  text-align: left;
+}
+
+html[dir="ltr"] .app {
+  direction: ltr;
+}

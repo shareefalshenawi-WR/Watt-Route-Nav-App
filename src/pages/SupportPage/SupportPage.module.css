@@ -1,0 +1,136 @@
+.page {
+  padding-top: 80px;
+}
+
+.pageHeader {
+  background: linear-gradient(
+    135deg,
+    #1e4552 0%,
+    #1e4552 35%,
+    #2a5e6e 60%,
+    #366262 85%,
+    #366262 100%
+  );
+  color: white;
+  padding: calc(var(--spacing-xxl) * 2) 0 var(--spacing-xxl);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.headerContent {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.pageTitle {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: var(--spacing-lg);
+  font-weight: 800;
+}
+
+.highlight {
+  position: relative;
+  display: inline-block;
+  color: #00dc82;
+}
+
+.pageDescription {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  margin-bottom: var(--spacing-xl);
+  opacity: 0.95;
+}
+
+.searchBox {
+  display: flex;
+  gap: var(--spacing-md);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.searchInput {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: var(--radius-lg);
+  font-size: 1rem;
+  outline: none;
+}
+
+.helpCenter {
+  padding: var(--spacing-xxl) 0;
+  background: var(--color-background);
+}
+
+.helpContent {
+  text-align: center;
+}
+
+.sectionTitle {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-xxl);
+}
+
+.helpGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.helpCard {
+  background: white;
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-normal);
+  text-align: center;
+}
+
+.helpCard:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-md);
+}
+
+.helpIcon {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.helpTitle {
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+  font-weight: 600;
+}
+
+.helpText {
+  color: var(--color-accent);
+  line-height: 1.8;
+  margin-bottom: var(--spacing-md);
+}
+
+.helpLink {
+  color: var(--color-secondary);
+  font-weight: 600;
+  transition: var(--transition-normal);
+}
+
+.helpLink:hover {
+  color: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+  .searchBox {
+    flex-direction: column;
+  }
+
+  .helpGrid {
+    grid-template-columns: 1fr;
+  }
+}

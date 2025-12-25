@@ -1,0 +1,21 @@
+.section {
+  padding: var(--spacing-xxl) 0;
+}
+
+.default {
+  background: var(--color-background);
+}
+
+.dark {
+  background: var(--color-primary);
+  color: white;
+}
+
+.light {
+  background: white;
+}
+
+.gradient {
+  background: var(--gradient-hero);
+  color: white;
+}
