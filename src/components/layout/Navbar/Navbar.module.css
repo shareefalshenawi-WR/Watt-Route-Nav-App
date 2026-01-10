@@ -35,7 +35,7 @@
 }
 
 .logoImage {
-  width: 30px;
+  width: 43px;
   height: 60px;
   object-fit: contain;
   transition: all var(--transition-normal);

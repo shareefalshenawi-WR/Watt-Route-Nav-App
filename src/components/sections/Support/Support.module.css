@@ -42,11 +42,55 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  background: white;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.supportCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  border-color: transparent;
+}
+
+
+.supportCard::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: var(--gradient-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.supportCard:hover::after {
+  transform: scaleX(1);
 }
 
 .supportIcon {
   font-size: clamp(2.5rem, 4vw, 3rem);
   margin-bottom: var(--spacing-lg);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--color-background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+}
+
+.supportCard:hover .supportIcon {
+  background: var(--color-light-gray);
+  transform: scale(1.1) rotate(-5deg);
 }
 
 .supportTitle {
@@ -149,5 +193,88 @@
 
   .supportContact {
     font-size: 1rem;
+  }
+}
+
+/* Phases Section */
+.phasesSection {
+  padding: var(--spacing-xxl) 0;
+  background: var(--color-background);
+  position: relative;
+}
+
+.phasesHeader {
+  text-align: center;
+  margin-bottom: var(--spacing-xxl);
+}
+
+.phasesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+.phaseCard {
+  background: white;
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-top: 4px solid transparent;
+}
+
+.phaseCard:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary);
+}
+
+.phaseStep {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--color-light-gray);
+  opacity: 0.2;
+  line-height: 1;
+  font-family: var(--font-heading);
+}
+
+.phaseIcon {
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-md);
+  background: rgba(86, 145, 102, 0.1);
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.phaseTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.phaseDesc {
+  color: var(--color-accent);
+  line-height: 1.6;
+}
+
+
+@media (max-width: 768px) {
+  .phasesGrid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
   }
 }

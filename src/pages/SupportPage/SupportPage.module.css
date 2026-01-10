@@ -62,13 +62,22 @@
 .titleHighlight::after {
   content: "";
   position: absolute;
-  bottom: 10px;
-  left: 0;
-  width: 100%;
-  height: 12px;
-  background: rgba(86, 145, 102, 0.2);
+  bottom: 4px;
+  left: -4px;
+  right: -4px;
+  height: 16px;
+  background: var(--color-secondary);
+  opacity: 0.3;
   z-index: -1;
   border-radius: 4px;
+  transform: skew(-10deg);
+  transition: all 0.3s ease;
+}
+
+.titleHighlight:hover::after {
+  opacity: 0.5;
+  height: 24px;
+  bottom: 0;
 }
 
 .pageDescription {
@@ -81,20 +90,13 @@
   margin-right: auto;
 }
 
-.searchBox {
-  display: flex;
-  gap: var(--spacing-md);
-  max-width: 600px;
+.heroSubtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.6;
+  opacity: 0.85;
+  max-width: 800px;
   margin: 0 auto;
-}
-
-.searchInput {
-  flex: 1;
-  padding: 1rem 1.5rem;
-  border: none;
-  border-radius: var(--radius-lg);
-  font-size: 1rem;
-  outline: none;
+  font-weight: 400;
 }
 
 .helpCenter {
@@ -123,25 +125,60 @@
   padding: var(--spacing-xl);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
-  transition: var(--transition-normal);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.helpCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .helpCard:hover {
   transform: translateY(-10px);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-lg);
+  border-color: transparent;
+}
+
+.helpCard:hover::before {
+  opacity: 1;
 }
 
 .helpIcon {
   font-size: 3rem;
   margin-bottom: var(--spacing-md);
+  background: var(--color-background);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  transition: transform 0.3s ease;
+}
+
+.helpCard:hover .helpIcon {
+  transform: scale(1.1) rotate(5deg);
+  background: var(--color-light-gray);
 }
 
 .helpTitle {
   font-size: 1.5rem;
   color: var(--color-primary);
   margin-bottom: var(--spacing-sm);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .helpText {

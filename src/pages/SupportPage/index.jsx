@@ -31,17 +31,10 @@ const SupportPage = () => {
               {t("supportPage.pageDescription")}
             </p>
 
-            {/* Quick Search */}
-            <div className={styles.searchBox}>
-              <input
-                type="text"
-                placeholder={t("supportPage.searchPlaceholder")}
-                className={styles.searchInput}
-              />
-              <Button variant="secondary">
-                {t("supportPage.searchButton")}
-              </Button>
-            </div>
+            {/* <p className={styles.heroSubtitle}>
+              Find answers, learn new skills, and connect with our community.
+              We're here to support your electric journey.
+            </p> */}
           </motion.div>
         </div>
       </section>

@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import Button from "../../common/Button/Button";
 import Card from "../../common/Card/Card";
-import DownloadApp from "../DownloadApp/DownloadApp";
 import { fadeInUp, stagger } from "../../../utils/animations";
 import styles from "./Support.module.css";
 
@@ -44,7 +43,6 @@ const Support = () => {
   const handleAction = (option) => {
     try {
       if (option.type === "email") {
-        // Open default mail client
         window.location.href = `mailto:${option.contact}`;
         return;
       }
@@ -137,9 +135,59 @@ const Support = () => {
           </motion.div> */}
         </div>
       </section>
+      
+      {/* Support Visual Phases */}
+      <section className={styles.phasesSection}>
+        <div className={styles.container}>
+          <motion.div 
+            className={styles.phasesHeader}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+          >
+            <h2 className={styles.title}>{t("Support Phases") || "How It Works"}</h2>
+            <p className={styles.subtitle}>{t("Our seamless support process to get you back on track") || "Our seamless support process to get you back on track."}</p>
+          </motion.div>
 
-      {/* Download App Section */}
-      <DownloadApp />
+          <div className={styles.phasesGrid}>
+            {[
+              {
+                step: "01",
+                title: "Reach Out",
+                desc: "Contact us via any channel that suits you.",
+                icon: "👋"
+              },
+              {
+                step: "02",
+                title: "Expert Diagnosis",
+                desc: "Our specialists analyze and identify the issue.",
+                icon: "🔍"
+              },
+              {
+                step: "03",
+                title: "Fast Resolution",
+                desc: "Get an effective solution and back on the road.",
+                icon: "✅"
+              }
+            ].map((phase, index) => (
+              <motion.div 
+                key={index} 
+                className={styles.phaseCard}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <div className={styles.phaseStep}>{phase.step}</div>
+                <div className={styles.phaseIcon}>{phase.icon}</div>
+                <h3 className={styles.phaseTitle}>{phase.title}</h3>
+                <p className={styles.phaseDesc}>{phase.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
     </>
   );
 };
