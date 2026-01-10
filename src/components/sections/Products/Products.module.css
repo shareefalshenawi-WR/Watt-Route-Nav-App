@@ -61,6 +61,9 @@
   border-color: var(--color-secondary);
   color: white;
 }
+.activeTab:hover {
+  color: white;
+}
 
 .productDisplay {
   background: white;
@@ -281,19 +284,7 @@
   }
 
   .sliderIndicators {
-    gap: 7px;
-  }
-
-  .indicator {
-    width: 28px;
-    height: 3.5px;
-    border-radius: 2px;
-  }
-
-  .activeIndicator {
-    width: 36px;
-    height: 3.5px;
-    border-radius: 2px;
+    display: none;
   }
 }
 
@@ -340,20 +331,7 @@
   }
 
   .sliderIndicators {
-    gap: 6px;
-    margin-top: var(--spacing-lg);
-  }
-
-  .indicator {
-    width: 24px;
-    height: 3px;
-    border-radius: 50%;
-  }
-
-  .activeIndicator {
-    width: 32px;
-    height: 3px;
-    border-radius: 50%;
+    display: none;
   }
 }
 
@@ -386,19 +364,6 @@
   }
 
   .sliderIndicators {
-    gap: 6px;
-    margin-top: var(--spacing-md);
-  }
-
-  .indicator {
-    width: 20px;
-    height: 2.5px;
-    border-radius: 50%;
-  }
-
-  .activeIndicator {
-    width: 28px;
-    height: 2.5px;
-    border-radius: 50%;
+    display: none;
   }
 }

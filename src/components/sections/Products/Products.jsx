@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import Button from "../../common/Button/Button";
+import AsyncImage from "../../common/AsyncImage/AsyncImage";
 import { fadeInUp, scaleIn } from "../../../utils/animations";
 import styles from "./Products.module.css";
 
@@ -143,7 +144,7 @@ const Products = () => {
                 initial="hidden"
                 animate="visible"
               >
-                <img
+                <AsyncImage
                   src={products[activeProduct].image}
                   alt={t(products[activeProduct].nameKey)}
                   className={styles.image}

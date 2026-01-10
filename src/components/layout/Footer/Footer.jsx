@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import AsyncImage from "../../common/AsyncImage/AsyncImage";
 import { ROUTES } from "../../../constants/routes";
 import styles from "./Footer.module.css";
 
@@ -31,7 +32,7 @@ const Footer = () => {
           <div className={styles.brandSection}>
             {/*  Logo placeholder */}
             <div className={styles.logo}>
-              <img
+              <AsyncImage
                 src="/images/logo.webp"
                 alt="Watt Route Logo"
                 className={styles.logoImage}
@@ -43,13 +44,13 @@ const Footer = () => {
             {/* Download Buttons */}
             <div className={styles.downloadButtons}>
               <Link to={ROUTES.DOWNLOAD_APP} className={styles.storeButton}>
-                <img
+                <AsyncImage
                   src="/images/app-store.webp"
                   alt={t("downloadApp.downloadOnAppStore")}
                 />
               </Link>
               <Link to={ROUTES.DOWNLOAD_APP} className={styles.storeButton}>
-                <img
+                <AsyncImage
                   src="/images/google-play.webp"
                   alt={t("downloadApp.getItOnGooglePlay")}
                 />

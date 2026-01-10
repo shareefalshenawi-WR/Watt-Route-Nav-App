@@ -180,6 +180,7 @@
   cursor: pointer;
   padding: 0.5rem;
   z-index: 1001;
+  
 }
 
 .burger {
@@ -229,13 +230,18 @@
 .burger.open::before {
   transform: rotate(45deg);
   top: 0;
-  background: var(--color-primary);
+  background: white;
 }
 
 .burger.open::after {
   transform: rotate(-45deg);
   bottom: 0;
-  background: var(--color-primary);
+  background: white;
+}
+
+.burgerScrolled.open::before,
+.burgerScrolled.open::after {
+  background: var(--color-secondary);
 }
 
 .mobileMenu {

@@ -11,7 +11,8 @@ const ProductsPage = () => {
   return (
     <div className={styles.page}>
       {/* Page Header */}
-      <section className={styles.pageHeader}>
+      <section className={styles.heroSection}>
+        <div className={styles.heroBackground} />
         <div className={styles.container}>
           <motion.div
             className={styles.headerContent}
@@ -21,7 +22,7 @@ const ProductsPage = () => {
           >
             <h1 className={styles.pageTitle}>
               {t("productsPage.pageTitle")}{" "}
-              <span className={styles.highlight}>
+              <span className={styles.titleHighlight}>
                 {t("productsPage.pageTitleHighlight")}
               </span>
             </h1>

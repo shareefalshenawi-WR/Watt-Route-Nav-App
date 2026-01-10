@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useEffect } from "react";
+import React, { useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -8,28 +8,21 @@ import {
 import { AnimatePresence } from "framer-motion";
 import Navbar from "./components/layout/Navbar/Navbar";
 import Footer from "./components/layout/Footer/Footer";
-import LoadingFallback from "./components/common/LoadingFallback/LoadingFallback";
 import ErrorBoundary from "./components/common/ErrorBoundary/ErrorBoundary";
 import { ROUTES } from "./constants/routes";
 import "./App.css";
 
-// Lazy-loaded pages
-const Home = lazy(() => import("./pages/Home/index.jsx"));
-const EVSolutionsPage = lazy(() => import("./pages/EVSolutionsPage/index.jsx"));
-const ProductsPage = lazy(() => import("./pages/ProductsPage/index.jsx"));
-const SupportPage = lazy(() => import("./pages/SupportPage/index.jsx"));
-const DownloadAppPage = lazy(() => import("./pages/DownloadAppPage/index.jsx"));
-const FindChargingStationsPage = lazy(() =>
-  import("./pages/FindChargingStationsPage/index.jsx")
-);
-const UserGuidePage = lazy(() => import("./pages/UserGuidePage/index.jsx"));
-const VideoTutorialsPage = lazy(() =>
-  import("./pages/VideoTutorialsPage/index.jsx")
-);
-const CommunityForumPage = lazy(() =>
-  import("./pages/CommunityForumPage/index.jsx")
-);
-const AboutPage = lazy(() => import("./pages/About/index.jsx"));
+// Direct imports
+import Home from "./pages/Home/index.jsx";
+import EVSolutionsPage from "./pages/EVSolutionsPage/index.jsx";
+import ProductsPage from "./pages/ProductsPage/index.jsx";
+import SupportPage from "./pages/SupportPage/index.jsx";
+import DownloadAppPage from "./pages/DownloadAppPage/index.jsx";
+import FindChargingStationsPage from "./pages/FindChargingStationsPage/index.jsx";
+import UserGuidePage from "./pages/UserGuidePage/index.jsx";
+import VideoTutorialsPage from "./pages/VideoTutorialsPage/index.jsx";
+import CommunityForumPage from "./pages/CommunityForumPage/index.jsx";
+import AboutPage from "./pages/About/index.jsx";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -54,9 +47,7 @@ function App() {
               path={ROUTES.HOME}
               element={
                 <ErrorBoundary>
-                  <Suspense fallback={<LoadingFallback />}>
-                    <Home />
-                  </Suspense>
+                  <Home />
                 </ErrorBoundary>
               }
             />
@@ -65,9 +56,7 @@ function App() {
               path={ROUTES.EV_SOLUTIONS}
               element={
                 <ErrorBoundary>
-                  <Suspense fallback={<LoadingFallback />}>
-                    <EVSolutionsPage />
-                  </Suspense>
+                  <EVSolutionsPage />
                 </ErrorBoundary>
               }
             />
@@ -76,9 +65,7 @@ function App() {
               path={ROUTES.PRODUCTS}
               element={
                 <ErrorBoundary>
-                  <Suspense fallback={<LoadingFallback />}>
-                    <ProductsPage />
-                  </Suspense>
+                  <ProductsPage />
                 </ErrorBoundary>
               }
             />
@@ -87,9 +74,7 @@ function App() {
               path={ROUTES.ABOUT}
               element={
                 <ErrorBoundary>
-                  <Suspense fallback={<LoadingFallback />}>
-                    <AboutPage />
-                  </Suspense>
+                  <AboutPage />
                 </ErrorBoundary>
               }
             />
@@ -98,9 +83,7 @@ function App() {
               path={ROUTES.HELP_USER_GUIDE}
               element={
                 <ErrorBoundary>
-                  <Suspense fallback={<LoadingFallback />}>
-                    <UserGuidePage />
-                  </Suspense>
+                  <UserGuidePage />
                 </ErrorBoundary>
               }
             />
@@ -109,9 +92,7 @@ function App() {
               path={ROUTES.HELP_VIDEO_TUTORIALS}
               element={
                 <ErrorBoundary>
-                  <Suspense fallback={<LoadingFallback />}>
-                    <VideoTutorialsPage />
-                  </Suspense>
+                  <VideoTutorialsPage />
                 </ErrorBoundary>
               }
             />
@@ -120,9 +101,7 @@ function App() {
               path={ROUTES.HELP_COMMUNITY_FORUM}
               element={
                 <ErrorBoundary>
-                  <Suspense fallback={<LoadingFallback />}>
-                    <CommunityForumPage />
-                  </Suspense>
+                  <CommunityForumPage />
                 </ErrorBoundary>
               }
             />
@@ -131,9 +110,7 @@ function App() {
               path={ROUTES.SUPPORT}
               element={
                 <ErrorBoundary>
-                  <Suspense fallback={<LoadingFallback />}>
-                    <SupportPage />
-                  </Suspense>
+                  <SupportPage />
                 </ErrorBoundary>
               }
             />
@@ -142,9 +119,7 @@ function App() {
               path={ROUTES.DOWNLOAD_APP}
               element={
                 <ErrorBoundary>
-                  <Suspense fallback={<LoadingFallback />}>
-                    <DownloadAppPage />
-                  </Suspense>
+                  <DownloadAppPage />
                 </ErrorBoundary>
               }
             />
@@ -153,9 +128,7 @@ function App() {
               path={ROUTES.FIND_CHARGING_STATIONS}
               element={
                 <ErrorBoundary>
-                  <Suspense fallback={<LoadingFallback />}>
-                    <FindChargingStationsPage />
-                  </Suspense>
+                  <FindChargingStationsPage />
                 </ErrorBoundary>
               }
             />

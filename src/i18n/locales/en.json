@@ -1,5 +1,6 @@
 {
   "navbar": {
+    "home": "Home",
     "about": "About",
     "evSolutions": "EV Solutions",
     "products": "Products",
@@ -49,6 +50,20 @@
     "reliableDesc": "99.9% uptime backed by secure infrastructure for hassle-free charging.",
     "mobileApp": "Mobile App",
     "mobileAppDesc": "Seamlessly manage your charging experience through the mobile application."
+  },
+  "pinnedPanels": {
+    "panel3": {
+      "title": "Ultra-Fast Charging Network",
+      "desc": "Experience lightning-fast charging with our 120kW DC chargers. From 0 to 80% in just 30 minutes. Your time is valuable—we make every minute count."
+    },
+    "panel2": {
+      "title": "Smart Connected Ecosystem",
+      "desc": "One app, endless possibilities. Find stations, check availability, start charging, and pay—all seamlessly integrated. Your complete EV charging companion."
+    },
+    "panel1": {
+      "title": "Driving Egypt's Green Future",
+      "desc": "Join 10,000+ EV drivers reducing carbon emissions across Egypt. Every charge brings us closer to cleaner air and a sustainable tomorrow."
+    }
   },
   "products": {
     "title": "Solutions",
@@ -192,7 +207,7 @@
     "videoTutorialsDesc": "Step-by-step video tutorials for common tasks",
     "watchVideos": "Watch Videos →",
     "communityForumTitle": "Community Forum",
-    "communityForumDesc": "Connect with other EV drivers and share tips",
+    "communityForumDesc": "Connect with other EV drivers and share your tips",
     "joinForum": "Join Forum →"
   },
   "helpPages": {

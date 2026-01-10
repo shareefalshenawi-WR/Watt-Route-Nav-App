@@ -23,6 +23,9 @@
   object-position: center;
   opacity: 0.4;
   transform: translate(-5%, -5%);
+  
+  will-change: auto;
+  content-visibility: auto;
 }
 
 .overlay {

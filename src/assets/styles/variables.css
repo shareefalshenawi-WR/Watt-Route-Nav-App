@@ -7,14 +7,9 @@
   --color-background: #fcfbf9;
 
   /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #1e4552 0%, #2a5e6e 100%);
+  --gradient-primary: linear-gradient(135deg, rgba(30, 69, 82, 0.88) 0%, rgba(30, 69, 82, 0.88) 35%, rgba(42, 94, 110, 0.88) 60%, rgba(54, 98, 98, 0.88) 85%, rgba(54, 98, 98, 0.88) 100%);
   --gradient-secondary: linear-gradient(135deg, #569166 0%, #68a878 100%);
-  --gradient-hero: linear-gradient(
-    135deg,
-    #1e4552 0%,
-    #569166 50%,
-    #95aaa6 100%
-  );
+  --gradient-hero: linear-gradient(135deg, rgba(30, 69, 82, 0.88) 0%, rgba(30, 69, 82, 0.88) 35%, rgba(42, 94, 110, 0.88) 60%, rgba(54, 98, 98, 0.88) 85%, rgba(54, 98, 98, 0.88) 100%);
 
   /* Spacing */
   --spacing-xs: 0.5rem;

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import AsyncImage from "../../components/common/AsyncImage/AsyncImage";
 import { fadeInUp } from "../../utils/animations";
 import styles from "./DownloadAppPage.module.css";
 
@@ -10,13 +11,12 @@ const DownloadAppPage = () => {
       <div className={styles.mapContainer}>
         {/* Background Map Image - Placeholder */}
         <div className={styles.mapBackground}>
-          <img
+          <AsyncImage
             src="/images/map-background.webp"
             alt="Map Background"
             className={styles.mapImage}
-            onError={(e) => {
-              // Fallback if image doesn't exist yet
-              e.target.style.display = "none";
+            onError={() => {
+              // Fallback handled by AsyncImage
             }}
           />
           <div className={styles.mapOverlay}></div>
@@ -60,14 +60,17 @@ const DownloadAppPage = () => {
               </motion.div>
 
               {/* Logo */}
-              <motion.img
-                src="/images/logo.webp"
-                alt="Watt Route Logo"
-                className={styles.logo}
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.6 }}
-              />
+              >
+                <AsyncImage
+                  src="/images/logo.webp"
+                  alt="Watt Route Logo"
+                  className={styles.logo}
+                />
+              </motion.div>
             </motion.div>
 
             {/* Coming Soon Message */}

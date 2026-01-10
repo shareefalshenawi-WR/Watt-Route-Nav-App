@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import Button from "../../common/Button/Button";
+import AsyncImage from "../../common/AsyncImage/AsyncImage";
 import { useScroll } from "../../../hooks/useScroll";
 import { useLanguage } from "../../../hooks/useLanguage";
 import { NAV_ITEMS, ROUTES } from "../../../constants/routes";
@@ -41,7 +42,7 @@ const Navbar = () => {
       <div className={styles.container}>
         {/* Logo */}
         <Link to="/" className={styles.logo}>
-          <img
+          <AsyncImage
             src="/images/logo.webp"
             alt="Watt Route Logo"
             className={`${styles.logoImage} ${

@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import AsyncImage from "../../common/AsyncImage/AsyncImage";
 import { fadeInUp, slideInLeft, slideInRight } from "../../../utils/animations";
 import { ROUTES } from "../../../constants/routes";
 import styles from "./DownloadApp.module.css";
@@ -115,7 +116,7 @@ const DownloadApp = () => {
             <motion.div className={styles.downloadButtons} variants={fadeInUp}>
               {/*  App Store button */}
               <Link to={ROUTES.DOWNLOAD_APP} className={styles.storeButton}>
-                <img
+                <AsyncImage
                   src="/images/app-store.webp"
                   alt={t("downloadAppSection.appStoreAlt")}
                   className={styles.storeImage}
@@ -124,7 +125,7 @@ const DownloadApp = () => {
 
               {/*  Google Play button */}
               <Link to={ROUTES.DOWNLOAD_APP} className={styles.storeButton}>
-                <img
+                <AsyncImage
                   src="/images/google-play.webp"
                   alt={t("downloadAppSection.googlePlayAlt")}
                   className={styles.storeImage}
@@ -159,7 +160,7 @@ const DownloadApp = () => {
                       transition={{ duration: 0.6 }}
                     >
                       {/*  App Screenshot */}
-                      <img
+                      <AsyncImage
                         src={appScreens[activeScreen].image}
                         alt={appScreens[activeScreen].title}
                         className={styles.screenImage}

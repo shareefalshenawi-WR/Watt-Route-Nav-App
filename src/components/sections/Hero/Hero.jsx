@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -37,17 +36,19 @@ const Hero = () => {
     }
   };
 
-  // Use same-tab Link navigation for internal pages
+  
 
   return (
     <section className={styles.hero}>
       {/* Electric Animated Background */}
       <div className={styles.backgroundImage}>
-        {/*  Hero background image */}
+        {/* Hero background image - preloaded for instant rendering */}
         <img
           src="/images/hero-bg.png"
           alt="EV Charging Stations"
           className={styles.bgImage}
+          fetchPriority="high"
+          loading="eager"
         />
         <div className={styles.overlay}></div>
       </div>

@@ -1,68 +1,86 @@
+/* Page Container */
 .page {
   padding-top: 80px;
+  background-color: var(--color-background);
+  min-height: 100vh;
 }
 
-.pageHeader {
-  background: linear-gradient(
-    135deg,
-    #1e4552 0%,
-    #1e4552 35%,
-    #2a5e6e 60%,
-    #366262 85%,
-    #366262 100%
-  );
-  color: white;
-  padding: calc(var(--spacing-xxl) * 2) 0 var(--spacing-xxl);
+/* =========================================
+   Hero Section
+   ========================================= */
+.heroSection {
   position: relative;
+  background: var(--gradient-primary);
+  color: white;
+  padding: calc(var(--spacing-xxl) * 1.5) 0 var(--spacing-xxl);
   overflow: hidden;
+  text-align: center;
+  border-bottom-left-radius: var(--radius-xl);
+  border-bottom-right-radius: var(--radius-xl);
 }
 
-.pageHeader::before {
-  content: "";
+.heroBackground {
   position: absolute;
-  top: -50%;
-  right: -10%;
-  width: 500px;
-  height: 500px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.1) 0%,
-    transparent 70%
+    circle at 80% 20%,
+    rgba(255, 255, 255, 0.05) 0%,
+    transparent 50%
   );
-  border-radius: 50%;
+  pointer-events: none;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 var(--spacing-lg);
+  position: relative;
+  z-index: 1;
 }
 
 .headerContent {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
-  text-align: center;
 }
 
 .pageTitle {
-  font-size: clamp(2rem, 5vw, 4rem);
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
   margin-bottom: var(--spacing-lg);
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
-.highlight {
+.titleHighlight {
+  color: var(--color-secondary);
   position: relative;
   display: inline-block;
-  color: #00dc82;
+}
+
+.titleHighlight::after {
+  content: "";
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  background: rgba(86, 145, 102, 0.2);
+  z-index: -1;
+  border-radius: 4px;
 }
 
 .pageDescription {
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  line-height: 1.8;
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  line-height: 1.6;
   margin-bottom: var(--spacing-xl);
-  opacity: 0.95;
-  padding: 0 var(--spacing-md);
+  opacity: 0.9;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .headerButtons {
@@ -72,9 +90,13 @@
   flex-wrap: wrap;
 }
 
+/* =========================================
+   Why Choose Us Section
+   ========================================= */
 .whyChoose {
   padding: var(--spacing-xxl) 0;
   background: var(--color-background);
+  position: relative;
 }
 
 .whyContent {
@@ -82,84 +104,143 @@
 }
 
 .sectionTitle {
-  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
   color: var(--color-primary);
   margin-bottom: var(--spacing-xxl);
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 .benefitsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: var(--spacing-xl);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
 }
 
 .benefit {
   background: white;
   padding: var(--spacing-xl);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   box-shadow: var(--shadow-sm);
-  transition: var(--transition-normal);
+  transition: all var(--transition-normal);
+  border: 1px solid transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100%;
 }
 
 .benefit:hover {
-  transform: translateY(-10px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+  border-color: rgba(86, 145, 102, 0.2);
 }
 
 .benefitIcon {
-  font-size: clamp(2.5rem, 4vw, 3rem);
+  width: 80px;
+  height: 80px;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: var(--spacing-md);
+  color: var(--color-secondary);
+  transition: transform 0.3s ease;
 }
 
+.benefit:hover .benefitIcon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Icon Color Variants */
+.iconYellow {
+  background: #fffde7;
+  color: #fbc02d;
+}
+
+.iconBlue {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.iconGreen {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.iconTeal {
+  background: #e0f2f1;
+  color: #00897b;
+}
+
+
 .benefitTitle {
-  font-size: clamp(1.25rem, 2vw, 1.375rem);
+  font-size: 1.35rem;
+  font-weight: 700;
   color: var(--color-primary);
   margin-bottom: var(--spacing-sm);
-  font-weight: 600;
 }
 
 .benefitText {
-  color: var(--color-accent);
-  line-height: 1.8;
-  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  color: #666;
+  line-height: 1.6;
+  font-size: 1rem;
 }
 
+/* =========================================
+   CTA Section
+   ========================================= */
 .ctaSection {
-  padding: var(--spacing-xxl) 0;
-  background: white;
+  padding: var(--spacing-xxl) 0 calc(var(--spacing-xxl) * 1.5);
+  background: var(--color-background);
 }
 
 .ctaContent {
-  text-align: center;
-  padding: var(--spacing-xxl);
-  background: var(--gradient-primary);
+  background: var(--gradient-secondary);
   border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  text-align: center;
   color: white;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-glow);
+}
+
+.ctaContent::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -10%;
+  width: 400px;
+  height: 400px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  pointer-events: none;
 }
 
 .ctaTitle {
-  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
   margin-bottom: var(--spacing-md);
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .ctaText {
-  font-size: clamp(1rem, 1.8vw, 1.125rem);
-  margin-bottom: var(--spacing-xl);
+  font-size: 1.2rem;
   opacity: 0.95;
   max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 var(--spacing-md);
+  margin: 0 auto var(--spacing-lg);
+  line-height: 1.6;
 }
 
+/* =========================================
+   Responsive Adjustments
+   ========================================= */
 @media (max-width: 768px) {
   .page {
     padding-top: 70px;
-  }
-
-  .pageHeader {
-    padding: calc(var(--spacing-xl) * 1.5) 0 var(--spacing-lg);
   }
 
   .container {
@@ -167,50 +248,25 @@
   }
 
   .headerButtons {
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+     flex-direction: column;
+     width: 100%;
   }
 
-  .headerButtons button {
+  .headerButtons > a,
+  .headerButtons > button {
     width: 100%;
-    max-width: 300px;
-  }
-
-  .whyChoose {
-    padding: var(--spacing-xl) 0;
+    max-width: 400px;
   }
 
   .benefitsGrid {
     grid-template-columns: 1fr;
     gap: var(--spacing-md);
   }
-
-  .benefit {
-    padding: var(--spacing-lg);
-  }
-
-  .ctaSection {
-    padding: var(--spacing-xl) 0;
-  }
-
-  .ctaContent {
-    padding: var(--spacing-lg);
-  }
 }
 
 @media (max-width: 480px) {
-  .container {
-    padding: 0 1rem;
-  }
-
-  .pageHeader::before {
-    width: 300px;
-    height: 300px;
-  }
-
-  .ctaContent {
-    padding: 1.5rem;
-    border-radius: var(--radius-md);
+  .heroSection {
+     padding: var(--spacing-xl) 0;
+     border-radius: 0 0 var(--radius-lg) var(--radius-lg);
   }
 }
