@@ -96,12 +96,12 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="tel:+201552363927" className={styles.link}>
+                <a href="tel:+201508275572" className={styles.link}>
                   {t("footer.phone")}
                 </a>
               </li>
               <li>
-                <a href="https://wa.me/+201552363927" className={styles.link}>
+                <a href="https://wa.me/201508275572" className={styles.link}>
                   WhatsApp Support
                 </a>
               </li>
@@ -115,10 +115,10 @@ const Footer = () => {
             {t("footer.copyright", { year: currentYear })}
           </p>
           <div className={styles.bottomLinks}>
-            <Link to="/terms" className={styles.bottomLink}>
+            <Link to={ROUTES.TERMS_AND_CONDITIONS} className={styles.bottomLink}>
               {t("footer.termsOfService")}
             </Link>
-            <Link to="/privacy" className={styles.bottomLink}>
+            <Link to={ROUTES.PRIVACY_POLICY} className={styles.bottomLink}>
               {t("footer.privacyPolicy")}
             </Link>
           </div>

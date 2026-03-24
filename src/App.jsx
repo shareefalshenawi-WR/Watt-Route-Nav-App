@@ -23,6 +23,8 @@ import UserGuidePage from "./pages/UserGuidePage/index.jsx";
 import VideoTutorialsPage from "./pages/VideoTutorialsPage/index.jsx";
 import CommunityForumPage from "./pages/CommunityForumPage/index.jsx";
 import AboutPage from "./pages/About/index.jsx";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage/index.jsx";
+import TermsAndConditionsPage from "./pages/TermsAndConditionsPage/index.jsx";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -129,6 +131,24 @@ function App() {
               element={
                 <ErrorBoundary>
                   <FindChargingStationsPage />
+                </ErrorBoundary>
+              }
+            />
+
+            <Route
+              path={ROUTES.PRIVACY_POLICY}
+              element={
+                <ErrorBoundary>
+                  <PrivacyPolicyPage />
+                </ErrorBoundary>
+              }
+            />
+
+            <Route
+              path={ROUTES.TERMS_AND_CONDITIONS}
+              element={
+                <ErrorBoundary>
+                  <TermsAndConditionsPage />
                 </ErrorBoundary>
               }
             />

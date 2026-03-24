@@ -9,6 +9,8 @@ export const ROUTES = {
   HELP_COMMUNITY_FORUM: "/help/community-forum",
   DOWNLOAD_APP: "/download-app",
   FIND_CHARGING_STATIONS: "/find-charging-stations",
+  PRIVACY_POLICY: "/privacy-policy",
+  TERMS_AND_CONDITIONS: "/terms-and-conditions",
 };
 
 /**
