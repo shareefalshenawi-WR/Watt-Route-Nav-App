@@ -1,60 +1,90 @@
-/* Page Container */
+
+
 .page {
   padding-top: 80px;
-  background-color: var(--color-background);
+  background: #F2F0EB;
   min-height: 100vh;
 }
 
-
+/* ── Hero Section ──────────────────────────── */
 .heroSection {
   position: relative;
-  background: var(--gradient-primary);
-  color: white;
-  padding: calc(var(--spacing-xxl) * 1.5) 0 var(--spacing-xxl);
+  background-color: #2D5A3D; 
+  background-image: url('/images/hero-products2.png'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  padding: 8rem 0 7rem;
   overflow: hidden;
   text-align: center;
-  border-bottom-left-radius: var(--radius-xl);
-  border-bottom-right-radius: var(--radius-xl);
+  border-bottom-left-radius: 2.5rem;
+  border-bottom-right-radius: 2.5rem;
 }
+
 
 .heroBackground {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(
-    circle at 70% 30%,
-    rgba(255, 255, 255, 0.05) 0%,
-    transparent 60%
-  );
+  inset: 0;
+  background: linear-gradient(90deg, rgb(18 18 18 / 69%) 0%, rgb(45 52 47 / 70%) 100%
+
+);
+  z-index: 1;
+}
+
+.heroDotPattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
   pointer-events: none;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+  z-index: 1;
 }
 
 .container {
   max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 var(--spacing-lg);
+  margin: 100px auto;
+  padding: 0 2rem;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .headerContent {
-  max-width: 900px;
+  max-width: 820px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Eyebrow label */
+.heroEyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #a8d5b0;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 0.35rem 1rem;
+  border-radius: 999px;
+  margin-bottom: 1.5rem;
 }
 
 .pageTitle {
   font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
-  margin-bottom: var(--spacing-lg);
-  font-weight: 800;
+  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  margin-bottom: 1.25rem;
+  font-weight: 900;
   line-height: 1.1;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
+  color: #fff;
 }
 
 .titleHighlight {
-  color: var(--color-secondary);
+  color: #a8d5b0;
   position: relative;
   display: inline-block;
 }
@@ -62,136 +92,76 @@
 .titleHighlight::after {
   content: "";
   position: absolute;
-  bottom: 4px;
+  bottom: 2px;
   left: -4px;
   right: -4px;
-  height: 16px;
-  background: var(--color-secondary);
-  opacity: 0.3;
+  height: 10px;
+  background: rgba(168, 213, 176, 0.25);
   z-index: -1;
   border-radius: 4px;
-  transform: skew(-10deg);
+  transform: skew(-8deg);
   transition: all 0.3s ease;
 }
+
 .titleHighlight:hover::after {
-  opacity: 0.5;
-  height: 20px;
-  bottom: 0;
+  height: 14px;
+  background: rgba(168, 213, 176, 0.35);
 }
 
 .pageDescription {
-  font-size: clamp(1.1rem, 2vw, 1.35rem);
-  line-height: 1.6;
-  margin-bottom: var(--spacing-xl);
-  opacity: 0.9;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
+  font-size: clamp(1rem, 1.9vw, 1.2rem);
+  line-height: 1.75;
+  margin-bottom: 2.25rem;
+  opacity: 0.85;
+  max-width: 640px;
+  color: #e0ede4;
 }
 
-.comparisonSection {
-  padding: var(--spacing-xxl) 0;
-  background: white;
-}
-
-.comparisonContent {
-  text-align: center;
-}
-
-.sectionTitle {
-  font-size: clamp(2rem, 4vw, 3rem);
-  color: var(--color-primary);
-  margin-bottom: var(--spacing-md);
-}
-
-.sectionSubtitle {
-  font-size: 1.125rem;
-  color: var(--color-accent);
-  margin-bottom: var(--spacing-xxl);
-}
-
-.comparisonTable {
-  overflow-x: auto;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
-}
-
-.table {
-  width: 100%;
-  background: white;
-  border-collapse: collapse;
-}
-
-.table thead {
-  background: var(--gradient-primary);
-  color: white;
-}
-
-.table th,
-.table td {
-  padding: var(--spacing-lg);
-  text-align: left;
-  border-bottom: 1px solid var(--color-light-gray);
-}
-
-.table th {
-  font-weight: 600;
-  font-size: 1.125rem;
-}
-
-.table tbody tr:hover {
-  background: var(--color-background);
-}
-
-.table td:first-child {
-  font-weight: 600;
-  color: var(--color-primary);
-}
-
-.ctaSection {
-  padding: var(--spacing-xxl) 0;
-  background: var(--color-background);
-}
-
-.ctaContent {
-  text-align: center;
-  padding: var(--spacing-xxl);
-  background: var(--gradient-primary);
-  border-radius: var(--radius-xl);
-  color: white;
-}
-
-.ctaTitle {
-  font-size: clamp(2rem, 4vw, 3rem);
-  margin-bottom: var(--spacing-md);
+/* Hero CTA button */
+.heroCtaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2.2rem;
+  background: #fff;
+  color: #2D5A3D;
   font-weight: 700;
+  font-size: 1rem;
+  border-radius: 12px;
+  text-decoration: none;
+  border: 2px solid transparent;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+  transition: all 0.22s ease;
+  letter-spacing: 0.01em;
+  margin: 90px;
 }
 
-.ctaText {
-  font-size: 1.125rem;
-  margin-bottom: var(--spacing-xl);
-  opacity: 0.95;
+.heroCtaButton:hover {
+  background: #F2F0EB;
+  box-shadow: 0 8px 36px rgba(0,0,0,0.28);
 }
 
-.ctaButtons {
-  display: flex;
-  gap: var(--spacing-md);
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
+/* ── Responsive ──────────────────────────────── */
 @media (max-width: 768px) {
-  .table {
-    font-size: 0.875rem;
+  .heroSection {
+    padding: 4.5rem 0 4rem;
+    border-bottom-left-radius: 1.75rem;
+    border-bottom-right-radius: 1.75rem;
   }
 
-  .table th,
-  .table td {
-    padding: var(--spacing-sm);
+  .container {
+    padding: 0 1.25rem;
   }
 
-  .ctaButtons {
-    flex-direction: column;
-    align-items: center;
+  .heroCtaButton {
+    width: 100%;
+    justify-content: center;
+    max-width: 340px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroSection {
+    padding: 3.5rem 0 3.5rem;
   }
 }

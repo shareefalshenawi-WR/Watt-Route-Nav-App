@@ -38,9 +38,10 @@ const TermsAndConditionsPage = () => {
             <p className={styles.effectiveDate}>
               {t("termsAndConditionsPage.effectiveDate")}{EFFECTIVE_DATE}
             </p>
-            <p className={styles.pageDescription}>
-              {t("termsAndConditionsPage.pageDescription")}
-            </p>
+            <p 
+              className={styles.pageDescription}
+              dangerouslySetInnerHTML={{ __html: t("termsAndConditionsPage.pageDescription") }}
+            />
           </motion.div>
         </div>
       </section>
@@ -185,9 +186,12 @@ const TermsAndConditionsPage = () => {
                     <span className={styles.sectionNumber}>{section.num}</span>
                     {t(`termsAndConditionsPage.${section.titleKey}`)}
                   </h2>
-                  <p className={styles.placeholder}>
-                    {t(`termsAndConditionsPage.${section.textKey}`)}
-                  </p>
+                  <div
+                    className={styles.contentText}
+                    dangerouslySetInnerHTML={{
+                      __html: t(`termsAndConditionsPage.${section.textKey}`),
+                    }}
+                  />
                 </section>
               ))}
 
@@ -196,9 +200,12 @@ const TermsAndConditionsPage = () => {
                   <span className={styles.sectionNumber}>11</span>
                   {t("termsAndConditionsPage.section11Title")}
                 </h2>
-                <p className={styles.placeholder}>
-                  {t("termsAndConditionsPage.section11Text")}
-                </p>
+                <div
+                  className={styles.contentText}
+                  dangerouslySetInnerHTML={{
+                    __html: t("termsAndConditionsPage.section11Text")
+                  }}
+                />
                 <div className={styles.contactCard}>
                   <div className={styles.contactItem}>
                     <span className={styles.contactLabel}>

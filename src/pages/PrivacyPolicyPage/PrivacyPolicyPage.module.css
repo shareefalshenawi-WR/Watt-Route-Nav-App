@@ -274,6 +274,36 @@
   font-style: italic;
 }
 
+.contentText {
+  color: var(--color-text);
+  line-height: 1.8;
+  font-size: 1.05rem;
+  padding: 0 var(--spacing-sm);
+}
+
+.contentText ul {
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  list-style-type: disc;
+}
+
+[dir="rtl"] .contentText ul {
+  padding-left: 0;
+  padding-right: 1.5rem;
+}
+
+.contentText li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.contentText b, 
+.contentText strong {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
 /* Contact card */
 .contactCard {
   background: white;

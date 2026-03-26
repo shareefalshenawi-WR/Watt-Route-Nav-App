@@ -38,9 +38,10 @@ const PrivacyPolicyPage = () => {
             <p className={styles.effectiveDate}>
               {t("privacyPolicyPage.effectiveDate")}{EFFECTIVE_DATE}
             </p>
-            <p className={styles.pageDescription}>
-              {t("privacyPolicyPage.pageDescription")}
-            </p>
+            <p 
+              className={styles.pageDescription}
+              dangerouslySetInnerHTML={{ __html: t("privacyPolicyPage.pageDescription") }}
+            />
           </motion.div>
         </div>
       </section>
@@ -72,18 +73,20 @@ const PrivacyPolicyPage = () => {
                     t("privacyPolicyPage.toc7"),
                     t("privacyPolicyPage.toc8"),
                     t("privacyPolicyPage.toc9"),
+                    t("privacyPolicyPage.toc10"),
+                    t("privacyPolicyPage.toc11"),
                   ].map((item, index) => {
-                    // Extract href id from the English title for simplicity in linking, 
-                    // or just use section numbers
                     const id = [
-                      "information-we-collect",
+                      "information-collect",
                       "how-we-use",
-                      "sharing",
+                      "sharing-information",
+                      "data-retention",
                       "data-security",
                       "your-rights",
-                      "cookies",
-                      "children",
-                      "changes",
+                      "childrens-privacy",
+                      "third-party-links",
+                      "changes-policy",
+                      "governing-law",
                       "contact",
                     ][index];
                     return (
@@ -102,68 +105,66 @@ const PrivacyPolicyPage = () => {
 
             {/* Main content */}
             <motion.main className={styles.content} variants={fadeInUp}>
-              <div className={styles.noticeBanner}>
-                <span className={styles.noticeIcon}>ℹ️</span>
-                <p>
-                  {t("privacyPolicyPage.noticeText")}
-                  <a
-                    href="mailto:info@wattrouteapp.com"
-                    className={styles.inlineLink}
-                  >
-                    {t("privacyPolicyPage.contactUsLink")}
-                  </a>
-                  .
-                </p>
-              </div>
-
               {[
                 {
-                  id: "information-we-collect",
-                  num: "01",
+                  id: "information-collect",
+                  num: "1",
                   titleKey: "section1Title",
                   textKey: "section1Text",
                 },
                 {
                   id: "how-we-use",
-                  num: "02",
+                  num: "2",
                   titleKey: "section2Title",
                   textKey: "section2Text",
                 },
                 {
-                  id: "sharing",
-                  num: "03",
+                  id: "sharing-information",
+                  num: "3",
                   titleKey: "section3Title",
                   textKey: "section3Text",
                 },
                 {
-                  id: "data-security",
-                  num: "04",
+                  id: "data-retention",
+                  num: "4",
                   titleKey: "section4Title",
                   textKey: "section4Text",
                 },
                 {
-                  id: "your-rights",
-                  num: "05",
+                  id: "data-security",
+                  num: "5",
                   titleKey: "section5Title",
                   textKey: "section5Text",
                 },
                 {
-                  id: "cookies",
-                  num: "06",
+                  id: "your-rights",
+                  num: "6",
                   titleKey: "section6Title",
                   textKey: "section6Text",
                 },
                 {
-                  id: "children",
-                  num: "07",
+                  id: "childrens-privacy",
+                  num: "7",
                   titleKey: "section7Title",
                   textKey: "section7Text",
                 },
                 {
-                  id: "changes",
-                  num: "08",
+                  id: "third-party-links",
+                  num: "8",
                   titleKey: "section8Title",
                   textKey: "section8Text",
+                },
+                {
+                  id: "changes-policy",
+                  num: "9",
+                  titleKey: "section9Title",
+                  textKey: "section9Text",
+                },
+                {
+                  id: "governing-law",
+                  num: "10",
+                  titleKey: "section10Title",
+                  textKey: "section10Text",
                 },
               ].map((section) => (
                 <section key={section.id} id={section.id} className={styles.section}>
@@ -171,40 +172,48 @@ const PrivacyPolicyPage = () => {
                     <span className={styles.sectionNumber}>{section.num}</span>
                     {t(`privacyPolicyPage.${section.titleKey}`)}
                   </h2>
-                  <p className={styles.placeholder}>
-                    {t(`privacyPolicyPage.${section.textKey}`)}
-                  </p>
+                  <div
+                    className={styles.contentText}
+                    dangerouslySetInnerHTML={{
+                      __html: t(`privacyPolicyPage.${section.textKey}`),
+                    }}
+                  />
                 </section>
               ))}
 
               <section id="contact" className={styles.section}>
                 <h2 className={styles.sectionTitle}>
-                  <span className={styles.sectionNumber}>09</span>
-                  {t("privacyPolicyPage.section9Title")}
+                  <span className={styles.sectionNumber}>11</span>
+                  {t("privacyPolicyPage.section11Title")}
                 </h2>
-                <p className={styles.placeholder}>
-                  {t("privacyPolicyPage.section9Text")}
-                </p>
+                <div 
+                  className={styles.contentText}
+                  dangerouslySetInnerHTML={{
+                    __html: t("privacyPolicyPage.section11Text")
+                  }}
+                />
                 <div className={styles.contactCard}>
+                  <div className={styles.contactItem} style={{borderBottom: '1px solid rgba(0,0,0,0.05)', paddingBottom: '1rem', marginBottom: '1rem'}}>
+                    <span className={styles.contactLabel} style={{fontSize: '1rem', fontWeight: 'bold'}}>{t("privacyPolicyPage.companyName")}</span>
+                  </div>
                   <div className={styles.contactItem}>
                     <span className={styles.contactLabel}>
                       {t("privacyPolicyPage.emailLabel")}
                     </span>
                     <a
-                      href="mailto:info@wattrouteapp.com"
+                      href={`mailto:${t("privacyPolicyPage.contactEmail")}`}
                       className={styles.contactValue}
                     >
-                      info@wattrouteapp.com
+                      {t("privacyPolicyPage.contactEmail")}
                     </a>
                   </div>
                   <div className={styles.contactItem}>
                     <span className={styles.contactLabel}>
-                      {t("privacyPolicyPage.phoneLabel")}
+                      {t("privacyPolicyPage.locationLabel")}
                     </span>
-                    <a href="tel:+201508275572" className={styles.contactValue}>
-                      {/* Using base footer phone directly because format +20 150 827 5572 is fine in both lang, or fetch from locales */}
-                      {t("footer.phone")}
-                    </a>
+                    <span className={styles.contactValue} style={{color: 'inherit', textDecoration: 'none'}}>
+                      {t("privacyPolicyPage.contactLocation")}
+                    </span>
                   </div>
                 </div>
               </section>

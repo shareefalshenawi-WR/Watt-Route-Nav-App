@@ -1,18 +1,17 @@
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import Products from "../../components/sections/Products/Products";
-import Button from "../../components/common/Button/Button";
-import Card from "../../components/common/Card/Card";
-import { fadeInUp, stagger } from "../../utils/animations";
+import { fadeInUp } from "../../utils/animations";
 import styles from "./ProductsPage.module.css";
 
 const ProductsPage = () => {
   const { t } = useTranslation();
   return (
     <div className={styles.page}>
-      {/* Page Header */}
+      {/* Page Hero */}
       <section className={styles.heroSection}>
         <div className={styles.heroBackground} />
+        <div className={styles.heroDotPattern} />
         <div className={styles.container}>
           <motion.div
             className={styles.headerContent}
@@ -20,6 +19,7 @@ const ProductsPage = () => {
             animate="visible"
             variants={fadeInUp}
           >
+            <span className={styles.heroEyebrow}>{t("productsPage.eyebrow")}</span>
             <h1 className={styles.pageTitle}>
               {t("productsPage.pageTitle")}{" "}
               <span className={styles.titleHighlight}>
@@ -29,17 +29,15 @@ const ProductsPage = () => {
             <p className={styles.pageDescription}>
               {t("productsPage.pageDescription")}
             </p>
+
+            
+            
           </motion.div>
         </div>
       </section>
 
-      {/* Products Section */}
+      
       <Products />
-
-      {/* Features Comparison */}
-      <section className={styles.comparisonSection}>
-        <div className={styles.container}></div>
-      </section>
     </div>
   );
 };

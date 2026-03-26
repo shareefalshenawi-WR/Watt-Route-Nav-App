@@ -1,69 +1,25 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import Button from "../../common/Button/Button";
-import AsyncImage from "../../common/AsyncImage/AsyncImage";
 import { fadeInUp, scaleIn } from "../../../utils/animations";
 import styles from "./Products.module.css";
 
+const domevFeatures = [
+  { icon: "🗺️", labelKey: "products.featureMap" },
+  { icon: "⚡", labelKey: "products.featureCharging" },
+  { icon: "💳", labelKey: "products.featurePayment" },
+  { icon: "🔔", labelKey: "products.featureNotifications" },
+  { icon: "📊", labelKey: "products.featureAnalytics" },
+  { icon: "🛡️", labelKey: "products.featureSecurity" },
+];
+
 const Products = () => {
   const { t } = useTranslation();
-  const [activeProduct, setActiveProduct] = useState(0);
-
-  const products = [
-    {
-      id: 1,
-      nameKey: "products.exploreMap",
-      // tagline: "DC *120",
-      descKey: "products.exploreMapDesc",
-      //  Product image placeholder
-      image: "/images/products/dc-charger-120.webp",
-      specs: [
-        { icon: "⚡", labelKey: "products.allChargers" },
-        // { icon: "💳", labelKey: "products.flexiblePayments" },
-        // { icon: "☔", labelKey: "products.weatherResistant" },
-        // { icon: "🔄", labelKey: "products.dcFastCharger" },
-        { icon: "🕐", labelKey: "products.realTimeStatus" },
-        // { icon: "📊", labelKey: "products.smartEnergyDistribution" },
-        { icon: "📱", labelKey: "products.mobileApp" },
-        // { icon: "📈", labelKey: "products.realTimeMonitoring" },
-      ],
-    },
-    {
-      id: 2,
-      nameKey: "products.unifiedPayment",
-      // tagline: "DC *60",
-      descKey: "products.unifiedPaymentDesc",
-      image: "/images/products/dc-charger-60.webp",
-      specs: [
-        // { icon: "⚡", labelKey: "products.fastCharging" },
-        { icon: "💳", labelKey: "products.securePayments" },
-        // { icon: "☔", labelKey: "products.outdoorReady" },
-        // { icon: "🔌", labelKey: "products.universalCompatibility" },
-        { icon: "🕐", labelKey: "products.support24" },
-        // { icon: "📱", labelKey: "products.appControl" },
-      ],
-    },
-    {
-      id: 3,
-      nameKey: "products.smartRoutePlanning",
-      // tagline: "AC *22",
-      descKey: "products.smartRoutePlanningDesc",
-      image: "/images/products/ac-charger-22.webp",
-      specs: [
-        { icon: "🗺️", labelKey: "products.smartRouting" },
-        { icon: "🔐", labelKey: "products.safePlanning" },
-        { icon: "🌿", labelKey: "products.peaceOfMind" },
-        //   { icon: "📱", labelKey: "products.smartControl" },
-        //   { icon: "⏰", labelKey: "products.scheduledCharging" },
-        //   { icon: "📊", labelKey: "products.energyTracking" },
-      ],
-    },
-  ];
 
   return (
     <section className={styles.section} id="products">
       <div className={styles.container}>
+
+        {/* Section Header */}
         <motion.div
           className={styles.header}
           initial="hidden"
@@ -71,102 +27,100 @@ const Products = () => {
           viewport={{ once: true }}
           variants={fadeInUp}
         >
+          <span className={styles.eyebrow}>{t("products.eyebrow")}</span>
           <h2 className={styles.title}>{t("products.title")}</h2>
           <p className={styles.subtitle}>{t("products.subtitle")}</p>
         </motion.div>
 
-        {/* Product Tabs */}
-        <div className={styles.productTabs}>
-          {products.map((product, index) => (
-            <button
-              key={product.id}
-              className={`${styles.tab} ${
-                activeProduct === index ? styles.activeTab : ""
-              }`}
-              onClick={() => setActiveProduct(index)}
+        {/* Main Product Layout */}
+        <div className={styles.productLayout}>
+
+          {/* Left: Info Block */}
+          <motion.div
+            className={styles.infoBlock}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+          >
+            <div className={styles.productBadge}>
+              <span className={styles.badgeDot} />
+              {t("products.badge")}
+            </div>
+
+            <h3 className={styles.productName}>DOMEv</h3>
+            <p className={styles.productTagline}>{t("products.tagline")}</p>
+            <p className={styles.productDescription}>{t("products.description")}</p>
+
+            {/* Features Grid */}
+            <div className={styles.featuresGrid}>
+              {domevFeatures.map((feature, index) => (
+                <motion.div
+                  key={index}
+                  className={styles.featureChip}
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.08 }}
+                >
+                  <span className={styles.featureIcon}>{feature.icon}</span>
+                  <span className={styles.featureLabel}>{t(feature.labelKey)}</span>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* CTA Button */}
+            
+            <a
+              href="https://forms.gle/Nea31hejYAvMawrR6"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.ctaButton}
+              id="domev-register-interest-btn"
             >
-              {t(product.nameKey)}
-            </button>
-          ))}
-        </div>
+              <span className={styles.ctaButtonInner}>
+                <span className={styles.ctaIcon}></span>
+                {t("products.ctaButton")}
+              </span>
+              <span className={styles.ctaArrow}>→</span>
+            </a>
 
-        {/* Active Product Display */}
-        <motion.div
-          className={styles.productDisplay}
-          key={activeProduct}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className={styles.productContent}>
-            {/* Product Info */}
-            <div className={styles.productInfo}>
-              <h3 className={styles.productName}>
-                {t(products[activeProduct].nameKey)}
-              </h3>
-              <p className={styles.productDescription}>
-                {t(products[activeProduct].descKey)}
-              </p>
+            <p className={styles.ctaSubtext}>{t("products.ctaSubtext")}</p>
+          </motion.div>
 
-              {/* Specifications */}
-              <div className={styles.specifications}>
-                <h4 className={styles.specsTitle}>
-                  {t("products.specsTitle")}
-                  <span className={styles.specsCount}>
-                    {products[activeProduct].specs.length} features
-                  </span>
-                </h4>
-                <div className={styles.specsGrid}>
-                  {products[activeProduct].specs.map((spec, index) => (
-                    <motion.div
-                      key={index}
-                      className={styles.specItem}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: index * 0.05 }}
-                    >
-                      <span className={styles.specIcon}>{spec.icon}</span>
-                      <span className={styles.specLabel}>
-                        {t(spec.labelKey)}
-                      </span>
-                    </motion.div>
-                  ))}
+          {/* Right: iPhone Mockup */}
+          <motion.div
+            className={styles.mockupWrapper}
+            variants={scaleIn}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            
+
+            {/* iPhone Frame */}
+            <div className={styles.iphone}>
+              <div className={styles.iphoneFrame}>
+                {/* Notch / Dynamic Island */}
+                <div className={styles.iphoneNotch}>
+                 
                 </div>
+
+                {/* Screen Content */}
+                <div className={styles.iphoneScreen}>
+                  { 
+                        <img src="/images/domev-logo.webp" alt="DOMEv Logo" className={styles.appLogo} />
+                       }
+                  
+                </div>
+
+               
               </div>
             </div>
 
-            {/* Product Image */}
-            <div className={styles.productImageWrapper}>
-              {/*  Product image */}
-              <motion.div
-                className={styles.productImage}
-                variants={scaleIn}
-                initial="hidden"
-                animate="visible"
-              >
-                <AsyncImage
-                  src={products[activeProduct].image}
-                  alt={t(products[activeProduct].nameKey)}
-                  className={styles.image}
-                />
-                <div className={styles.productGlow}></div>
-              </motion.div>
-            </div>
-          </div>
-        </motion.div>
+            
+          </motion.div>
 
-        {/* Product Slider Indicators */}
-        <div className={styles.sliderIndicators}>
-          {products.map((_, index) => (
-            <button
-              key={index}
-              className={`${styles.indicator} ${
-                activeProduct === index ? styles.activeIndicator : ""
-              }`}
-              onClick={() => setActiveProduct(index)}
-              aria-label={`Go to product ${index + 1}`}
-            />
-          ))}
         </div>
       </div>
     </section>
