@@ -10,8 +10,21 @@ const ProductsPage = () => {
     <div className={styles.page}>
       {/* Page Hero */}
       <section className={styles.heroSection}>
+
+        <img
+          src="/images/hero-products2.png"
+          alt=""
+          aria-hidden="true"
+          className={styles.heroBgImage}
+          fetchpriority="high"
+          loading="eager"
+          decoding="sync"
+        />
+
+      
         <div className={styles.heroBackground} />
-        <div className={styles.heroDotPattern} />
+        
+
         <div className={styles.container}>
           <motion.div
             className={styles.headerContent}
@@ -29,14 +42,11 @@ const ProductsPage = () => {
             <p className={styles.pageDescription}>
               {t("productsPage.pageDescription")}
             </p>
-
-            
-            
           </motion.div>
         </div>
       </section>
 
-      
+      {/* DOMEv Products Section */}
       <Products />
     </div>
   );

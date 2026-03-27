@@ -1,15 +1,15 @@
-/* =========================================
+/* 
    Page Container
-   ========================================= */
+   */
 .page {
   padding-top: 80px;
   background-color: var(--color-background);
   min-height: 100vh;
 }
 
-/* =========================================
+/* 
    Hero Section
-   ========================================= */
+   */
 .heroSection {
   position: relative;
   background: var(--gradient-primary);
@@ -52,12 +52,17 @@
   font-size: 0.9rem;
   opacity: 0.8;
   margin-bottom: var(--spacing-md);
+  flex-wrap: nowrap;
+  line-height: 1;
 }
 
 .breadcrumbLink {
   color: white;
   text-decoration: none;
   transition: opacity 0.2s;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
 }
 
 .breadcrumbLink:hover {
@@ -67,6 +72,9 @@
 
 .breadcrumbSep {
   opacity: 0.6;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
 }
 
 .headerContent {
@@ -130,9 +138,9 @@
   margin: 0 auto;
 }
 
-/* =========================================
+/* 
    Content Section
-   ========================================= */
+   */
 .contentSection {
   padding: var(--spacing-xxl) 0 calc(var(--spacing-xxl) * 1.5);
 }
@@ -144,9 +152,9 @@
   align-items: start;
 }
 
-/* =========================================
+/* 
    Sidebar / TOC
-   ========================================= */
+   */
 .sidebar {
   position: sticky;
   top: 100px;
@@ -193,9 +201,9 @@
   padding-left: 0.8rem;
 }
 
-/* =========================================
+/* 
    Main Content
-   ========================================= */
+   */
 .content {
   min-width: 0;
 }
@@ -347,9 +355,9 @@
   text-decoration: underline;
 }
 
-/* =========================================
+/* 
    Responsive
-   ========================================= */
+   */
 @media (max-width: 1024px) {
   .contentLayout {
     grid-template-columns: 240px 1fr;

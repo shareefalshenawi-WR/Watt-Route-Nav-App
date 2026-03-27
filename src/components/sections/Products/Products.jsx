@@ -108,10 +108,14 @@ const Products = () => {
 
                 {/* Screen Content */}
                 <div className={styles.iphoneScreen}>
-                  { 
-                        <img src="/images/domev-logo.webp" alt="DOMEv Logo" className={styles.appLogo} />
-                       }
-                  
+                  <img
+                    src="/images/domev-logo.webp"
+                    alt="DOMEv Logo"
+                    className={styles.appLogo}
+                    fetchpriority="high"
+                    loading="eager"
+                    decoding="sync"
+                  />
                 </div>
 
                
