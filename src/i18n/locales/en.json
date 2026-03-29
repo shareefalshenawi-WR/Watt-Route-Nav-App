@@ -227,9 +227,10 @@
   },
   "downloadAppPage": {
     "comingSoonTitle": "Coming Soon",
-    "comingSoonText": "The Watt Route mobile app is currently under development. Stay tuned for an amazing experience!",
+    "comingSoonText": "The DOMEv mobile app is currently under development. Stay tuned for an amazing experience!",
     "logoAlt": "Watt Route Logo",
-    "mapAlt": "Map Background"
+    "mapAlt": "Map Background",
+    "returnHome": "Return to Home"
   },
   "findChargingPage": {
     "comingSoonTitle": "Coming Soon",

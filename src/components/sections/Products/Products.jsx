@@ -18,7 +18,6 @@ const Products = () => {
   return (
     <section className={styles.section} id="products">
       <div className={styles.container}>
-
         {/* Section Header */}
         <motion.div
           className={styles.header}
@@ -34,7 +33,6 @@ const Products = () => {
 
         {/* Main Product Layout */}
         <div className={styles.productLayout}>
-
           {/* Left: Info Block */}
           <motion.div
             className={styles.infoBlock}
@@ -50,7 +48,9 @@ const Products = () => {
 
             <h3 className={styles.productName}>DOMEv</h3>
             <p className={styles.productTagline}>{t("products.tagline")}</p>
-            <p className={styles.productDescription}>{t("products.description")}</p>
+            <p className={styles.productDescription}>
+              {t("products.description")}
+            </p>
 
             {/* Features Grid */}
             <div className={styles.featuresGrid}>
@@ -64,13 +64,15 @@ const Products = () => {
                   transition={{ delay: index * 0.08 }}
                 >
                   <span className={styles.featureIcon}>{feature.icon}</span>
-                  <span className={styles.featureLabel}>{t(feature.labelKey)}</span>
+                  <span className={styles.featureLabel}>
+                    {t(feature.labelKey)}
+                  </span>
                 </motion.div>
               ))}
             </div>
 
             {/* CTA Button */}
-            
+            {/*replace with the new link : href= "New link here" */}
             <a
               href="https://forms.gle/Nea31hejYAvMawrR6"
               target="_blank"
@@ -96,16 +98,9 @@ const Products = () => {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            
-
             {/* iPhone Frame */}
             <div className={styles.iphone}>
               <div className={styles.iphoneFrame}>
-                {/* Notch / Dynamic Island */}
-                <div className={styles.iphoneNotch}>
-                 
-                </div>
-
                 {/* Screen Content */}
                 <div className={styles.iphoneScreen}>
                   <img
@@ -117,14 +112,9 @@ const Products = () => {
                     decoding="sync"
                   />
                 </div>
-
-               
               </div>
             </div>
-
-            
           </motion.div>
-
         </div>
       </div>
     </section>

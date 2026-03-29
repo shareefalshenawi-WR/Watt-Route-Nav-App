@@ -1,35 +1,31 @@
+
 .page {
+  position: relative;
   min-height: 100vh;
-  position: relative;
-}
-
-.mapContainer {
-  position: relative;
-  width: 100%;
-  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
+  font-family: var(--font-primary, "Inter", sans-serif);
 }
 
-.mapBackground {
-  position: fixed;
-  top: 80px;
-  left: 0;
-  width: 100%;
-  height: calc(100vh - 80px);
-  z-index: 1;
-}
-
-.mapImage {
+.bgWrapper {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  opacity: 0.4;
+  z-index: 0;
 }
 
-.mapOverlay {
+.bgImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.bgOverlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -37,220 +33,268 @@
   height: 100%;
   background: linear-gradient(
     135deg,
-    #1e4552 0%,
-    #1e4552 35%,
-    #2a5e6e 60%,
-    #366262 85%,
-    #366262 100%
+    rgba(15, 34, 41, 0.94) 0%,
+    rgba(15, 34, 41, 0.94) 35%,
+    rgba(21, 47, 55, 0.94) 60%,
+    rgba(27, 49, 49, 0.94) 85%,
+    rgba(27, 49, 49, 0.94) 100%
   );
-  opacity: 0.88;
-  z-index: 2;
+}
+
+
+
+@keyframes orbFloat {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(30px, 40px) scale(1.08);
+  }
+}
+
+/* ---- Particles ---- */
+.particles {
+  position: absolute;
+  inset: 0;
   pointer-events: none;
 }
 
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(86, 145, 102, 0.5);
+  animation: particleDrift linear infinite;
+}
+
+
+/* ---- Content Container ---- */
 .contentContainer {
   position: relative;
   z-index: 10;
-  width: 100%;
-  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--spacing-lg);
-  padding-top: 80px;
+  width: 100%;
+  min-height: 100vh;
+  padding: 100px var(--spacing-lg, 2rem) var(--spacing-lg, 2rem);
 }
 
 .content {
-  text-align: center;
-  max-width: 700px;
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: var(--spacing-xl);
+  text-align: center;
+  max-width: 680px;
+  width: 100%;
+  gap: 2rem;
 }
 
-.logoContainer {
+/* ---- Logo ---- */
+.logoWrapper {
   position: relative;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  margin-bottom: 0;
 }
 
-.mapPin {
+.logoGlow {
   position: absolute;
-  top: -40px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
-  animation: pinBounce 2s ease-in-out infinite;
-}
-
-.mapPin svg {
-  width: 50px;
-  height: 50px;
-}
-
-@keyframes pinBounce {
-  0%,
-  100% {
-    transform: translateX(-50%) translateY(0);
-  }
-  50% {
-    transform: translateX(-50%) translateY(-10px);
-  }
+  inset: -30px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(86, 145, 102, 0.35) 0%,
+    transparent 70%
+  );
+  animation: logoPulse 3s ease-in-out infinite;
+  pointer-events: none;
 }
 
 .logo {
-  width: 180px;
+  width: clamp(240px, 40vw, 400px);
   height: auto;
-  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
   position: relative;
   z-index: 1;
-  display: block;
-  margin: 0 auto;
+  filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.5));
 }
 
-.messageContainer {
-  color: white;
-  width: 100%;
-  padding-top: var(--spacing-lg);
+@keyframes logoPulse {
+  0%, 100% { transform: scale(1);    opacity: 0.7; }
+  50%       { transform: scale(1.12); opacity: 1;   }
 }
 
+/* ---- App Badge ---- */
+.appBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 18px;
+  border-radius: 100px;
+  border: 1px solid rgba(86, 145, 102, 0.5);
+  background: rgba(86, 145, 102, 0.12);
+  backdrop-filter: blur(10px);
+  color: #82c98f;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.appBadgeDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #82c98f;
+  animation: dotBlink 1.8s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes dotBlink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.7); }
+}
+
+/* ---- Coming Soon Title ---- */
 .comingSoonTitle {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-family: var(--font-heading, "Poppins", sans-serif);
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
   font-weight: 800;
-  margin-bottom: var(--spacing-md);
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  color: white;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin: 0;
+  background: linear-gradient(99deg, #00dc82 2%, #ffffff 68%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
 }
 
+/* ---- Subtitle ---- */
 .comingSoonText {
-  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
   line-height: 1.8;
-  opacity: 0.95;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-  max-width: 500px;
-  margin: 0 auto;
   color: white;
+  opacity: 0.95;
+  max-width: 500px;
+  margin: 0;
 }
 
+/* ---- Divider ---- */
+.divider {
+  width: 100%;
+  max-width: 320px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(86, 145, 102, 0.6),
+    transparent
+  );
+  transform-origin: center;
+}
+
+/* ---- Store Buttons ---- */
+.storeButtons {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.storeButtonWrapper {
+  position: relative;
+  display: inline-block;
+  opacity: 0.45;
+  cursor: not-allowed;
+  user-select: none;
+}
+
+.storeImage {
+  display: block;
+  height: 48px;
+  width: auto;
+  filter: grayscale(30%);
+  border-radius: 8px;
+}
+
+.storeComingTag {
+  position: absolute;
+  top: -9px;
+  right: -9px;
+  background: linear-gradient(135deg, #569166, #82c98f);
+  color: #fff;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 100px;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(86, 145, 102, 0.5);
+}
+
+/* ---- Home Button ---- */
+.homeAction {
+  margin-top: 1.5rem;
+  z-index: 10;
+}
+
+.homeButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 2.2rem;
+  background: transparent;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.homeButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
 @media (max-width: 768px) {
-  .mapContainer {
-    height: 100vh;
-  }
-
-  .mapBackground {
-    position: fixed;
-    top: 0;
-    height: 100vh;
-  }
-
-  .mapImage {
-    min-height: 100vh;
-  }
-
-  .mapOverlay {
-    min-height: 100vh;
-  }
-
   .contentContainer {
-    padding-top: 0;
-    padding-bottom: 20%;
-  }
-
-  .mapPinsContainer {
-    top: 10%;
-    right: 10%;
-    gap: 15px;
-  }
-
-  .mapPinSmall svg {
-    width: 35px;
-    height: 35px;
-  }
-
-  .mapPinLarge svg {
-    width: 50px;
-    height: 50px;
+    padding: 90px 1.5rem 2rem;
   }
 
   .content {
-    gap: var(--spacing-lg);
+    gap: 1.5rem;
   }
 
-  .messageContainer {
-    padding-top: var(--spacing-md);
+  .storeButtons {
+    gap: 1rem;
   }
 
-  .comingSoonTitle {
-    font-size: clamp(1.75rem, 5vw, 2.5rem);
-  }
-
-  .comingSoonText {
-    font-size: clamp(0.95rem, 2vw, 1rem);
+  .storeImage {
+    height: 42px;
   }
 }
 
 @media (max-width: 480px) {
-  .mapContainer {
-    height: 100vh;
-  }
-
-  .mapBackground {
-    position: fixed;
-    top: 0;
-    height: 100vh;
-  }
-
-  .mapImage {
-    min-height: 100vh;
-  }
-
-  .mapOverlay {
-    min-height: 100vh;
-  }
-
   .contentContainer {
-    padding-top: 0;
-    padding-bottom: 25%;
-  }
-
-  .mapPinsContainer {
-    top: 8%;
-    right: 8%;
-    gap: 12px;
-  }
-
-  .mapPinSmall svg {
-    width: 30px;
-    height: 30px;
-  }
-
-  .mapPinLarge svg {
-    width: 45px;
-    height: 45px;
-  }
-
-  .content {
-    gap: var(--spacing-md);
-  }
-
-  .messageContainer {
-    padding-top: var(--spacing-sm);
+    padding: 80px 1.25rem 2rem;
   }
 
   .comingSoonTitle {
-    font-size: 1.75rem;
-    margin-bottom: var(--spacing-sm);
+    font-size: 2.6rem;
   }
 
-  .comingSoonText {
-    font-size: 0.95rem;
+  .storeButtons {
+    flex-direction: column;
+    align-items: center;
   }
 }

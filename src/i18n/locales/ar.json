@@ -227,9 +227,10 @@
   },
   "downloadAppPage": {
     "comingSoonTitle": "قريباً",
-    "comingSoonText": "تطبيق Watt Route للجوال قيد التطوير حالياً. ترقب تجربة رائعة!",
+    "comingSoonText": "تطبيق DOMEv للجوال قيد التطوير حالياً. ترقب تجربة رائعة!",
     "logoAlt": "شعار Watt Route",
-    "mapAlt": "خلفية الخريطة"
+    "mapAlt": "خلفية الخريطة",
+    "returnHome": "العودة إلى الصفحة الرئيسية"
   },
   "findChargingPage": {
     "comingSoonTitle": "قريباً",
@@ -242,28 +243,7 @@
     "pageDescription": "أذكى طريقة لشحن سيارتك الكهربائية في مصر. تطبيق واحد، كل المحطات، صفر قلق.",
     "heroCtaButton": "سجّل اهتمامك"
   },
-  "downloadAppSection": {
-    "title": "حمل",
-    "titleHighlight": "تطبيق Watt Route",
-    "titleEnd": "الآن",
-    "description": "تحكم في تجربة شحن السيارة الكهربائية الخاصة بك باستخدام تطبيقنا القوي للجوال. كل ما تحتاجه في راحة يدك.",
-    "feature1": "البحث عن محطات شحن قريبة على الفور",
-    "feature2": "تحقق من التوفر والأسعار في الوقت الفعلي",
-    "feature3": "إدارة الدفع والشحن بسلاسة",
-    "feature4": "التخطيط الذكي للمسار للرحلات الطويلة",
-    "feature5": "تتبع سجل الشحن الخاص بك",
-    "feature6": "احصل على إشعار عند انتهاء الشحن",
-    "appStoreAlt": "تحميل من App Store",
-    "googlePlayAlt": "تحميل من Google Play",
-    "screenFindStations": "البحث عن محطات",
-    "screenFindStationsDesc": "اكتشف نقاط الشحن بالقرب منك",
-    "screenOpenMap": "فتح الخريطة",
-    "screenOpenMapDesc": "عرض المحطات على خريطة تفاعلية",
-    "screenNearbyCharging": "شحن قريب",
-    "screenNearbyChargingDesc": "احصل على اتجاهات إلى أقرب الشواحن",
-    "screenWallet": "المحفظة",
-    "screenWalletDesc": "إدارة مدفوعاتك بسهولة"
-  },
+  
   "privacyPolicyPage": {
     "pageTitle": "سياسة",
     "pageTitleHighlight": "الخصوصية",

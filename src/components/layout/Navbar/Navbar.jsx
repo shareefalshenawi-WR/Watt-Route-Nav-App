@@ -9,6 +9,8 @@ import { useLanguage } from "../../../hooks/useLanguage";
 import { NAV_ITEMS, ROUTES } from "../../../constants/routes";
 import styles from "./Navbar.module.css";
 
+const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
 const Navbar = () => {
   const { t } = useTranslation();
   const { currentLanguage, changeLanguage } = useLanguage();
@@ -41,7 +43,7 @@ const Navbar = () => {
     >
       <div className={styles.container}>
         {/* Logo */}
-        <Link to="/" className={styles.logo}>
+        <Link to="/" className={styles.logo} onClick={scrollToTop}>
           <AsyncImage
             src="/images/logo.webp"
             alt="Watt Route Logo"
@@ -72,6 +74,7 @@ const Navbar = () => {
                 className={`${styles.navLink} ${
                   navbarState === "scrolled" ? styles.linkScrolled : ""
                 } ${location.pathname === item.path ? styles.active : ""}`}
+                onClick={item.path === ROUTES.HOME ? scrollToTop : undefined}
               >
                 {item.translatedName}
               </Link>
@@ -138,7 +141,10 @@ const Navbar = () => {
               key={item.name}
               to={item.path}
               className={styles.mobileNavLink}
-              onClick={() => setMenuOpen(false)}
+              onClick={() => {
+                setMenuOpen(false);
+                if (item.path === ROUTES.HOME) scrollToTop();
+              }}
             >
               {item.translatedName}
             </Link>

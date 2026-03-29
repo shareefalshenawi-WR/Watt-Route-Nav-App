@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import AsyncImage from "../../common/AsyncImage/AsyncImage";
 import { ROUTES } from "../../../constants/routes";
@@ -6,7 +6,12 @@ import styles from "./Footer.module.css";
 
 const Footer = () => {
   const { t } = useTranslation();
+  const location = useLocation();
   const currentYear = new Date().getFullYear();
+
+  if (location.pathname === ROUTES.DOWNLOAD_APP) {
+    return null;
+  }
 
   const footerLinks = {
     company: [

@@ -1,94 +1,128 @@
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import AsyncImage from "../../components/common/AsyncImage/AsyncImage";
-import { fadeInUp } from "../../utils/animations";
+import { Link } from "react-router-dom";
 import styles from "./DownloadAppPage.module.css";
 
 const DownloadAppPage = () => {
   const { t } = useTranslation();
+
   return (
     <div className={styles.page}>
-      <div className={styles.mapContainer}>
-        {/* Background Map Image - Placeholder */}
-        <div className={styles.mapBackground}>
-          <AsyncImage
-            src="/images/map-background.webp"
-            alt="Map Background"
-            className={styles.mapImage}
-            onError={() => {
-              // Fallback handled by AsyncImage
-            }}
-          />
-          <div className={styles.mapOverlay}></div>
-        </div>
+      {/* Background Image & Overlay */}
+      <div className={styles.bgWrapper}>
+        <img 
+          src="/images/coming-soon bg.png" 
+          alt="Background" 
+          className={styles.bgImage} 
+        />
+        <div className={styles.bgOverlay} />
+      </div>
 
-        {/* Content Container */}
-        <div className={styles.contentContainer}>
+      {/* Animated background particles */}
+      <div className={styles.particles}>
+        {Array.from({ length: 20 }).map((_, i) => (
+          <span key={i} className={styles.particle} />
+        ))}
+      </div>
+
+
+      {/* Content */}
+      <div className={styles.contentContainer}>
+        <motion.div
+          className={styles.content}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          {/* DOMEv Logo */}
           <motion.div
-            className={styles.content}
-            initial="hidden"
-            animate="visible"
-            variants={fadeInUp}
+            className={styles.logoWrapper}
+            initial={{ opacity: 0, y: -40, scale: 0.8 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           >
-            {/* Logo with Pin Animation */}
-            <motion.div
-              className={styles.logoContainer}
-              initial={{ opacity: 0, y: -50, scale: 0.8 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-            >
-              {/* Map Pin */}
-              <motion.div
-                className={styles.mapPin}
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.3, duration: 0.5 }}
-              >
-                <svg
-                  width="60"
-                  height="60"
-                  viewBox="0 0 60 60"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M30 0C18.954 0 10 8.954 10 20C10 35 30 60 30 60C30 60 50 35 50 20C50 8.954 41.046 0 30 0Z"
-                    fill="var(--color-secondary)"
-                  />
-                  <circle cx="30" cy="20" r="8" fill="white" />
-                </svg>
-              </motion.div>
-
-              {/* Logo */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.6 }}
-              >
-                <AsyncImage
-                  src="/images/logo.webp"
-                  alt="Watt Route Logo"
-                  className={styles.logo}
-                />
-              </motion.div>
-            </motion.div>
-
-            {/* Coming Soon Message */}
-            <motion.div
-              className={styles.messageContainer}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7, duration: 0.6 }}
-            >
-              <h1 className={styles.comingSoonTitle}>
-                {t("downloadAppPage.comingSoonTitle")}
-              </h1>
-              <p className={styles.comingSoonText}>
-                {t("downloadAppPage.comingSoonText")}
-              </p>
-            </motion.div>
+            <div className={styles.logoGlow} />
+            <img
+              src="/images/domev-logo remove.png"
+              alt="DOMEv Logo"
+              className={styles.logo}
+            />
           </motion.div>
-        </div>
+
+
+
+          {/* Coming Soon heading */}
+          <motion.h1
+            className={styles.comingSoonTitle}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.45, duration: 0.7 }}
+          >
+            {t("downloadAppPage.comingSoonTitle", "Coming Soon")}
+          </motion.h1>
+
+          {/* Subtitle */}
+          <motion.p
+            className={styles.comingSoonText}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.7 }}
+          >
+            {t(
+              "downloadAppPage.comingSoonText",
+              "We're putting the finishing touches on something amazing. The DOMEv app is launching soon — stay tuned."
+            )}
+          </motion.p>
+
+          {/* Divider */}
+          <motion.div
+            className={styles.divider}
+            initial={{ opacity: 0, scaleX: 0 }}
+            animate={{ opacity: 1, scaleX: 1 }}
+            transition={{ delay: 0.75, duration: 0.6 }}
+          />
+
+          {/* Store badges — disabled, greyed out */}
+          <motion.div
+            className={styles.storeButtons}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 0.6 }}
+          >
+            <div className={styles.storeButtonWrapper}>
+              <img
+                src="/images/app-store.webp"
+                alt="App Store"
+                className={styles.storeImage}
+              />
+              <span className={styles.storeComingTag}>
+                {t("downloadAppPage.soon", "Soon")}
+              </span>
+            </div>
+            <div className={styles.storeButtonWrapper}>
+              <img
+                src="/images/google-play.webp"
+                alt="Google Play"
+                className={styles.storeImage}
+              />
+              <span className={styles.storeComingTag}>
+                {t("downloadAppPage.soon", "Soon")}
+              </span>
+            </div>
+          </motion.div>
+
+          {/* Back to Home Button */}
+          <motion.div
+            className={styles.homeAction}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.05, duration: 0.6 }}
+          >
+            <Link to="/" className={styles.homeButton} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+              {t("downloadAppPage.returnHome", "Return to Home")}
+            </Link>
+          </motion.div>
+        </motion.div>
       </div>
     </div>
   );

@@ -46,7 +46,6 @@ const ProductsPage = () => {
         </div>
       </section>
 
-      {/* DOMEv Products Section */}
       <Products />
     </div>
   );
