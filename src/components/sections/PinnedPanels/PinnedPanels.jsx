@@ -19,7 +19,7 @@ const PinnedPanels = () => {
     id: 1,
     titleKey: "pinnedPanels.panel1.title",
     descKey: "pinnedPanels.panel1.desc",
-    backgroundImage: "/images/panels/panelone.png",
+    backgroundImage: "/images/panels/panelone.webp",
     gradient: sharedGradient,
     // icon: "🌱",
   },
@@ -27,7 +27,7 @@ const PinnedPanels = () => {
     id: 2,
     titleKey: "pinnedPanels.panel2.title",
     descKey: "pinnedPanels.panel2.desc",
-    backgroundImage: "/images/panels/paneltwo.png",
+    backgroundImage: "/images/panels/paneltwo.webp",
     gradient: sharedGradient,
     // icon: "🌐",
   },
@@ -35,7 +35,7 @@ const PinnedPanels = () => {
     id: 3,
     titleKey: "pinnedPanels.panel3.title",
     descKey: "pinnedPanels.panel3.desc",
-    backgroundImage: "/images/panels/panelthree.png",
+    backgroundImage: "/images/panels/panelthree.webp",
     gradient: sharedGradient,
     // icon: "⚡",
   },
@@ -123,11 +123,21 @@ const PinnedPanels = () => {
           key={panel.id}
           ref={(el) => (panelsRef.current[index] = el)}
           className={styles.panel}
-          style={{
-            backgroundImage: `url(${panel.backgroundImage})`,
-          }}
         >
-          {/* Overlay gradient for better text readability */}
+          {/* Background image */}
+          <img
+            src={panel.backgroundImage}
+            alt=""
+            aria-hidden="true"
+            className={styles.panelBgImage}
+            loading={index === 0 ? "eager" : "lazy"}
+            fetchPriority={index === 0 ? "high" : "low"}
+            decoding={index === 0 ? "sync" : "async"}
+            width="1920"
+            height="1080"
+          />
+
+          {/* Overlay gradient */}
           <div className={styles.overlay} style={{ background: panel.gradient }}></div>
           
           <div className={styles.panelContent}>

@@ -12,7 +12,7 @@ const ProductsPage = () => {
       <section className={styles.heroSection}>
 
         <img
-          src="/images/hero-products2.png"
+          src="/images/hero-products2.webp"
           alt=""
           aria-hidden="true"
           className={styles.heroBgImage}

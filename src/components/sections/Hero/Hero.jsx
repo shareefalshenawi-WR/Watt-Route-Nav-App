@@ -40,15 +40,17 @@ const Hero = () => {
 
   return (
     <section className={styles.hero}>
-      {/* Electric Animated Background */}
       <div className={styles.backgroundImage}>
-        {/* Hero background image - preloaded for instant rendering */}
+        {/* Hero background image */}
         <img
-          src="/images/hero-bg.png"
+          src="/images/hero-bg.webp"
           alt="EV Charging Stations"
           className={styles.bgImage}
           fetchPriority="high"
+          decoding="sync"
           loading="eager"
+          width="1920"
+          height="1080"
         />
         <div className={styles.overlay}></div>
       </div>

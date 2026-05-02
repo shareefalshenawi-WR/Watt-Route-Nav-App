@@ -23,9 +23,6 @@
   object-position: center;
   opacity: 0.4;
   transform: translate(-5%, -5%);
-  
-  will-change: auto;
-  content-visibility: auto;
 }
 
 .overlay {
@@ -331,6 +328,13 @@
 
   .electricEffect {
     display: none;
+  }
+
+  /* Reduce overdraw — no need for the 120%x125% zoom on mobile */
+  .bgImage {
+    width: 100%;
+    height: 100%;
+    transform: none;
   }
 }
 

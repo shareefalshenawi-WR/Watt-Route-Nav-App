@@ -11,9 +11,15 @@ const DownloadAppPage = () => {
       {/* Background Image & Overlay */}
       <div className={styles.bgWrapper}>
         <img 
-          src="/images/coming-soon bg.png" 
-          alt="Background" 
-          className={styles.bgImage} 
+          src="/images/coming-soon bg.webp" 
+          alt="" 
+          aria-hidden="true"
+          className={styles.bgImage}
+          fetchPriority="high"
+          decoding="sync"
+          loading="eager"
+          width="1920"
+          height="1080"
         />
         <div className={styles.bgOverlay} />
       </div>
