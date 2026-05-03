@@ -167,7 +167,7 @@ const MobileAppIcon = () => (
 const EVSolutions = () => {
   const { t } = useTranslation();
 
-  // Smooth title animation variants
+  // Smooth title
   const titleAnimation = {
     hidden: { 
       opacity: 0, 
@@ -180,7 +180,7 @@ const EVSolutions = () => {
       scale: 1,
       transition: {
         duration: 0.8,
-        ease: [0.25, 0.46, 0.45, 0.94], // Custom cubic-bezier for smooth easing
+        ease: [0.25, 0.46, 0.45, 0.94],
       }
     }
   };
@@ -192,36 +192,42 @@ const EVSolutions = () => {
       icon: ChargingIcon,
       titleKey: "evSolutions.smartCharging",
       descKey: "evSolutions.smartChargingDesc",
+      bgImage: "/images/cards/card-1.webp",
     },
     {
       id: 2,
       icon: PaymentIcon,
       titleKey: "evSolutions.unifiedPayment",
       descKey: "evSolutions.unifiedPaymentDesc",
+      bgImage: "/images/cards/card-2.webp",
     },
     {
       id: 3,
       icon: RealTimeIcon,
       titleKey: "evSolutions.realTimeStatus",
       descKey: "evSolutions.realTimeStatusDesc",
+      bgImage: "/images/cards/card-3.webp",
     },
     {
       id: 4,
       icon: SupportIcon,
       titleKey: "evSolutions.support24",
       descKey: "evSolutions.support24Desc",
+      bgImage: "/images/cards/card-4.webp",
     },
     {
       id: 5,
       icon: SecurityIcon,
       titleKey: "evSolutions.reliable",
       descKey: "evSolutions.reliableDesc",
+      bgImage: "/images/cards/card-5.webp",
     },
     {
       id: 6,
       icon: MobileAppIcon,
       titleKey: "evSolutions.mobileApp",
       descKey: "evSolutions.mobileAppDesc",
+      bgImage: "/images/cards/card-6.webp",
     },
   ];
 
@@ -253,7 +259,7 @@ const EVSolutions = () => {
           className={styles.grid}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           variants={stagger}
         >
           {solutions.map((solution, index) => {
@@ -261,17 +267,32 @@ const EVSolutions = () => {
             return (
               <motion.div key={solution.id} variants={fadeInUp} className={styles.cardWrapper}>
                 <div className={styles.card}>
-                  {/* Icon */}
-                  <div className={styles.iconWrapper}>
-                    <div className={styles.iconContainer}>
-                      <IconComponent />
-                    </div>
-                  </div>
 
-                  <h3 className={styles.cardTitle}>{t(solution.titleKey)}</h3>
-                  <p className={styles.cardDescription}>
-                    {t(solution.descKey)}
-                  </p>
+                  <img
+                    className={styles.cardBgImage}
+                    src={solution.bgImage}
+                    alt=""
+                    aria-hidden="true"
+                    width="800"
+                    height="500"
+                    loading={index < 3 ? "eager" : "lazy"}
+                    fetchPriority={index < 3 ? "high" : "low"}
+                    decoding={index < 3 ? "sync" : "async"}
+                    onLoad={(e) => e.currentTarget.setAttribute('data-loaded', 'true')}
+                  />
+                  <div className={styles.cardOverlay} />
+                  <div className={styles.cardContent}>
+                    <div className={styles.iconWrapper}>
+                      <div className={styles.iconContainer}>
+                        <IconComponent />
+                      </div>
+                    </div>
+
+                    <h3 className={styles.cardTitle}>{t(solution.titleKey)}</h3>
+                    <p className={styles.cardDescription}>
+                      {t(solution.descKey)}
+                    </p>
+                  </div>
                 </div>
               </motion.div>
             );
