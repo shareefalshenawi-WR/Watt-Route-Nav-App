@@ -72,9 +72,8 @@ const Products = () => {
             </div>
 
             {/* CTA Button */}
-            {/*replace with the new link : href= "New link here" */}
             <a
-              href="https://forms.gle/Nea31hejYAvMawrR6"
+              href="https://forms.gle/XZUDvYsu9Kk9NmeY6"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.ctaButton}
