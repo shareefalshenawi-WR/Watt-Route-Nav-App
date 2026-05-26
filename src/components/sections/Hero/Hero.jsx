@@ -76,13 +76,8 @@ const Hero = () => {
             </motion.p>
 
             <motion.div className={styles.ctaButtons} variants={fadeInUp}>
-              <Link to={ROUTES.FIND_CHARGING_STATIONS}>
-                <Button variant="secondary" size="large">
-                  {t("hero.findChargingStations")}
-                </Button>
-              </Link>
               <Link to={ROUTES.DOWNLOAD_APP}>
-                <Button variant="outline" size="large">
+                <Button variant="secondary" size="large">
                   {t("hero.downloadMobileApp")}
                 </Button>
               </Link>

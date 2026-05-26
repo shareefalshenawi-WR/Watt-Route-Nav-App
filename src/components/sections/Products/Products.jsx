@@ -1,7 +1,16 @@
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { fadeInUp, scaleIn } from "../../../utils/animations";
 import styles from "./Products.module.css";
+
+const slides = [
+  "/images/Slider/slide1.webp",
+  "/images/Slider/slide2.webp",
+  "/images/Slider/slide3.webp",
+  "/images/Slider/slide4.webp",
+  "/images/Slider/slide5.webp",
+];
 
 const domevFeatures = [
   { icon: "🗺️", labelKey: "products.featureMap" },
@@ -14,6 +23,14 @@ const domevFeatures = [
 
 const Products = () => {
   const { t } = useTranslation();
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <section className={styles.section} id="products">
@@ -99,17 +116,53 @@ const Products = () => {
           >
             {/* iPhone Frame */}
             <div className={styles.iphone}>
+              {/* Left Side Buttons */}
+              <div className={styles.iphoneSideLeft}>
+                <div className={styles.iphoneButton} />
+                <div className={styles.iphoneButton} />
+              </div>
+              {/* Right Side Button */}
+              <div className={styles.iphoneSideRight}>
+                <div className={styles.iphoneButtonRight} />
+              </div>
+
               <div className={styles.iphoneFrame}>
+                {/* Dynamic Island / Notch */}
+                <div className={styles.iphoneNotch} />
+
                 {/* Screen Content */}
                 <div className={styles.iphoneScreen}>
-                  <img
-                    src="/images/domev-logo.webp"
-                    alt="DOMEv Logo"
-                    className={styles.appLogo}
-                    fetchpriority="high"
-                    loading="eager"
-                    decoding="sync"
-                  />
+                  <AnimatePresence mode="wait">
+                    <motion.img
+                      key={currentSlide}
+                      src={slides[currentSlide]}
+                      alt={`DOMEv App Slide ${currentSlide + 1}`}
+                      className={styles.slideImage}
+                      initial={{ opacity: 0, x: 30 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -30 }}
+                      transition={{ duration: 0.4, ease: "easeInOut" }}
+                    />
+                  </AnimatePresence>
+
+                  {/* Slider Dots */}
+                  <div className={styles.sliderDots}>
+                    {slides.map((_, idx) => (
+                      <button
+                        key={idx}
+                        className={`${styles.sliderDot} ${
+                          idx === currentSlide ? styles.sliderDotActive : ""
+                        }`}
+                        onClick={() => setCurrentSlide(idx)}
+                        aria-label={`Go to slide ${idx + 1}`}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                {/* Home Indicator Bar */}
+                <div className={styles.iphoneBottom}>
+                  <div className={styles.iphoneHomeBar} />
                 </div>
               </div>
             </div>

@@ -210,9 +210,9 @@ const EVSolutionsPage = () => {
             <p className={styles.ctaText}>
               {t("evSolutionsPage.readyToGetStartedDesc")}
             </p>
-            <Link to={ROUTES.FIND_CHARGING_STATIONS}>
+            <Link to={ROUTES.DOWNLOAD_APP}>
               <Button variant="secondary" size="large">
-                {t("evSolutionsPage.findNearestStation")}
+                {t("evSolutionsPage.downloadApp")}
               </Button>
             </Link>
           </motion.div>

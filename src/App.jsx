@@ -18,7 +18,6 @@ import EVSolutionsPage from "./pages/EVSolutionsPage/index.jsx";
 import ProductsPage from "./pages/ProductsPage/index.jsx";
 import SupportPage from "./pages/SupportPage/index.jsx";
 import DownloadAppPage from "./pages/DownloadAppPage/index.jsx";
-import FindChargingStationsPage from "./pages/FindChargingStationsPage/index.jsx";
 import UserGuidePage from "./pages/UserGuidePage/index.jsx";
 import VideoTutorialsPage from "./pages/VideoTutorialsPage/index.jsx";
 import CommunityForumPage from "./pages/CommunityForumPage/index.jsx";
@@ -126,14 +125,6 @@ function App() {
               }
             />
 
-            <Route
-              path={ROUTES.FIND_CHARGING_STATIONS}
-              element={
-                <ErrorBoundary>
-                  <FindChargingStationsPage />
-                </ErrorBoundary>
-              }
-            />
 
             <Route
               path={ROUTES.PRIVACY_POLICY}

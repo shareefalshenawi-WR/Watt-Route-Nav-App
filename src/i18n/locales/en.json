@@ -54,11 +54,11 @@
   "pinnedPanels": {
     "panel3": {
       "title": "Ultra-Fast Charging Network",
-      "desc": "Experience lightning-fast charging with our 120kW DC chargers. From 0 to 80% in just 30 minutes. Your time is valuable—we make every minute count."
+      "desc": "Experience lightning-fast charging with our 120kW DC chargers. From 0 to 80% in just 30 minutes. Your time is valuable we make every minute count."
     },
     "panel2": {
       "title": "Smart Connected Ecosystem",
-      "desc": "One app, endless possibilities. Find stations, check availability, start charging, and pay—all seamlessly integrated. Your complete EV charging companion."
+      "desc": "One app, endless possibilities. Find stations, check availability, start charging, and pay all seamlessly integrated. Your complete EV charging companion."
     },
     "panel1": {
       "title": "Driving Egypt's Green Future",
@@ -237,11 +237,18 @@
     "comingSoonDesc": "Our charging station finder is currently under development. We're working hard to bring you the best experience for locating EV charging stations across Egypt."
   },
   "productsPage": {
-    "eyebrow": "Watt Route · Product",
-    "pageTitle": "Meet",
-    "pageTitleHighlight": "DOMEv",
-    "pageDescription": "The smartest way to charge your electric vehicle in Egypt. One app, every station, zero range anxiety.",
-    "heroCtaButton": "Register Your Interest"
+    "titleLine1": "Your EV. Your Route.",
+    "titleHighlight": "Fully Charged.",
+    "description": "DOMEv EV Solutions is the flagship aggregator service of Watt Route, designed to eliminate range anxiety and unify Egypt's electric vehicle (EV) charging ecosystem. We bridge the gap between drivers and charging point networks, offering a seamless, smart, and fully connected sustainable travel experience.",
+    "productOf": "PRODUCT OF WATT ROUTE",
+    "card1Title": "Station Aggregator",
+    "card1Desc": "Locate and navigate to every charging station in Egypt, regardless of the operator. Check real-time charger status, availability, power output, and connection compatibility in one single map interface.",
+    "card2Title": "Unified Mobile Wallet",
+    "card2Desc": "Pre-load your digital DOME Wallet and pay seamlessly across multiple networks. Say goodbye to the hassle of downloading dozens of separate CPO applications and setting up multiple cards.",
+    "card3Title": "Smart Session Control",
+    "card3Desc": "Initiate charging sessions effortlessly via QR scanning, track real-time energy flow (kWh), monitor battery percentage, and receive alerts directly on your device when your session is complete.",
+    "footerText": "Watt Route is committed to expanding charging accessibility, optimizing network infrastructure efficiency, and delivering a reliable charging journey for every EV driver in Egypt, ensuring a sustainable path to a greener future.",
+    "downloadApp": "Download Mobile App"
   },
   "downloadAppSection": {
     "title": "Download",
