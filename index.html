@@ -49,6 +49,19 @@
     <meta property="twitter:image" content="/images/og-image.jpg" />
 
     <title>Watt Route - Smart EV Charging Solutions</title>
+
+    <!-- Anti-FOUC: apply stored theme before first paint -->
+    <script>
+      (function() {
+        try {
+          var stored = localStorage.getItem('watt-route-theme');
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (stored === 'dark' || (!stored && prefersDark)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+          }
+        } catch(e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -45,4 +45,49 @@
   --z-navbar: 1000;
   --z-modal: 2000;
   --z-tooltip: 3000;
+
+  /* Semantic surface tokens (light defaults) */
+  --color-surface: #ffffff;
+  --color-surface-2: #f5f4f1;
+  --color-surface-3: #eeece8;
+  --color-text: #1a1a1a;
+  --color-text-muted: #555555;
+  --color-border: rgba(0, 0, 0, 0.07);
+  --color-border-subtle: rgba(0, 0, 0, 0.04);
+
+  /* Theme transition */
+  --theme-transition: background-color 0.25s ease, color 0.25s ease,
+    border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* 
+   DARK MODE 
+   */
+html[data-theme="dark"] {
+  /* Brand colors adjusted for dark bg */
+  --color-primary: #7bbfd4;
+  --color-secondary: #6ab87a;
+  --color-accent: #8ab4be;
+  --color-light-gray: #1e2a2e;
+  --color-background: #080c0e;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #0d2530 0%, #0d2530 35%, #122e3a 60%, #122e38 85%, #122e38 100%);
+  --gradient-secondary: linear-gradient(135deg, #4a8060 0%, #569166 100%);
+  --gradient-hero: linear-gradient(135deg, rgba(8, 25, 35, 0.95) 0%, rgba(8, 25, 35, 0.95) 35%, rgba(14, 38, 50, 0.95) 60%, rgba(16, 40, 48, 0.95) 85%, rgba(16, 40, 48, 0.95) 100%);
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.55);
+  --shadow-glow: 0 0 24px rgba(106, 184, 122, 0.25);
+
+  /* Semantic surface tokens (dark values) */
+  --color-surface: #111618;
+  --color-surface-2: #171d20;
+  --color-surface-3: #1d2528;
+  --color-text: #e4edf0;
+  --color-text-muted: #8ab4be;
+  --color-border: rgba(255, 255, 255, 0.07);
+  --color-border-subtle: rgba(255, 255, 255, 0.04);
 }

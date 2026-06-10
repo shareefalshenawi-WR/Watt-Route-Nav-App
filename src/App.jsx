@@ -9,6 +9,7 @@ import { AnimatePresence } from "framer-motion";
 import Navbar from "./components/layout/Navbar/Navbar";
 import Footer from "./components/layout/Footer/Footer";
 import ErrorBoundary from "./components/common/ErrorBoundary/ErrorBoundary";
+import { ThemeProvider } from "./context/ThemeContext";
 import { ROUTES } from "./constants/routes";
 import "./App.css";
 
@@ -38,12 +39,13 @@ function ScrollToTop() {
 
 function App() {
   return (
-    <Router>
-      <ScrollToTop />
-      <div className="app">
-        <Navbar />
-        <AnimatePresence mode="wait">
-          <Routes>
+    <ThemeProvider>
+      <Router>
+        <ScrollToTop />
+        <div className="app">
+          <Navbar />
+          <AnimatePresence mode="wait">
+            <Routes>
             <Route
               path={ROUTES.HOME}
               element={
@@ -144,10 +146,11 @@ function App() {
               }
             />
           </Routes>
-        </AnimatePresence>
-        <Footer />
-      </div>
-    </Router>
+          </AnimatePresence>
+          <Footer />
+        </div>
+      </Router>
+    </ThemeProvider>
   );
 }
 

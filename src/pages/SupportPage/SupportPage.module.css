@@ -206,3 +206,44 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* 
+   DARK MODE
+    */
+:global(html[data-theme="dark"]) .page {
+  background-color: #080c0e;
+}
+
+:global(html[data-theme="dark"]) .helpCenter {
+  background: #0a0d0f;
+}
+
+:global(html[data-theme="dark"]) .sectionTitle {
+  color: var(--color-text);
+}
+
+:global(html[data-theme="dark"]) .helpCard {
+  background: #111618;
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+:global(html[data-theme="dark"]) .helpCard:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+:global(html[data-theme="dark"]) .helpIcon {
+  background: #1d2528;
+}
+
+:global(html[data-theme="dark"]) .helpCard:hover .helpIcon {
+  background: #242d31;
+}
+
+:global(html[data-theme="dark"]) .helpTitle {
+  color: var(--color-text);
+}
+
+:global(html[data-theme="dark"]) .helpText {
+  color: var(--color-text-muted);
+}
+

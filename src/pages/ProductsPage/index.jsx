@@ -2,11 +2,19 @@ import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../constants/routes";
-import { fadeInUp } from "../../utils/animations";
 import Button from "../../components/common/Button/Button";
 import styles from "./ProductsPage.module.css";
 
-// SVGs defined outside component — avoids re-creation on every render
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+
 const IconPin = (
   <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
@@ -43,7 +51,7 @@ const ProductsPage = () => {
           className={styles.bgImage}
           fetchPriority="high"
           loading="eager"
-          decoding="async"
+          decoding="sync"
         />
         <div className={styles.bgOverlay} />
       </div>
@@ -52,22 +60,22 @@ const ProductsPage = () => {
         {/* Top Section */}
         <div className={styles.topSection}>
           <div className={styles.leftContent}>
-            <motion.h1 
+            <motion.h1
               className={styles.title}
               initial="hidden"
               animate="visible"
-              variants={fadeInUp}
+              variants={fadeUp}
             >
               {t("productsPage.titleLine1")} <br />
               <span className={styles.highlight}>{t("productsPage.titleHighlight")}</span>
             </motion.h1>
-            
-            <motion.p 
+
+            <motion.p
               className={styles.description}
               initial="hidden"
               animate="visible"
-              variants={fadeInUp}
-              transition={{ delay: 0.1 }}
+              variants={fadeUp}
+              transition={{ delay: 0.08, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             >
               {t("productsPage.description")}
             </motion.p>
@@ -78,23 +86,23 @@ const ProductsPage = () => {
               src="/images/domev-logo.webp"
               alt="DOMEv Logo"
               className={styles.logoImage}
-              fetchPriority="low"
-              loading="lazy"
-              decoding="async"
+              fetchPriority="high"
+              loading="eager"
+              decoding="sync"
               width="400"
-              height="auto"
+              height="400"
             />
           </div>
         </div>
 
         {/* Middle Section */}
-        <motion.div 
+        <motion.div
           className={styles.statsGrid}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeInUp}
-          transition={{ delay: 0.3 }}
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeUp}
+          transition={{ delay: 0.1, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
         >
           {/* Card 1 */}
           <div className={styles.statCard}>
@@ -131,13 +139,13 @@ const ProductsPage = () => {
         </motion.div>
 
         {/* Footer text */}
-        <motion.div 
+        <motion.div
           className={styles.bottomSection}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeInUp}
-          transition={{ delay: 0.4 }}
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeUp}
+          transition={{ delay: 0.05, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
         >
           <p className={styles.bottomText}>
             {t("productsPage.footerText")}

@@ -204,3 +204,29 @@
     font-size: 1rem;
   }
 }
+
+/* ============================================================
+   DARK MODE
+   ============================================================ */
+:global(html[data-theme="dark"]) .section {
+  background: #080c0e;
+}
+
+:global(html[data-theme="dark"]) .title {
+  color: var(--color-text);
+}
+
+:global(html[data-theme="dark"]) .subtitle {
+  color: var(--color-text-muted);
+}
+
+:global(html[data-theme="dark"]) .card {
+  background: #111618;
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+:global(html[data-theme="dark"]) .card:hover {
+  border-color: rgba(106, 184, 122, 0.35);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+}
+

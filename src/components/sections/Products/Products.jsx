@@ -32,6 +32,9 @@ const Products = () => {
     return () => clearInterval(timer);
   }, []);
 
+  const goNext = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
+  const goPrev = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+
   return (
     <section className={styles.section} id="products">
       <div className={styles.container}>
@@ -114,57 +117,81 @@ const Products = () => {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            {/* iPhone Frame */}
-            <div className={styles.iphone}>
-              {/* Left Side Buttons */}
-              <div className={styles.iphoneSideLeft}>
-                <div className={styles.iphoneButton} />
-                <div className={styles.iphoneButton} />
-              </div>
-              {/* Right Side Button */}
-              <div className={styles.iphoneSideRight}>
-                <div className={styles.iphoneButtonRight} />
-              </div>
+            {/* arrow buttons on mobile screens */}
+            <div className={styles.navWrapper}>
+              <button
+                className={styles.sliderArrow}
+                onClick={goPrev}
+                aria-label="Previous slide"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <polyline points="15 18 9 12 15 6" />
+                </svg>
+              </button>
 
-              <div className={styles.iphoneFrame}>
-                {/* Dynamic Island / Notch */}
-                <div className={styles.iphoneNotch} />
+              {/* iPhone Frame */}
+              <div className={styles.iphone}>
+                {/* Left Side Buttons */}
+                <div className={styles.iphoneSideLeft}>
+                  <div className={styles.iphoneButton} />
+                  <div className={styles.iphoneButton} />
+                </div>
+                {/* Right Side Button */}
+                <div className={styles.iphoneSideRight}>
+                  <div className={styles.iphoneButtonRight} />
+                </div>
 
-                {/* Screen Content */}
-                <div className={styles.iphoneScreen}>
-                  <AnimatePresence mode="wait">
-                    <motion.img
-                      key={currentSlide}
-                      src={slides[currentSlide]}
-                      alt={`DOMEv App Slide ${currentSlide + 1}`}
-                      className={styles.slideImage}
-                      initial={{ opacity: 0, x: 30 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -30 }}
-                      transition={{ duration: 0.4, ease: "easeInOut" }}
-                    />
-                  </AnimatePresence>
+                <div className={styles.iphoneFrame}>
+                  {/* Dynamic Island / Notch */}
+                  <div className={styles.iphoneNotch} />
 
-                  {/* Slider Dots */}
-                  <div className={styles.sliderDots}>
-                    {slides.map((_, idx) => (
-                      <button
-                        key={idx}
-                        className={`${styles.sliderDot} ${
-                          idx === currentSlide ? styles.sliderDotActive : ""
-                        }`}
-                        onClick={() => setCurrentSlide(idx)}
-                        aria-label={`Go to slide ${idx + 1}`}
+                  {/* Screen Content */}
+                  <div className={styles.iphoneScreen}>
+                    <AnimatePresence mode="wait">
+                      <motion.img
+                        key={currentSlide}
+                        src={slides[currentSlide]}
+                        alt={`DOMEv App Slide ${currentSlide + 1}`}
+                        className={styles.slideImage}
+                        initial={{ opacity: 0, x: 30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -30 }}
+                        transition={{ duration: 0.4, ease: "easeInOut" }}
                       />
-                    ))}
+                    </AnimatePresence>
+
+                    {/* Slider Dots */}
+                    <div className={styles.sliderDots}>
+                      {slides.map((_, idx) => (
+                        <button
+                          key={idx}
+                          className={`${styles.sliderDot} ${
+                            idx === currentSlide ? styles.sliderDotActive : ""
+                          }`}
+                          onClick={() => setCurrentSlide(idx)}
+                          aria-label={`Go to slide ${idx + 1}`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Home Indicator Bar */}
+                  <div className={styles.iphoneBottom}>
+                    <div className={styles.iphoneHomeBar} />
                   </div>
                 </div>
-
-                {/* Home Indicator Bar */}
-                <div className={styles.iphoneBottom}>
-                  <div className={styles.iphoneHomeBar} />
-                </div>
               </div>
+
+              {/* arrow button */}
+              <button
+                className={styles.sliderArrow}
+                onClick={goNext}
+                aria-label="Next slide"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </button>
             </div>
           </motion.div>
         </div>

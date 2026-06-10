@@ -96,9 +96,9 @@
   justify-content: center;
 }
 
-/* =========================================
+/* 
    Mission Section
-   ========================================= */
+    */
 .missionSection {
   padding: var(--spacing-xxl) 0;
   background: var(--color-background);
@@ -186,16 +186,16 @@
   flex-grow: 1;
 }
 
-/* =========================================
+/* 
    Values Section (SDGs)
-   ========================================= */
+    */
 .valuesSection {
   padding: var(--spacing-xxl) 0;
   background: white;
   position: relative;
 }
 
-/* Add a subtle top border/separator */
+
 .valuesSection::before {
   content: "";
   position: absolute;
@@ -281,16 +281,16 @@
   font-size: 0.95rem;
 }
 
-/* =========================================
+/* 
    CTA Section
-   ========================================= */
+    */
 .ctaSection {
   padding: var(--spacing-xxl) 0 calc(var(--spacing-xxl) * 1.5);
   background: var(--color-background);
 }
 
 .ctaContent {
-  background: var(--gradient-secondary); /* Green gradient */
+  background: var(--gradient-secondary); 
   border-radius: var(--radius-xl);
   padding: var(--spacing-xl);
   text-align: center;
@@ -300,7 +300,7 @@
   box-shadow: var(--shadow-glow);
 }
 
-/* Decorative circle overlay in CTA */
+
 .ctaContent::after {
   content: "";
   position: absolute;
@@ -327,9 +327,9 @@
   line-height: 1.6;
 }
 
-/* =========================================
+/* 
    Responsive Adjustments
-   ========================================= */
+    */
 @media (max-width: 768px) {
   .page {
     padding-top: 70px;
@@ -376,3 +376,92 @@
       font-size: 2.25rem;
   }
 }
+
+/* 
+   DARK MODE
+    */
+:global(html[data-theme="dark"]) .page {
+  background-color: #080c0e;
+}
+
+:global(html[data-theme="dark"]) .missionSection {
+  background: #0a0d0f;
+}
+
+:global(html[data-theme="dark"]) .sectionTitle {
+  color: var(--color-text);
+}
+
+:global(html[data-theme="dark"]) .sectionText {
+  color: var(--color-text-muted);
+}
+
+:global(html[data-theme="dark"]) .featureCard {
+  background: #111618;
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+:global(html[data-theme="dark"]) .featureCard:hover {
+  border-color: rgba(106, 184, 122, 0.2);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+}
+
+:global(html[data-theme="dark"]) .featureIconWrapper {
+  background: rgba(123, 191, 212, 0.08);
+  color: var(--color-primary);
+}
+
+:global(html[data-theme="dark"]) .featureCard:hover .featureIconWrapper {
+  background: var(--color-primary);
+  color: #080c0e;
+}
+
+:global(html[data-theme="dark"]) .featureTitle {
+  color: var(--color-text);
+}
+
+:global(html[data-theme="dark"]) .featureText {
+  color: var(--color-text-muted);
+}
+
+:global(html[data-theme="dark"]) .valuesSection {
+  background: #0a0d0f;
+}
+
+:global(html[data-theme="dark"]) .valueCard {
+  background: #111618;
+}
+
+:global(html[data-theme="dark"]) .valueCard:hover {
+  background: #171d20;
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+:global(html[data-theme="dark"]) .valueTitle {
+  color: var(--color-text);
+}
+
+:global(html[data-theme="dark"]) .valueText {
+  color: var(--color-text-muted);
+}
+
+:global(html[data-theme="dark"]) .iconGreen {
+  background: rgba(46, 125, 50, 0.15);
+  color: #6ab87a;
+}
+
+:global(html[data-theme="dark"]) .iconYellow {
+  background: rgba(249, 168, 37, 0.12);
+  color: #f9a825;
+}
+
+:global(html[data-theme="dark"]) .iconBlue {
+  background: rgba(21, 101, 192, 0.12);
+  color: #5ba3d4;
+}
+
+:global(html[data-theme="dark"]) .ctaSection {
+  background: #080c0e;
+}
+

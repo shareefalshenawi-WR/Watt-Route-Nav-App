@@ -6,14 +6,36 @@ import Button from "../../common/Button/Button";
 import AsyncImage from "../../common/AsyncImage/AsyncImage";
 import { useScroll } from "../../../hooks/useScroll";
 import { useLanguage } from "../../../hooks/useLanguage";
+import { useTheme } from "../../../context/ThemeContext";
 import { NAV_ITEMS, ROUTES } from "../../../constants/routes";
 import styles from "./Navbar.module.css";
 
 const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
+const SunIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="5"/>
+    <line x1="12" y1="1" x2="12" y2="3"/>
+    <line x1="12" y1="21" x2="12" y2="23"/>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+    <line x1="1" y1="12" x2="3" y2="12"/>
+    <line x1="21" y1="12" x2="23" y2="12"/>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+  </svg>
+);
+
+const MoonIcon = () => (
+  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+);
+
 const Navbar = () => {
   const { t } = useTranslation();
   const { currentLanguage, changeLanguage } = useLanguage();
+  const { isDark, toggleTheme } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const scrolled = useScroll(50);
@@ -114,6 +136,18 @@ const Navbar = () => {
           </button>
         </div>
 
+        {/* Dark Mode Toggle */}
+        <button
+          className={`${styles.themeToggle} ${
+            navbarState === "scrolled" ? styles.themeToggleScrolled : ""
+          }`}
+          onClick={toggleTheme}
+          aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+          title={isDark ? "Light mode" : "Dark mode"}
+        >
+          {isDark ? <SunIcon /> : <MoonIcon />}
+        </button>
+
         {/* Mobile Menu Toggle */}
         <button
           className={styles.menuToggle}
@@ -184,6 +218,19 @@ const Navbar = () => {
               العربية (AR)
             </button>
           </div>
+
+          {/* Mobile Dark Mode Toggle */}
+          <button
+            className={styles.mobileDarkToggle}
+            onClick={() => {
+              toggleTheme();
+              setMenuOpen(false);
+            }}
+            aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+          >
+            {isDark ? <SunIcon /> : <MoonIcon />}
+            <span>{isDark ? "Light Mode" : "Dark Mode"}</span>
+          </button>
         </motion.div>
       )}
     </motion.nav>

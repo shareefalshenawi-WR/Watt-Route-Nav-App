@@ -82,3 +82,28 @@
     padding: var(--spacing-lg);
   }
 }
+
+/* 
+   DARK MODE
+    */
+:global(html[data-theme="dark"]) .page {
+  background-color: #080c0e;
+}
+
+:global(html[data-theme="dark"]) .bodySection {
+  background: #080c0e;
+}
+
+:global(html[data-theme="dark"]) .placeholderCard {
+  background: #111618;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+:global(html[data-theme="dark"]) .placeholderTitle {
+  color: var(--color-text);
+}
+
+:global(html[data-theme="dark"]) .placeholderText {
+  color: var(--color-text-muted);
+}
+

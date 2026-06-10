@@ -20,6 +20,12 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: var(--theme-transition);
+}
+
+/* Dark mode body */
+html[data-theme="dark"] body {
+  color: var(--color-text);
 }
 
 h1,
@@ -88,7 +94,7 @@ button {
 
 /* Scrollbar Styling */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -101,10 +107,23 @@ button {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-primary);
+  background: var(--color-secondary);
 }
 
-/* Mobile Font Size Adjustments */
+/* Dark mode scrollbar */
+html[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: #0f1416;
+}
+
+html[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: #2a4a55;
+}
+
+html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: var(--color-secondary);
+}
+
+
 @media (max-width: 768px) {
   html {
     font-size: 15px;
@@ -133,14 +152,14 @@ button {
   }
 }
 
-/* Prevent horizontal scroll */
+
 body,
 html {
   max-width: 100%;
   overflow-x: hidden;
 }
 
-/* Improve touch targets for mobile */
+
 @media (max-width: 768px) {
   button,
   a,

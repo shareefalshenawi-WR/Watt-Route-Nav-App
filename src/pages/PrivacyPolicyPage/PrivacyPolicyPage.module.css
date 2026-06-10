@@ -397,3 +397,78 @@
     font-size: 1.2rem;
   }
 }
+
+/* 
+   DARK MODE
+    */
+:global(html[data-theme="dark"]) .page {
+  background-color: #080c0e;
+}
+
+:global(html[data-theme="dark"]) .contentSection {
+  background: #080c0e;
+}
+
+:global(html[data-theme="dark"]) .tocCard {
+  background: #111618;
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+:global(html[data-theme="dark"]) .tocTitle {
+  color: var(--color-text-muted);
+  border-bottom-color: rgba(255, 255, 255, 0.07);
+}
+
+:global(html[data-theme="dark"]) .tocLink {
+  color: var(--color-text-muted);
+}
+
+:global(html[data-theme="dark"]) .tocLink:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-text);
+}
+
+:global(html[data-theme="dark"]) .section {
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+:global(html[data-theme="dark"]) .sectionTitle {
+  color: var(--color-text);
+}
+
+:global(html[data-theme="dark"]) .contentText {
+  color: var(--color-text-muted);
+}
+
+:global(html[data-theme="dark"]) .contentText b,
+:global(html[data-theme="dark"]) .contentText strong {
+  color: var(--color-text);
+}
+
+:global(html[data-theme="dark"]) .noticeBanner {
+  background: rgba(146, 64, 14, 0.12);
+  border-color: rgba(252, 211, 77, 0.25);
+  color: #fcd34d;
+}
+
+:global(html[data-theme="dark"]) .contactCard {
+  background: #111618;
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+:global(html[data-theme="dark"]) .contactItem {
+  border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
+:global(html[data-theme="dark"]) .contactLabel {
+  color: var(--color-text-muted);
+}
+
+:global(html[data-theme="dark"]) .contactValue {
+  color: var(--color-text);
+}
+
+:global(html[data-theme="dark"]) .inlineLink {
+  color: var(--color-primary);
+}
+

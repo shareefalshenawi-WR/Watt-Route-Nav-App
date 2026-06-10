@@ -233,3 +233,33 @@
     gap: var(--spacing-sm);
   }
 }
+
+/* 
+   DARK MODE
+  */
+:global(html[data-theme="dark"]) .footer {
+  background: #080c0e;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+}
+
+:global(html[data-theme="dark"]) .bottomBar {
+  border-top-color: rgba(255, 255, 255, 0.06);
+}
+
+:global(html[data-theme="dark"]) .linkTitle,
+:global(html[data-theme="dark"]) .logoText,
+:global(html[data-theme="dark"]) .description,
+:global(html[data-theme="dark"]) .copyright,
+:global(html[data-theme="dark"]) .link,
+:global(html[data-theme="dark"]) .bottomLink {
+  color: #ffffff;
+  opacity: 1;
+}
+
+:global(html[data-theme="dark"]) .link:hover,
+:global(html[data-theme="dark"]) .bottomLink:hover {
+  color: var(--color-secondary);
+  opacity: 1;
+}
+

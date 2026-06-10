@@ -278,3 +278,61 @@
      border-radius: 0 0 var(--radius-lg) var(--radius-lg);
   }
 }
+
+/* 
+   DARK MODE
+    */
+:global(html[data-theme="dark"]) .page {
+  background-color: #080c0e;
+}
+
+:global(html[data-theme="dark"]) .whyChoose {
+  background: #0a0d0f;
+}
+
+:global(html[data-theme="dark"]) .sectionTitle {
+  color: var(--color-text);
+}
+
+:global(html[data-theme="dark"]) .benefit {
+  background: #111618;
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+:global(html[data-theme="dark"]) .benefit:hover {
+  border-color: rgba(106, 184, 122, 0.2);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+}
+
+:global(html[data-theme="dark"]) .benefitTitle {
+  color: var(--color-text);
+}
+
+:global(html[data-theme="dark"]) .benefitText {
+  color: var(--color-text-muted);
+}
+
+:global(html[data-theme="dark"]) .iconYellow {
+  background: rgba(251, 192, 45, 0.12);
+  color: #fbc02d;
+}
+
+:global(html[data-theme="dark"]) .iconBlue {
+  background: rgba(21, 101, 192, 0.12);
+  color: #5ba3d4;
+}
+
+:global(html[data-theme="dark"]) .iconGreen {
+  background: rgba(46, 125, 50, 0.15);
+  color: #6ab87a;
+}
+
+:global(html[data-theme="dark"]) .iconTeal {
+  background: rgba(0, 137, 123, 0.12);
+  color: #4db6ac;
+}
+
+:global(html[data-theme="dark"]) .ctaSection {
+  background: #080c0e;
+}
+

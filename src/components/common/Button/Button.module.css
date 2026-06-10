@@ -100,3 +100,17 @@
     font-size: 0.95rem;
   }
 }
+
+/* 
+   DARK MODE
+   */
+:global(html[data-theme="dark"]) .outline {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+:global(html[data-theme="dark"]) .outline:hover {
+  background: var(--color-primary);
+  color: #080c0e;
+}
+
