@@ -14,7 +14,18 @@ const PrivacyPolicyPage = () => {
     <div className={styles.page}>
       {/* Hero Section */}
       <section className={styles.heroSection}>
-        <div className={styles.heroBackground} />
+        <div className={styles.heroBackground}>
+          <img
+            src="/images/pages/PrivacyPolicy page.webp"
+            alt=""
+            aria-hidden="true"
+            className={styles.heroBgImage}
+            fetchPriority="high"
+            decoding="sync"
+            loading="eager"
+          />
+          <div className={styles.heroOverlay} />
+        </div>
         <div className={styles.container}>
           <motion.div
             className={styles.headerContent}

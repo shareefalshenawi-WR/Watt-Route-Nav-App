@@ -17,12 +17,14 @@
 }
 
 .bgImage {
-  width: 120%;
-  height: 125%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: center;
-  opacity: 0.4;
-  transform: translate(-5%, -5%);
+  opacity: 0.7;
 }
 
 .overlay {
@@ -39,29 +41,9 @@
     #366262 85%,
     #366262 100%
   );
-  opacity: 0.88;
+  opacity: 0.75;
 }
 
-/* .electricEffect {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  overflow: hidden;
-} */
-
-.spark {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: var(--color-secondary);
-  border-radius: 50%;
-  box-shadow: 0 0 10px var(--color-secondary), 0 0 20px var(--color-secondary),
-    0 0 30px var(--color-secondary);
-  filter: blur(1px);
-}
 
 .container {
   max-width: 1200px;
@@ -330,12 +312,7 @@
     display: none;
   }
 
-  
-  .bgImage {
-    width: 100%;
-    height: 100%;
-    transform: none;
-  }
+
 }
 
 @media (max-width: 480px) {

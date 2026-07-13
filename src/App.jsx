@@ -30,7 +30,7 @@ function ScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    // Immediate scroll to top on route change for consistent restoration
+    // Immediate scroll to top on route change
     window.scrollTo(0, 0);
   }, [pathname]);
 

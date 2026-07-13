@@ -11,6 +11,16 @@ const UserGuidePage = () => {
   return (
     <div className={styles.page}>
       <section className={styles.pageHeader}>
+        <img
+          src="/images/pages/UserGuide page.webp"
+          alt=""
+          aria-hidden="true"
+          className={styles.heroBgImage}
+          fetchPriority="high"
+          decoding="sync"
+          loading="eager"
+        />
+        <div className={styles.heroOverlay} />
         <div className={styles.container}>
           <motion.div
             className={styles.headerContent}

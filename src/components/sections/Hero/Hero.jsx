@@ -10,14 +10,6 @@ import AnimatedCounter from "../../common/AnimatedCounter/AnimatedCounter";
 
 const Hero = () => {
   const { t } = useTranslation();
-  // Electric spark animation particles
-  const sparkles = Array.from({ length: 15 }, (_, i) => ({
-    id: i,
-    delay: Math.random() * 2,
-    duration: 1 + Math.random() * 2,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-  }));
 
   const scrollToSection = useScrollToSection();
 
@@ -35,9 +27,6 @@ const Hero = () => {
       handleDiscoverMore();
     }
   };
-
-  
-
   return (
     <section className={styles.hero}>
       <div className={styles.backgroundImage}>

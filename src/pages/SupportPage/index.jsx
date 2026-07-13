@@ -13,7 +13,18 @@ const SupportPage = () => {
     <div className={styles.page}>
       {/* Page Header */}
       <section className={styles.heroSection}>
-        <div className={styles.heroBackground} />
+        <div className={styles.heroBackground}>
+          <img
+            src="/images/pages/Support page.webp"
+            alt=""
+            aria-hidden="true"
+            className={styles.heroBgImage}
+            fetchPriority="high"
+            decoding="sync"
+            loading="eager"
+          />
+          <div className={styles.heroOverlay} />
+        </div>
         <div className={styles.container}>
           <motion.div
             className={styles.headerContent}

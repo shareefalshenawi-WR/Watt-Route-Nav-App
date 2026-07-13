@@ -3,22 +3,40 @@
 }
 
 .pageHeader {
-  background: linear-gradient(
-    135deg,
-    #1e4552 0%,
-    #1e4552 35%,
-    #2a5e6e 60%,
-    #366262 85%,
-    #366262 100%
-  );
+  position: relative;
+  overflow: hidden;
+  background: #1e4552;
   color: white;
   padding: calc(var(--spacing-xxl) * 1.5) 0 var(--spacing-xl);
+}
+
+.heroBgImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  will-change: transform;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(14, 38, 48, 0.82) 0%,
+    rgba(22, 58, 72, 0.75) 50%,
+    rgba(30, 69, 82, 0.65) 100%
+  );
 }
 
 .container {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 var(--spacing-lg);
+  position: relative;
+  z-index: 1;
 }
 
 .headerContent {

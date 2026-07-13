@@ -10,7 +10,8 @@
    ========================================= */
 .heroSection {
   position: relative;
-  background: var(--gradient-primary);
+  /* Fallback colour shown before image loads */
+  background: #1e4552;
   color: white;
   padding: calc(var(--spacing-xxl) * 1.5) 0 var(--spacing-xxl);
   overflow: hidden;
@@ -19,18 +20,37 @@
   border-bottom-right-radius: var(--radius-xl);
 }
 
+/* Wrapper that fills the entire hero section */
 .heroBackground {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(
-    circle at 80% 20%,
-    rgba(255, 255, 255, 0.05) 0%,
-    transparent 50%
-  );
+  inset: 0;
+  overflow: hidden;
   pointer-events: none;
+  z-index: 0;
+}
+
+/* Background photo – loaded as <img> for browser-native priority.
+   Replace/populate when the image is ready (see JSX comment). */
+.heroBgImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  will-change: transform;
+}
+
+/* Dark overlay to keep text legible over the photo */
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(14, 38, 48, 0.82) 0%,
+    rgba(22, 58, 72, 0.75) 50%,
+    rgba(30, 69, 82, 0.65) 100%
+  );
 }
 
 .container {
