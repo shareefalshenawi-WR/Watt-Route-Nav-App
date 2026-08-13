@@ -189,6 +189,13 @@
   transition: transform 0.3s ease;
 }
 
+.helpIconImg {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  display: block;
+}
+
 .helpCard:hover .helpIcon {
   transform: scale(1.1) rotate(5deg);
   background: var(--color-light-gray);

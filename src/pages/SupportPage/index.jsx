@@ -68,7 +68,9 @@ const SupportPage = () => {
             </h2>
             <div className={styles.helpGrid}>
               <div className={styles.helpCard}>
-                <div className={styles.helpIcon}>📖</div>
+                <div className={styles.helpIcon}>
+                  <img src="/images/icons/Supporticons/book-outline.svg" alt="" className={styles.helpIconImg} aria-hidden="true" />
+                </div>
                 <h3 className={styles.helpTitle}>
                   {t("supportPage.userGuideTitle")}
                 </h3>
@@ -80,7 +82,9 @@ const SupportPage = () => {
                 </Link>
               </div>
               <div className={styles.helpCard}>
-                <div className={styles.helpIcon}>🎥</div>
+                <div className={styles.helpIcon}>
+                  <img src="/images/icons/Supporticons/video-duotone.svg" alt="" className={styles.helpIconImg} aria-hidden="true" />
+                </div>
                 <h3 className={styles.helpTitle}>
                   {t("supportPage.videoTutorialsTitle")}
                 </h3>
@@ -95,7 +99,9 @@ const SupportPage = () => {
                 </Link>
               </div>
               <div className={styles.helpCard}>
-                <div className={styles.helpIcon}>💬</div>
+                <div className={styles.helpIcon}>
+                  <img src="/images/icons/Supporticons/community.svg" alt="" className={styles.helpIconImg} aria-hidden="true" />
+                </div>
                 <h3 className={styles.helpTitle}>
                   {t("supportPage.communityForumTitle")}
                 </h3>

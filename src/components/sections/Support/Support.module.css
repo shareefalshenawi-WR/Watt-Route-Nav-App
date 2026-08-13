@@ -88,6 +88,13 @@
   transition: all 0.4s ease;
 }
 
+.supportIconImg {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  display: block;
+}
+
 .supportCard:hover .supportIcon {
   background: var(--color-light-gray);
   transform: scale(1.1) rotate(-5deg);
@@ -257,6 +264,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.phaseIconImg {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  display: block;
 }
 
 .phaseTitle {

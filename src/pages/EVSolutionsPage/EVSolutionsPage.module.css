@@ -178,6 +178,13 @@
   transition: transform 0.3s ease;
 }
 
+.benefitIconImg {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  display: block;
+}
+
 .benefit:hover .benefitIcon {
   transform: scale(1.1) rotate(5deg);
 }

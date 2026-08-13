@@ -13,12 +13,12 @@ const slides = [
 ];
 
 const domevFeatures = [
-  { icon: "🗺️", labelKey: "products.featureMap" },
-  { icon: "⚡", labelKey: "products.featureCharging" },
-  { icon: "💳", labelKey: "products.featurePayment" },
-  { icon: "🔔", labelKey: "products.featureNotifications" },
-  { icon: "📊", labelKey: "products.featureAnalytics" },
-  { icon: "🛡️", labelKey: "products.featureSecurity" },
+  { icon: "/images/icons/map-svgrepo-com.svg", labelKey: "products.featureMap" },
+  { icon: "/images/icons/model-x-charge.svg", labelKey: "products.featureCharging" },
+  { icon: "/images/icons/wallet.svg", labelKey: "products.featurePayment" },
+  { icon: "/images/icons/alert-16-regular.svg", labelKey: "products.featureNotifications" },
+  { icon: "/images/icons/insights.svg", labelKey: "products.featureAnalytics" },
+  { icon: "/images/icons/secure.svg", labelKey: "products.featureSecurity" },
 ];
 
 const Products = () => {
@@ -83,7 +83,9 @@ const Products = () => {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.08 }}
                 >
-                  <span className={styles.featureIcon}>{feature.icon}</span>
+                  <span className={styles.featureIcon}>
+                    <img src={feature.icon} alt="" className={styles.featureIconImg} aria-hidden="true" />
+                  </span>
                   <span className={styles.featureLabel}>
                     {t(feature.labelKey)}
                   </span>

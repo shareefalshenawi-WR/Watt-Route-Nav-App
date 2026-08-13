@@ -7,57 +7,7 @@ import { ROUTES } from "../../constants/routes";
 import styles from "./About.module.css";
 
 
-const TargetIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="32"
-    height="32"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <circle cx="12" cy="12" r="10" />
-    <circle cx="12" cy="12" r="6" />
-    <circle cx="12" cy="12" r="2" />
-  </svg>
-);
 
-const EnergyIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="32"
-    height="32"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-  </svg>
-);
-
-const GlobeIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="32"
-    height="32"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <circle cx="12" cy="12" r="10" />
-    <line x1="2" y1="12" x2="22" y2="12" />
-    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-  </svg>
-);
 
 const AboutPage = () => {
   const { t } = useTranslation();
@@ -214,7 +164,7 @@ const AboutPage = () => {
               <div
                 className={`${styles.valueIcon} ${styles.iconGreen}`}
               >
-                <TargetIcon />
+                <img src="/images/icons/target-pointer.svg" alt="" className={styles.valueIconImg} aria-hidden="true" />
               </div>
               <h3 className={styles.valueTitle}>
                 {t("aboutPage.egyptVision2030")}
@@ -226,7 +176,7 @@ const AboutPage = () => {
 
             <motion.div className={styles.valueCard} variants={fadeInUp}>
               <div className={`${styles.valueIcon} ${styles.iconYellow}`}>
-                <EnergyIcon />
+                <img src="/images/icons/eco-energy.svg" alt="" className={styles.valueIconImg} aria-hidden="true" />
               </div>
               <h3 className={styles.valueTitle}>{t("aboutPage.unSdg7")}</h3>
               <p className={styles.valueText}>
@@ -237,7 +187,7 @@ const AboutPage = () => {
 
             <motion.div className={styles.valueCard} variants={fadeInUp}>
               <div className={`${styles.valueIcon} ${styles.iconBlue}`}>
-                <GlobeIcon />
+                <img src="/images/icons/globe-bold-duotone.svg" alt="" className={styles.valueIconImg} aria-hidden="true" />
               </div>
               <h3 className={styles.valueTitle}>{t("aboutPage.unSdg13")}</h3>
               <p className={styles.valueText}>{t("aboutPage.unSdg13Text")}</p>

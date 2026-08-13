@@ -11,7 +11,7 @@ const Support = () => {
   const supportOptions = [
     {
       id: 1,
-      icon: "📧",
+      icon: "/images/icons/Supporticons/email.svg",
       titleKey: "support.emailSupport",
       descKey: "support.emailSupportDesc",
       contact: "support@wattrouteapp.com",
@@ -20,7 +20,7 @@ const Support = () => {
     },
     {
       id: 2,
-      icon: "💬",
+      icon: "/images/icons/Supporticons/whatsapp.svg",
       titleKey: "support.whatsappSupport",
       descKey: "support.whatsappSupportDesc",
       contact: "+20 150 827 5572",
@@ -29,7 +29,7 @@ const Support = () => {
     },
     {
       id: 3,
-      icon: "📞",
+      icon: "/images/icons/Supporticons/phone-broken.svg",
       titleKey: "support.phoneSupport",
       descKey: "support.phoneSupportDesc",
       contact: "+20 150 827 5572",
@@ -98,7 +98,9 @@ const Support = () => {
             {supportOptions.map((option) => (
               <motion.div key={option.id} variants={fadeInUp}>
                 <Card className={styles.supportCard}>
-                  <div className={styles.supportIcon}>{option.icon}</div>
+                  <div className={styles.supportIcon}>
+                    <img src={option.icon} alt="" className={styles.supportIconImg} aria-hidden="true" />
+                  </div>
                   <h3 className={styles.supportTitle}>{t(option.titleKey)}</h3>
                   <p className={styles.supportDescription}>
                     {t(option.descKey)}
@@ -156,19 +158,19 @@ const Support = () => {
                 step: "01",
                 title: "Reach Out",
                 desc: "Contact us via any channel that suits you.",
-                icon: "👋"
+                icon: "/images/icons/Supporticons/contact.svg"
               },
               {
                 step: "02",
                 title: "Expert Diagnosis",
                 desc: "Our specialists analyze and identify the issue.",
-                icon: "🔍"
+                icon: "/images/icons/Supporticons/search-duotone.svg"
               },
               {
                 step: "03",
                 title: "Fast Resolution",
                 desc: "Get an effective solution and back on the road.",
-                icon: "✅"
+                icon: "/images/icons/Supporticons/mail-fast.svg"
               }
             ].map((phase, index) => (
               <motion.div 
@@ -180,7 +182,9 @@ const Support = () => {
                 transition={{ delay: index * 0.1 }}
               >
                 <div className={styles.phaseStep}>{phase.step}</div>
-                <div className={styles.phaseIcon}>{phase.icon}</div>
+                <div className={styles.phaseIcon}>
+                  <img src={phase.icon} alt="" className={styles.phaseIconImg} aria-hidden="true" />
+                </div>
                 <h3 className={styles.phaseTitle}>{phase.title}</h3>
                 <p className={styles.phaseDesc}>{phase.desc}</p>
               </motion.div>
