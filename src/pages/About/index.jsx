@@ -6,16 +6,12 @@ import { fadeInUp, stagger } from "../../utils/animations";
 import { ROUTES } from "../../constants/routes";
 import styles from "./About.module.css";
 
-
-
-
 const AboutPage = () => {
   const { t } = useTranslation();
   return (
     <div className={styles.page}>
       {/* Hero Section */}
       <section className={styles.heroSection}>
-        
         <div className={styles.heroBackground}>
           <img
             src="/images/pages/About page.webp"
@@ -160,11 +156,17 @@ const AboutPage = () => {
             viewport={{ once: true }}
             variants={stagger}
           >
-            <motion.div className={styles.valueCard} variants={fadeInUp}>
-              <div
-                className={`${styles.valueIcon} ${styles.iconGreen}`}
-              >
-                <img src="/images/icons/target-pointer.svg" alt="" className={styles.valueIconImg} aria-hidden="true" />
+            <motion.div
+              className={`${styles.valueCard} ${styles.goalVision}`}
+              variants={fadeInUp}
+            >
+              <div className={styles.valueImageWrap}>
+                <img
+                  src="/images/Global Goals/Egypt Vision 2030.png"
+                  alt=""
+                  className={styles.valueImage}
+                  aria-hidden="true"
+                />
               </div>
               <h3 className={styles.valueTitle}>
                 {t("aboutPage.egyptVision2030")}
@@ -174,20 +176,35 @@ const AboutPage = () => {
               </p>
             </motion.div>
 
-            <motion.div className={styles.valueCard} variants={fadeInUp}>
-              <div className={`${styles.valueIcon} ${styles.iconYellow}`}>
-                <img src="/images/icons/eco-energy.svg" alt="" className={styles.valueIconImg} aria-hidden="true" />
+            <motion.div
+              className={`${styles.valueCard} ${styles.goalSdg7}`}
+              variants={fadeInUp}
+            >
+              <div className={styles.valueImageWrap}>
+                <img
+                  src="/images/Global Goals/Goal-07.png"
+                  alt=""
+                  className={styles.valueImage}
+                  aria-hidden="true"
+                />
               </div>
               <h3 className={styles.valueTitle}>{t("aboutPage.unSdg7")}</h3>
               <p className={styles.valueText}>
-                <b>{t("aboutPage.unSdg7Title")}:</b>{" "}
-                {t("aboutPage.unSdg7Text")}
+                <b>{t("aboutPage.unSdg7Title")}:</b> {t("aboutPage.unSdg7Text")}
               </p>
             </motion.div>
 
-            <motion.div className={styles.valueCard} variants={fadeInUp}>
-              <div className={`${styles.valueIcon} ${styles.iconBlue}`}>
-                <img src="/images/icons/globe-bold-duotone.svg" alt="" className={styles.valueIconImg} aria-hidden="true" />
+            <motion.div
+              className={`${styles.valueCard} ${styles.goalSdg13}`}
+              variants={fadeInUp}
+            >
+              <div className={styles.valueImageWrap}>
+                <img
+                  src="/images/Global Goals/SDG 13.png"
+                  alt=""
+                  className={styles.valueImage}
+                  aria-hidden="true"
+                />
               </div>
               <h3 className={styles.valueTitle}>{t("aboutPage.unSdg13")}</h3>
               <p className={styles.valueText}>{t("aboutPage.unSdg13Text")}</p>

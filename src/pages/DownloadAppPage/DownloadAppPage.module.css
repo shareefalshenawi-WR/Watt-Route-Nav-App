@@ -1,4 +1,3 @@
-
 .page {
   position: relative;
   min-height: 100vh;
@@ -41,8 +40,6 @@
   );
 }
 
-
-
 @keyframes orbFloat {
   0% {
     transform: translate(0, 0) scale(1);
@@ -52,7 +49,7 @@
   }
 }
 
-/* ---- Particles ---- */
+/*  Particles */
 .particles {
   position: absolute;
   inset: 0;
@@ -66,8 +63,7 @@
   animation: particleDrift linear infinite;
 }
 
-
-/* ---- Content Container ---- */
+/* Content Container */
 .contentContainer {
   position: relative;
   z-index: 10;
@@ -89,7 +85,7 @@
   gap: 2rem;
 }
 
-/* ---- Logo ---- */
+/* Logo  */
 .logoWrapper {
   position: relative;
   display: flex;
@@ -119,8 +115,15 @@
 }
 
 @keyframes logoPulse {
-  0%, 100% { transform: scale(1);    opacity: 0.7; }
-  50%       { transform: scale(1.12); opacity: 1;   }
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
 }
 
 /* ---- App Badge ---- */
@@ -150,26 +153,32 @@
 }
 
 @keyframes dotBlink {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%       { opacity: 0.4; transform: scale(0.7); }
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.7);
+  }
 }
 
-/* ---- Coming Soon Title ---- */
+/*   Coming Soon Title*/
 .comingSoonTitle {
   font-family: var(--font-heading, "Poppins", sans-serif);
   font-size: clamp(2.8rem, 7vw, 5.5rem);
-  font-weight: 800;
-  line-height: 1.05;
+  font-weight: 700;
   letter-spacing: -0.03em;
-  margin: 0;
-  background: linear-gradient(99deg, #00dc82 2%, #ffffff 68%);
+  margin: -18px;
+  background: linear-gradient(2deg, #0bd482 2% 2%, #ffffff 68%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-shadow: none;
 }
 
-/* ---- Subtitle ---- */
+/*  Subtitle  */
 .comingSoonText {
   font-size: clamp(0.95rem, 2vw, 1.15rem);
   line-height: 1.8;
@@ -179,7 +188,59 @@
   margin: 0;
 }
 
-/* ---- Divider ---- */
+/*  Register interest CTA  */
+.registerInterestCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0.85rem 1.25rem;
+  background: rgba(132, 188, 151, 0.14);
+  color: #eefcf4;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 1px solid rgba(218, 252, 227, 0.62);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  width: fit-content;
+  min-width: min(260px, 92vw);
+  box-shadow:
+    0 4px 18px rgba(0, 0, 0, 0.22),
+    inset 0 0 16px rgba(255, 255, 255, 0.06);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.registerInterestCta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent);
+  opacity: 0;
+}
+
+.registerInterestCta:hover {
+  background: rgba(132, 188, 151, 0.26);
+  border-color: rgba(238, 255, 244, 0.96);
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 32px rgba(132, 188, 151, 0.22),
+    inset 0 0 18px rgba(255, 255, 255, 0.1);
+}
+
+.ctaButtonInner {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: #eefcf4;
+}
+
+/* Divider */
 .divider {
   width: 100%;
   max-width: 320px;
@@ -193,7 +254,7 @@
   transform-origin: center;
 }
 
-/* ---- Store Buttons ---- */
+/*  Store Buttons */
 .storeButtons {
   display: flex;
   gap: 1.25rem;
@@ -234,7 +295,7 @@
   box-shadow: 0 2px 8px rgba(86, 145, 102, 0.5);
 }
 
-/* ---- Home Button ---- */
+/*  Home Button  */
 .homeAction {
   margin-top: 1.5rem;
   z-index: 10;
@@ -263,16 +324,27 @@
   transform: translateY(-2px);
 }
 
-/* ============================================================
-   Responsive
-   ============================================================ */
+/* 
+Responsive
+    */
 @media (max-width: 768px) {
   .contentContainer {
     padding: 90px 1.5rem 2rem;
   }
 
   .content {
-    gap: 1.5rem;
+    gap: 1.25rem;
+  }
+
+  .registerInterestCta {
+    width: fit-content;
+    min-width: 210px;
+    padding: 0.7rem 1rem;
+    font-size: 0.82rem;
+  }
+
+  .ctaButtonInner {
+    justify-content: center;
   }
 
   .storeButtons {
@@ -289,8 +361,24 @@
     padding: 80px 1.25rem 2rem;
   }
 
+  .content {
+    gap: 1rem;
+  }
+
   .comingSoonTitle {
     font-size: 2.6rem;
+  }
+
+  .comingSoonText {
+    font-size: 0.92rem;
+  }
+
+  .registerInterestCta {
+    width: fit-content;
+    max-width: 230px;
+    font-size: 0.76rem;
+    padding: 0.7rem 0.9rem;
+    min-width: auto;
   }
 
   .storeButtons {

@@ -13,10 +13,19 @@ const slides = [
 ];
 
 const domevFeatures = [
-  { icon: "/images/icons/map-svgrepo-com.svg", labelKey: "products.featureMap" },
-  { icon: "/images/icons/model-x-charge.svg", labelKey: "products.featureCharging" },
+  {
+    icon: "/images/icons/map-svgrepo-com.svg",
+    labelKey: "products.featureMap",
+  },
+  {
+    icon: "/images/icons/model-x-charge.svg",
+    labelKey: "products.featureCharging",
+  },
   { icon: "/images/icons/wallet.svg", labelKey: "products.featurePayment" },
-  { icon: "/images/icons/alert-16-regular.svg", labelKey: "products.featureNotifications" },
+  {
+    icon: "/images/icons/alert-16-regular.svg",
+    labelKey: "products.featureNotifications",
+  },
   { icon: "/images/icons/insights.svg", labelKey: "products.featureAnalytics" },
   { icon: "/images/icons/secure.svg", labelKey: "products.featureSecurity" },
 ];
@@ -33,7 +42,8 @@ const Products = () => {
   }, []);
 
   const goNext = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
-  const goPrev = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  const goPrev = () =>
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
 
   return (
     <section className={styles.section} id="products">
@@ -66,7 +76,10 @@ const Products = () => {
               {t("products.badge")}
             </div>
 
-            <h3 className={styles.productName}>DOMEv</h3>
+            <h3 className={styles.productName}>
+              <span className={styles.productNameDOME}>DOME</span>
+              <span className={styles.productNameGreenV}>V</span>
+            </h3>
             <p className={styles.productTagline}>{t("products.tagline")}</p>
             <p className={styles.productDescription}>
               {t("products.description")}
@@ -84,7 +97,12 @@ const Products = () => {
                   transition={{ delay: index * 0.08 }}
                 >
                   <span className={styles.featureIcon}>
-                    <img src={feature.icon} alt="" className={styles.featureIconImg} aria-hidden="true" />
+                    <img
+                      src={feature.icon}
+                      alt=""
+                      className={styles.featureIconImg}
+                      aria-hidden="true"
+                    />
                   </span>
                   <span className={styles.featureLabel}>
                     {t(feature.labelKey)}
@@ -126,7 +144,18 @@ const Products = () => {
                 onClick={goPrev}
                 aria-label="Previous slide"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
                   <polyline points="15 18 9 12 15 6" />
                 </svg>
               </button>
@@ -190,7 +219,18 @@ const Products = () => {
                 onClick={goNext}
                 aria-label="Next slide"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
                   <polyline points="9 18 15 12 9 6" />
                 </svg>
               </button>

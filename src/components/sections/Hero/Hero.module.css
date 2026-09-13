@@ -44,7 +44,6 @@
   opacity: 0.75;
 }
 
-
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -61,6 +60,10 @@
 
 .textContent {
   color: white;
+}
+
+.goalShowcaseResponsive {
+  display: none;
 }
 
 .title {
@@ -141,11 +144,109 @@
 
 .imageContent {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.goalShowcase {
+  width: min(420px, 100%);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(120px, 1fr));
+  gap: 70px;
+  padding: 0;
+  border-radius: 0;
+  border: none;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
+  transform: translateY(-180px);
+}
+
+.goalCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-xs, 8px) 0;
+  border-radius: var(--radius-md);
+  background: transparent;
+  border: none;
+  color: white;
+  min-height: 160px;
+  justify-content: center;
+  position: relative;
+  overflow: visible;
+  transition:
+    transform var(--transition-normal),
+    filter var(--transition-normal),
+    color var(--transition-normal);
+}
+
+.goalCard::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: var(--radius-md);
+  background: transparent;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+  z-index: 0;
+}
+
+.goalCard:hover {
+  transform: translateY(-8px);
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  filter: drop-shadow(0 12px 20px rgba(0, 220, 130, 0.28));
+}
+
+.goalCard:hover::before {
+  opacity: 0;
+}
+
+.goalImageWrap {
+  width: clamp(96px, 9vw, 122px);
+  height: clamp(96px, 9vw, 122px);
+  border-radius: var(--radius-md);
+  background: transparent;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: none;
+  border: none;
+  position: relative;
+  z-index: 1;
+}
+
+.goalImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--radius-sm);
+}
+
+.goalTitle {
+  position: relative;
+  z-index: 1;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: white;
+  line-height: 1.45;
+  letter-spacing: 0.02em;
+  text-align: center;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.8);
+  border-top: none;
+  padding-top: var(--spacing-xs, 8px);
+  max-width: 118px;
 }
 
 .heroImage {
   position: relative;
-  
 }
 
 .productImage {
@@ -169,19 +270,6 @@
   filter: blur(40px);
   z-index: -1;
   animation: pulse 3s ease-in-out infinite;
-}
-
-.electricBolt {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 110%;
-  height: 110%;
-  border: 2px solid var(--color-secondary);
-  border-radius: 50%;
-  opacity: 0.3;
-  filter: blur(2px);
 }
 
 .scrollIndicator {
@@ -238,6 +326,63 @@
     gap: var(--spacing-lg);
   }
 
+  .imageContent {
+    display: none;
+  }
+
+  .goalShowcaseResponsive {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(110px, 1fr));
+    align-items: center;
+    gap: clamp(12px, 2vw, 18px);
+    width: min(340px, 100%);
+    margin: 0 0 var(--spacing-lg);
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .goalCardResponsive {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    min-height: 120px;
+  }
+
+  .goalImageWrapResponsive {
+    width: clamp(78px, 11vw, 104px);
+    height: clamp(78px, 11vw, 104px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border-radius: var(--radius-sm);
+    padding: 0;
+  }
+
+  .goalImageResponsive {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    display: block;
+  }
+
+  .goalTitleResponsive {
+    font-size: 0.72rem;
+    font-weight: 400;
+    color: white;
+    line-height: 1.45;
+    text-align: center;
+    max-width: 118px;
+  }
+
+  .goalTitle {
+    font-size: 0.72rem;
+  }
+
   .title {
     font-size: clamp(1.75rem, 4vw, 3.5rem);
   }
@@ -265,13 +410,37 @@
   }
 
   .textContent {
-    order: 2;
+    order: 1;
   }
 
   .imageContent {
-    order: 1;
-    max-width: 400px;
-    margin: 0 auto;
+    display: none;
+  }
+
+  .goalShowcaseResponsive {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(90px, 1fr));
+    width: min(390px, 100%);
+    padding: 0;
+    gap: var(--spacing-sm);
+    margin: 0 auto var(--spacing-lg);
+  }
+
+  .goalCardResponsive {
+    min-height: 120px;
+  }
+
+  .goalImageWrapResponsive {
+    width: clamp(70px, 20vw, 96px);
+    height: clamp(70px, 20vw, 96px);
+  }
+
+  .goalTitleResponsive {
+    font-size: 0.72rem;
+  }
+
+  .goalTitle {
+    font-size: 0.72rem;
   }
 
   .title {
@@ -311,8 +480,6 @@
   .electricEffect {
     display: none;
   }
-
-
 }
 
 @media (max-width: 480px) {

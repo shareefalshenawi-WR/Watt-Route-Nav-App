@@ -10,9 +10,9 @@ const DownloadAppPage = () => {
     <div className={styles.page}>
       {/* Background Image & Overlay */}
       <div className={styles.bgWrapper}>
-        <img 
-          src="/images/coming-soon bg.webp" 
-          alt="" 
+        <img
+          src="/images/coming-soon bg.webp"
+          alt=""
           aria-hidden="true"
           className={styles.bgImage}
           fetchPriority="high"
@@ -30,7 +30,6 @@ const DownloadAppPage = () => {
           <span key={i} className={styles.particle} />
         ))}
       </div>
-
 
       {/* Content */}
       <div className={styles.contentContainer}>
@@ -55,8 +54,6 @@ const DownloadAppPage = () => {
             />
           </motion.div>
 
-
-
           {/* Coming Soon heading */}
           <motion.h1
             className={styles.comingSoonTitle}
@@ -76,9 +73,24 @@ const DownloadAppPage = () => {
           >
             {t(
               "downloadAppPage.comingSoonText",
-              "We're putting the finishing touches on something amazing. The DOMEv app is launching soon — stay tuned."
+              "We're putting the finishing touches on something amazing. The DOMEv app is launching soon — stay tuned.",
             )}
           </motion.p>
+
+          <motion.a
+            href="https://forms.gle/XZUDvYsu9Kk9NmeY6"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.registerInterestCta}
+            id="domev-register-interest-btn"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.74, duration: 0.6 }}
+          >
+            <span className={styles.ctaButtonInner}>
+              {t("products.ctaButton", "Register Your Interest")}
+            </span>
+          </motion.a>
 
           {/* Divider */}
           <motion.div
@@ -124,7 +136,11 @@ const DownloadAppPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.05, duration: 0.6 }}
           >
-            <Link to="/" className={styles.homeButton} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <Link
+              to="/"
+              className={styles.homeButton}
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            >
               {t("downloadAppPage.returnHome", "Return to Home")}
             </Link>
           </motion.div>

@@ -1,4 +1,4 @@
-# 🔋 Watt Route - Smart EV Charging Solutions
+# Watt Route - Smart EV Charging Solutions
 
 ## Quick Start
 

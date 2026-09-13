@@ -72,6 +72,50 @@ const Hero = () => {
               </Link>
             </motion.div>
 
+            <div className={styles.goalShowcaseResponsive}>
+              <div className={styles.goalCardResponsive}>
+                <div className={styles.goalImageWrapResponsive}>
+                  <img
+                    src="/images/Global Goals/Egypt Vision 2030.png"
+                    alt=""
+                    aria-hidden="true"
+                    className={styles.goalImageResponsive}
+                  />
+                </div>
+                <span className={styles.goalTitleResponsive}>
+                  {t("aboutPage.egyptVision2030")}
+                </span>
+              </div>
+
+              <div className={styles.goalCardResponsive}>
+                <div className={styles.goalImageWrapResponsive}>
+                  <img
+                    src="/images/Global Goals/Goal-07.png"
+                    alt=""
+                    aria-hidden="true"
+                    className={styles.goalImageResponsive}
+                  />
+                </div>
+                <span className={styles.goalTitleResponsive}>
+                  {t("aboutPage.unSdg7")}
+                </span>
+              </div>
+
+              <div className={styles.goalCardResponsive}>
+                <div className={styles.goalImageWrapResponsive}>
+                  <img
+                    src="/images/Global Goals/SDG 13.png"
+                    alt=""
+                    aria-hidden="true"
+                    className={styles.goalImageResponsive}
+                  />
+                </div>
+                <span className={styles.goalTitleResponsive}>
+                  {t("aboutPage.unSdg13")}
+                </span>
+              </div>
+            </div>
+
             {/* Stats */}
             <motion.div className={styles.stats} variants={fadeInUp}>
               <div className={styles.stat}>
@@ -81,7 +125,7 @@ const Hero = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.5, duration: 0.5 }}
                 >
-                  <AnimatedCounter target={400} duration={1200} suffix="+" />
+                  <AnimatedCounter target={600} duration={1200} suffix="+" />
                 </motion.span>
                 <span className={styles.statLabel}>
                   {t("hero.chargingPoints")}
@@ -112,7 +156,7 @@ const Hero = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.9, duration: 0.5 }}
                 >
-                  <AnimatedCounter target={120} duration={1200} suffix="kW" />
+                  <AnimatedCounter target={160} duration={1200} suffix="kW" />
                 </motion.span>
                 <span className={styles.statLabel}>
                   {t("hero.ultraFastCharging")}
@@ -127,15 +171,49 @@ const Hero = () => {
             initial="hidden"
             animate="visible"
           >
-            {/*  Hero product image */}
-            {/* <div className={styles.heroImage}>
-              <img
-                src="/images/charging-station.webp"
-                alt="Watt Route Charging Station"
-                className={styles.productImage}
-              />
-              <div className={styles.glowEffect}></div>
-            </div> */}
+            <div className={styles.goalShowcase}>
+              <div className={styles.goalCard}>
+                <div className={styles.goalImageWrap}>
+                  <img
+                    src="/images/Global Goals/Egypt Vision 2030.png"
+                    alt=""
+                    aria-hidden="true"
+                    className={styles.goalImage}
+                  />
+                </div>
+                <span className={styles.goalTitle}>
+                  {t("aboutPage.egyptVision2030")}
+                </span>
+              </div>
+
+              <div className={styles.goalCard}>
+                <div className={styles.goalImageWrap}>
+                  <img
+                    src="/images/Global Goals/Goal-07.png"
+                    alt=""
+                    aria-hidden="true"
+                    className={styles.goalImage}
+                  />
+                </div>
+                <span className={styles.goalTitle}>
+                  {t("aboutPage.unSdg7")}
+                </span>
+              </div>
+
+              <div className={styles.goalCard}>
+                <div className={styles.goalImageWrap}>
+                  <img
+                    src="/images/Global Goals/SDG 13.png"
+                    alt=""
+                    aria-hidden="true"
+                    className={styles.goalImage}
+                  />
+                </div>
+                <span className={styles.goalTitle}>
+                  {t("aboutPage.unSdg13")}
+                </span>
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>

@@ -170,7 +170,7 @@
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background: rgba(30, 69, 82, 0.05); 
+  background: rgba(30, 69, 82, 0.05);
   color: var(--color-primary);
   display: flex;
   align-items: center;
@@ -207,7 +207,6 @@
   position: relative;
 }
 
-
 .valuesSection::before {
   content: "";
   position: absolute;
@@ -239,6 +238,23 @@
   position: relative;
   overflow: hidden;
   border: 1px solid transparent;
+  isolation: isolate;
+  min-height: 270px;
+}
+
+.valueCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--goal-overlay, transparent);
+  opacity: 0.84;
+  z-index: 1;
+  transition: opacity 420ms ease;
+}
+
+.valueCard > * {
+  position: relative;
+  z-index: 2;
 }
 
 .valueCard:hover {
@@ -246,6 +262,72 @@
   box-shadow: var(--shadow-xl);
   border-color: var(--color-light-gray);
   transform: translateY(-5px);
+}
+
+.valueCard:hover::before {
+  opacity: 0.58;
+}
+
+.goalVision {
+  --goal-overlay:
+    radial-gradient(
+      ellipse at 50% 18%,
+      rgba(46, 125, 50, 0.18),
+      transparent 46%
+    ),
+    linear-gradient(135deg, rgba(46, 125, 50, 0.16), rgba(30, 69, 82, 0.2));
+}
+
+.goalSdg7 {
+  --goal-overlay:
+    radial-gradient(
+      ellipse at 50% 18%,
+      rgba(249, 168, 37, 0.16),
+      transparent 46%
+    ),
+    linear-gradient(135deg, rgba(249, 168, 37, 0.14), rgba(30, 69, 82, 0.2));
+}
+
+.goalSdg13 {
+  --goal-overlay:
+    radial-gradient(
+      ellipse at 50% 18%,
+      rgba(21, 101, 192, 0.16),
+      transparent 46%
+    ),
+    linear-gradient(135deg, rgba(21, 101, 192, 0.14), rgba(30, 69, 82, 0.2));
+}
+
+.valueImageWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(80px, 11vw, 112px);
+  height: clamp(80px, 11vw, 112px);
+  margin: 0 auto var(--spacing-md);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform 420ms ease,
+    box-shadow 420ms ease,
+    background 420ms ease;
+  overflow: hidden;
+}
+
+.valueImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--radius-md);
+}
+
+.valueCard:hover .valueImageWrap {
+  transform: scale(1.08);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: var(--shadow-lg);
 }
 
 .valueIcon {
@@ -309,7 +391,7 @@
 }
 
 .ctaContent {
-  background: var(--gradient-secondary); 
+  background: var(--gradient-secondary);
   border-radius: var(--radius-xl);
   padding: var(--spacing-xl);
   text-align: center;
@@ -318,7 +400,6 @@
   overflow: hidden;
   box-shadow: var(--shadow-glow);
 }
-
 
 .ctaContent::after {
   content: "";
@@ -359,8 +440,8 @@
   }
 
   .headerButtons {
-     flex-direction: column;
-     width: 100%;
+    flex-direction: column;
+    width: 100%;
   }
 
   .headerButtons > a,
@@ -376,23 +457,24 @@
     gap: var(--spacing-md);
   }
 
-  .featureCard, .valueCard {
+  .featureCard,
+  .valueCard {
     padding: var(--spacing-lg);
   }
 }
 
 @media (max-width: 480px) {
   .heroSection {
-     padding: var(--spacing-xl) 0;
-     border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    padding: var(--spacing-xl) 0;
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
   }
-  
+
   .sectionTitle {
-     font-size: 1.75rem;
+    font-size: 1.75rem;
   }
 
   .pageTitle {
-      font-size: 2.25rem;
+    font-size: 2.25rem;
   }
 }
 
@@ -483,4 +565,3 @@
 :global(html[data-theme="dark"]) .ctaSection {
   background: #080c0e;
 }
-

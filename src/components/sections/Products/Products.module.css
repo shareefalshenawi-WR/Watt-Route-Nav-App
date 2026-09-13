@@ -1,7 +1,6 @@
-
 .section {
   padding: 6rem 0 7rem;
-  background: #F2F0EB;
+  background: #f2f0eb;
   position: relative;
   overflow: hidden;
 }
@@ -14,7 +13,11 @@
   width: 480px;
   height: 480px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(45, 90, 61, 0.07) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(45, 90, 61, 0.07) 0%,
+    transparent 70%
+  );
   pointer-events: none;
 }
 
@@ -38,7 +41,7 @@
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #2D5A3D;
+  color: #2d5a3d;
   background: rgba(45, 90, 61, 0.1);
   border: 1px solid rgba(45, 90, 61, 0.25);
   padding: 0.35rem 1rem;
@@ -48,7 +51,7 @@
 
 .title {
   font-size: clamp(2rem, 4.5vw, 3.2rem);
-  color: #1A1A1A;
+  color: #1a1a1a;
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.02em;
@@ -84,7 +87,7 @@
   gap: 0.5rem;
   font-size: 0.8rem;
   font-weight: 600;
-  color: #2D5A3D;
+  color: #2d5a3d;
   background: rgba(45, 90, 61, 0.08);
   border: 1px solid rgba(45, 90, 61, 0.2);
   padding: 0.35rem 0.9rem;
@@ -97,28 +100,41 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #2D5A3D;
+  background: #2d5a3d;
   animation: blink 2s ease-in-out infinite;
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
 }
 
 .productName {
   font-size: clamp(2.8rem, 5.5vw, 4.5rem);
   font-weight: 900;
-  color: #1A1A1A;
+  color: #1a1a1a;
   letter-spacing: -0.04em;
   line-height: 1;
   margin-bottom: 0.6rem;
 }
 
+.productNameDOME {
+  color: #1a1a1a;
+}
+
+.productNameGreenV {
+  color: #2d5a3d;
+}
+
 .productTagline {
   font-size: clamp(1rem, 2vw, 1.25rem);
   font-weight: 600;
-  color: #2D5A3D;
+  color: #2d5a3d;
   margin-bottom: 1rem;
 }
 
@@ -142,8 +158,8 @@
   align-items: center;
   gap: 0.75rem;
   padding: 0.75rem 1rem;
-  background: #E8E5DF;
-  border: 1px solid #C8C4BC;
+  background: #e8e5df;
+  border: 1px solid #c8c4bc;
   border-radius: 12px;
   transition: all 0.22s ease;
   cursor: default;
@@ -151,7 +167,7 @@
 
 .featureChip:hover {
   background: #fff;
-  border-color: #2D5A3D;
+  border-color: #2d5a3d;
   box-shadow: 0 4px 16px rgba(45, 90, 61, 0.1);
   transform: translateY(-2px);
 }
@@ -175,7 +191,7 @@
 .featureLabel {
   font-size: 0.85rem;
   font-weight: 600;
-  color: #1A1A1A;
+  color: #1a1a1a;
 }
 
 /* ── CTA Button ──────────────────────────────── */
@@ -185,13 +201,13 @@
   justify-content: space-between;
   gap: 1rem;
   padding: 1rem 1.5rem;
-  background: #2D5A3D;
+  background: #2d5a3d;
   color: #fff;
   border-radius: 14px;
   font-weight: 700;
   font-size: 1rem;
   text-decoration: none;
-  border: 2px solid #2D5A3D;
+  border: 2px solid #2d5a3d;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
@@ -204,7 +220,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
   opacity: 0;
   transition: opacity 0.2s ease;
 }
@@ -269,15 +285,26 @@
   width: 340px;
   height: 340px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(45, 90, 61, 0.18) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(45, 90, 61, 0.18) 0%,
+    transparent 70%
+  );
   filter: blur(40px);
   pointer-events: none;
   animation: glowPulse 4s ease-in-out infinite;
 }
 
 @keyframes glowPulse {
-  0%, 100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
-  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
 }
 
 .mockupOrb1 {
@@ -305,15 +332,19 @@
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-14px); }
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
 }
 
 /* iPhone physical frame */
 .iphone {
   position: relative;
   z-index: 2;
-  
 }
 
 .iphoneFrame {
@@ -324,10 +355,10 @@
   padding: 14px 10px 10px;
   position: relative;
   box-shadow:
-    0 0 0 1px rgba(255,255,255,0.12),
-    0 1px 0 2px rgba(255,255,255,0.06),
-    0 40px 80px rgba(0,0,0,0.45),
-    inset 0 0 0 1px rgba(255,255,255,0.04);
+    0 0 0 1px rgba(255, 255, 255, 0.12),
+    0 1px 0 2px rgba(255, 255, 255, 0.06),
+    0 40px 80px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
 }
 
 /* Notch / Dynamic Island */
@@ -347,13 +378,11 @@
   gap: 6px;
 }
 
-
-
 /* Screen */
 .iphoneScreen {
   width: 100%;
   height: 100%;
-  background: #F2F0EB;
+  background: #f2f0eb;
   border-radius: 32px;
   overflow: hidden;
   display: flex;
@@ -401,15 +430,14 @@
 .iphoneHomeBar {
   width: 70px;
   height: 4px;
-  background: rgba(255,255,255,0.25);
+  background: rgba(255, 255, 255, 0.25);
   border-radius: 2px;
 }
-
 
 .appLogo {
   width: 100%;
   height: 100%;
-  object-fit: cover; 
+  object-fit: cover;
   display: block;
 }
 
@@ -419,7 +447,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; 
+  object-fit: cover;
   display: block;
 }
 
@@ -449,7 +477,9 @@
 .sliderDotActive {
   background: #ffffff;
   transform: scale(1.3);
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 2px 4px rgba(0, 0, 0, 0.4);
+  box-shadow:
+    0 0 10px rgba(255, 255, 255, 0.8),
+    0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .sliderDot:hover {
@@ -474,7 +504,7 @@
   border-radius: 50%;
   border: 2px solid rgba(45, 90, 61, 0.25);
   background: rgba(255, 255, 255, 0.85);
-  color: #2D5A3D;
+  color: #2d5a3d;
   cursor: pointer;
   align-items: center;
   justify-content: center;
@@ -487,8 +517,8 @@
 }
 
 .sliderArrow:hover {
-  background: #2D5A3D;
-  border-color: #2D5A3D;
+  background: #2d5a3d;
+  border-color: #2d5a3d;
   color: #fff;
   box-shadow: 0 4px 20px rgba(45, 90, 61, 0.3);
 }
@@ -496,7 +526,6 @@
 .sliderArrow:active {
   transform: scale(0.92);
 }
-
 
 .appContent {
   flex: 1;
@@ -522,7 +551,7 @@
   left: 50%;
   transform: translateX(-50%);
   font-size: 1.3rem;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
 .appMapLine {
@@ -557,20 +586,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .appCard {
   background: #fff;
   border-radius: 12px;
   padding: 0.6rem 0.75rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .appCardTitle {
   font-size: 0.6rem;
   font-weight: 700;
-  color: #1A1A1A;
+  color: #1a1a1a;
   margin-bottom: 0.4rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -587,7 +616,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #2D5A3D;
+  background: #2d5a3d;
   flex-shrink: 0;
 }
 
@@ -605,7 +634,7 @@
   font-size: 0.5rem;
   font-weight: 700;
   background: rgba(45, 90, 61, 0.12);
-  color: #2D5A3D;
+  color: #2d5a3d;
   padding: 0.15rem 0.45rem;
   border-radius: 999px;
   white-space: nowrap;
@@ -625,16 +654,15 @@
   border-radius: 12px;
   font-size: 1rem;
   margin-bottom: 0.35rem;
-  box-shadow: 0 -2px 8px rgba(0,0,0,0.04);
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .appNavActive {
-  background: #2D5A3D;
+  background: #2d5a3d;
   border-radius: 8px;
   padding: 0.2rem 0.45rem;
   font-size: 0.85rem;
 }
-
 
 .floatingBadge {
   position: absolute;
@@ -642,13 +670,13 @@
   align-items: center;
   gap: 0.4rem;
   background: #fff;
-  border: 1px solid #C8C4BC;
+  border: 1px solid #c8c4bc;
   border-radius: 12px;
   padding: 0.5rem 0.85rem;
   font-size: 0.78rem;
   font-weight: 600;
-  color: #1A1A1A;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  color: #1a1a1a;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   white-space: nowrap;
   z-index: 5;
 }
@@ -676,13 +704,23 @@
 }
 
 @keyframes floatBadge1 {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
 @keyframes floatBadge2 {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(8px); }
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(8px);
+  }
 }
 
 /* Responsive */
@@ -796,7 +834,11 @@
 }
 
 :global(html[data-theme="dark"]) .section::before {
-  background: radial-gradient(circle, rgba(106, 184, 122, 0.05) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(106, 184, 122, 0.05) 0%,
+    transparent 70%
+  );
 }
 
 :global(html[data-theme="dark"]) .eyebrow {
@@ -815,6 +857,14 @@
 
 :global(html[data-theme="dark"]) .productName {
   color: var(--color-text);
+}
+
+:global(html[data-theme="dark"]) .productNameDOME {
+  color: var(--color-text);
+}
+
+:global(html[data-theme="dark"]) .productNameGreenV {
+  color: var(--color-secondary);
 }
 
 :global(html[data-theme="dark"]) .productBadge {
@@ -893,7 +943,11 @@
 }
 
 :global(html[data-theme="dark"]) .mockupGlow {
-  background: radial-gradient(circle, rgba(106, 184, 122, 0.12) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(106, 184, 122, 0.12) 0%,
+    transparent 70%
+  );
 }
 
 :global(html[data-theme="dark"]) .mockupOrb1,
@@ -913,4 +967,3 @@
   border-color: var(--color-secondary);
   color: #fff;
 }
-
