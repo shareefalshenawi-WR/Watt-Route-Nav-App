@@ -28,11 +28,15 @@
     "title": "Driving Egypt Toward a",
     "titleHighlight": "Greener Horizon",
     "subtitle": "Watt Route isn't just an app; it's a movement. We are building the digital infrastructure to eliminate range anxiety and accelerate the transition to sustainable mobility.",
+    "subtitlePrefix": "Watt Route isn't just an app;",
+    "subtitleHighlight": "it's a movement.",
+    "subtitleSuffix": "We are building the digital infrastructure to eliminate range anxiety and accelerate the transition to sustainable mobility.",
     "findChargingStations": "Find Charging Stations",
     "downloadMobileApp": "Download Mobile App",
     "chargingPoints": "Charging Points",
     "uptimeReliability": "Uptime Reliability",
     "ultraFastCharging": "Ultra-Fast Charging",
+    "globalGoalsHeading": "Aligned with Global & National Goals",
     "discoverMore": "Discover More"
   },
   "evSolutions": {
@@ -52,17 +56,21 @@
     "mobileAppDesc": "Seamlessly manage your charging experience through the mobile application."
   },
   "pinnedPanels": {
-    "panel3": {
-      "title": "Ultra-Fast Charging Network",
-      "desc": "Experience lightning-fast charging with our 160kW DC chargers. From 0 to 80% in just 30 minutes. Your time is valuable we make every minute count."
+    "panel1": {
+      "title": "Seamless EV Navigation",
+      "desc": "Intelligent route optimization that factors in battery levels, elevation, charger availability, and real-time traffic across Egypt."
     },
     "panel2": {
+      "title": "Driving Egypt's Green Future",
+      "desc": "Join 25,000+ EV drivers reducing carbon emissions across Egypt. Every charge brings us closer to cleaner air and a sustainable tomorrow."
+    },
+    "panel3": {
       "title": "Smart Connected Ecosystem",
       "desc": "One app, endless possibilities. Find stations, check availability, start charging, and pay all seamlessly integrated. Your complete EV charging companion."
     },
-    "panel1": {
-      "title": "Driving Egypt's Green Future",
-      "desc": "Join 25,000+ EV drivers reducing carbon emissions across Egypt. Every charge brings us closer to cleaner air and a sustainable tomorrow."
+    "panel4": {
+      "title": "Ultra-Fast Charging Network",
+      "desc": "Experience lightning-fast charging with our 160kW DC chargers. From 0 to 80% in just 30 minutes. Your time is valuable we make every minute count."
     }
   },
   "products": {

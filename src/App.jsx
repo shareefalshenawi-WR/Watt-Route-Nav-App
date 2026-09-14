@@ -1,11 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   useLocation,
 } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Navbar from "./components/layout/Navbar/Navbar";
 import Footer from "./components/layout/Footer/Footer";
 import ErrorBoundary from "./components/common/ErrorBoundary/ErrorBoundary";
@@ -13,7 +14,7 @@ import { ThemeProvider } from "./context/ThemeContext";
 import { ROUTES } from "./constants/routes";
 import "./App.css";
 
-// Direct imports
+// Page imports
 import Home from "./pages/Home/index.jsx";
 import EVSolutionsPage from "./pages/EVSolutionsPage/index.jsx";
 import ProductsPage from "./pages/ProductsPage/index.jsx";
@@ -26,127 +27,146 @@ import AboutPage from "./pages/About/index.jsx";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage/index.jsx";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage/index.jsx";
 
-function ScrollToTop() {
+gsap.registerPlugin(ScrollTrigger);
+
+/**
+ * Kills ALL active GSAP ScrollTrigger instances and resets scroll position.
+ * This is critical when navigating away from pages that use pinned ScrollTriggers
+ * (like Hero and PinnedPanels), otherwise the pin persists and blocks navigation.
+ */
+function ScrollManager() {
   const { pathname } = useLocation();
 
-  useEffect(() => {
-    // Immediate scroll to top on route change
-    window.scrollTo(0, 0);
+  useLayoutEffect(() => {
+    // 1. Kill every active ScrollTrigger so pinned sections are released
+    ScrollTrigger.getAll().forEach((st) => st.kill());
+    ScrollTrigger.clearScrollMemory();
+
+    // 2. Reset any GSAP-applied inline styles on the body/html
+    gsap.set("body", { clearProps: "all" });
+    gsap.set("html", { clearProps: "all" });
+
+    // 3. Reset scroll position instantly (before paint)
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+
+    // 4. Let ScrollTrigger recalculate after the new page mounts
+    const raf = requestAnimationFrame(() => {
+      ScrollTrigger.refresh(true);
+    });
+
+    return () => cancelAnimationFrame(raf);
   }, [pathname]);
 
   return null;
+}
+
+function AppRoutes() {
+  const location = useLocation();
+
+  return (
+    <Routes location={location} key={location.pathname}>
+      <Route
+        path={ROUTES.HOME}
+        element={
+          <ErrorBoundary>
+            <Home />
+          </ErrorBoundary>
+        }
+      />
+      <Route
+        path={ROUTES.EV_SOLUTIONS}
+        element={
+          <ErrorBoundary>
+            <EVSolutionsPage />
+          </ErrorBoundary>
+        }
+      />
+      <Route
+        path={ROUTES.PRODUCTS}
+        element={
+          <ErrorBoundary>
+            <ProductsPage />
+          </ErrorBoundary>
+        }
+      />
+      <Route
+        path={ROUTES.ABOUT}
+        element={
+          <ErrorBoundary>
+            <AboutPage />
+          </ErrorBoundary>
+        }
+      />
+      <Route
+        path={ROUTES.HELP_USER_GUIDE}
+        element={
+          <ErrorBoundary>
+            <UserGuidePage />
+          </ErrorBoundary>
+        }
+      />
+      <Route
+        path={ROUTES.HELP_VIDEO_TUTORIALS}
+        element={
+          <ErrorBoundary>
+            <VideoTutorialsPage />
+          </ErrorBoundary>
+        }
+      />
+      <Route
+        path={ROUTES.HELP_COMMUNITY_FORUM}
+        element={
+          <ErrorBoundary>
+            <CommunityForumPage />
+          </ErrorBoundary>
+        }
+      />
+      <Route
+        path={ROUTES.SUPPORT}
+        element={
+          <ErrorBoundary>
+            <SupportPage />
+          </ErrorBoundary>
+        }
+      />
+      <Route
+        path={ROUTES.DOWNLOAD_APP}
+        element={
+          <ErrorBoundary>
+            <DownloadAppPage />
+          </ErrorBoundary>
+        }
+      />
+      <Route
+        path={ROUTES.PRIVACY_POLICY}
+        element={
+          <ErrorBoundary>
+            <PrivacyPolicyPage />
+          </ErrorBoundary>
+        }
+      />
+      <Route
+        path={ROUTES.TERMS_AND_CONDITIONS}
+        element={
+          <ErrorBoundary>
+            <TermsAndConditionsPage />
+          </ErrorBoundary>
+        }
+      />
+    </Routes>
+  );
 }
 
 function App() {
   return (
     <ThemeProvider>
       <Router>
-        <ScrollToTop />
+        <ScrollManager />
         <div className="app">
           <Navbar />
-          <AnimatePresence mode="wait">
-            <Routes>
-            <Route
-              path={ROUTES.HOME}
-              element={
-                <ErrorBoundary>
-                  <Home />
-                </ErrorBoundary>
-              }
-            />
-
-            <Route
-              path={ROUTES.EV_SOLUTIONS}
-              element={
-                <ErrorBoundary>
-                  <EVSolutionsPage />
-                </ErrorBoundary>
-              }
-            />
-
-            <Route
-              path={ROUTES.PRODUCTS}
-              element={
-                <ErrorBoundary>
-                  <ProductsPage />
-                </ErrorBoundary>
-              }
-            />
-
-            <Route
-              path={ROUTES.ABOUT}
-              element={
-                <ErrorBoundary>
-                  <AboutPage />
-                </ErrorBoundary>
-              }
-            />
-
-            <Route
-              path={ROUTES.HELP_USER_GUIDE}
-              element={
-                <ErrorBoundary>
-                  <UserGuidePage />
-                </ErrorBoundary>
-              }
-            />
-
-            <Route
-              path={ROUTES.HELP_VIDEO_TUTORIALS}
-              element={
-                <ErrorBoundary>
-                  <VideoTutorialsPage />
-                </ErrorBoundary>
-              }
-            />
-
-            <Route
-              path={ROUTES.HELP_COMMUNITY_FORUM}
-              element={
-                <ErrorBoundary>
-                  <CommunityForumPage />
-                </ErrorBoundary>
-              }
-            />
-
-            <Route
-              path={ROUTES.SUPPORT}
-              element={
-                <ErrorBoundary>
-                  <SupportPage />
-                </ErrorBoundary>
-              }
-            />
-
-            <Route
-              path={ROUTES.DOWNLOAD_APP}
-              element={
-                <ErrorBoundary>
-                  <DownloadAppPage />
-                </ErrorBoundary>
-              }
-            />
-
-
-            <Route
-              path={ROUTES.PRIVACY_POLICY}
-              element={
-                <ErrorBoundary>
-                  <PrivacyPolicyPage />
-                </ErrorBoundary>
-              }
-            />
-
-            <Route
-              path={ROUTES.TERMS_AND_CONDITIONS}
-              element={
-                <ErrorBoundary>
-                  <TermsAndConditionsPage />
-                </ErrorBoundary>
-              }
-            />
-          </Routes>
-          </AnimatePresence>
+          <AppRoutes />
           <Footer />
         </div>
       </Router>

@@ -1,19 +1,33 @@
+/* Main section container */
 .section {
   position: relative;
   width: 100%;
 }
 
+/* Horizontal slider track */
+.track {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Single panel card */
 .panel {
   position: relative;
-  width: 100%;
+  flex: 0 0 100vw;
+  width: 100vw;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   will-change: transform, opacity;
+  backface-visibility: hidden;
 }
 
+/* Panel background image */
 .panelBgImage {
   position: absolute;
   inset: 0;
@@ -22,94 +36,136 @@
   object-fit: cover;
   object-position: center;
   z-index: 0;
-  image-rendering: auto;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
-
+/* Overlay gradient */
 .overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   z-index: 1;
 }
 
+/* Content wrapper inside panel */
 .panelContent {
-  text-align: center;
-  color: white;
-  padding: 2rem;
-  max-width: 800px;
+  position: relative;
   z-index: 2;
-}
-
-.icon {
-  font-size: 5rem;
-  margin-bottom: 1.5rem;
-  animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
+  text-align: center;
+  color: #fff;
+  padding: 2rem clamp(1.5rem, 6vw, 5rem);
+  max-width: 860px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1rem, 2.5vh, 2rem);
 }
 
 .title {
-  font-size: clamp(2rem, 5vw, 4rem);
+  font-size: clamp(2rem, 4.5vw, 4rem);
   font-weight: 800;
-  margin-bottom: 1.5rem;
-  text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
-  line-height: 1.2;
+  line-height: 1.15;
+  margin: 0;
+  text-shadow: 0 4px 32px rgba(0, 0, 0, 0.5);
+  letter-spacing: -0.01em;
 }
 
 .description {
-  font-size: clamp(1rem, 2vw, 1.5rem);
-  line-height: 1.6;
-  opacity: 0.95;
-  text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+  font-size: clamp(1rem, 1.8vw, 1.35rem);
+  line-height: 1.7;
+  opacity: 0.92;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0;
 }
 
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-  .panel {
-    height: auto;
-    min-height: 100vh;
-    padding: 4rem 1rem;
-  }
+/* Progress dots for active slide */
+.progressDots {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  margin-top: 0.5rem;
+}
 
-  .icon {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-  }
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.38);
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+  display: block;
+}
 
+.dotActive {
+  background: #fff;
+  transform: scale(1.45);
+}
+
+/* Tablet screen styles */
+@media (min-width: 769px) and (max-width: 1024px) {
   .title {
-    font-size: clamp(1.75rem, 6vw, 2.5rem);
-    margin-bottom: 1rem;
+    font-size: clamp(1.75rem, 3.5vw, 3rem);
   }
 
   .description {
-    font-size: clamp(0.95rem, 3vw, 1.25rem);
-  }
-
-  .panelContent {
-    padding: 1rem;
+    font-size: clamp(0.95rem, 1.6vw, 1.15rem);
   }
 }
 
-@media (max-width: 480px) {
-  .panel {
-    min-height: 80vh;
-    padding: 3rem 0.75rem;
+/* Mobile screen styles */
+@media (max-width: 768px) {
+  .track {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    transform: none !important;
   }
 
-  .icon {
-    font-size: 3rem;
+  .panel {
+    flex: none;
+    width: 100%;
+    height: auto;
+    min-height: 100svh;
+    padding: 5rem 1.5rem;
+    opacity: 1;
+  }
+
+  .panelContent {
+    gap: 1.25rem;
+    padding: 1rem;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .title {
+    font-size: clamp(1.75rem, 6vw, 2.75rem);
+  }
+
+  .description {
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
+  }
+
+  .progressDots {
+    display: none;
+  }
+}
+
+/* Small mobile screen styles */
+@media (max-width: 480px) {
+  .panel {
+    min-height: 80svh;
+    padding: 4rem 1rem;
+  }
+
+  .title {
+    font-size: clamp(1.5rem, 7vw, 2rem);
+    line-height: 1.2;
+  }
+
+  .description {
+    font-size: 0.9rem;
   }
 }

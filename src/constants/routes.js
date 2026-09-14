@@ -20,9 +20,9 @@ export const NAV_ITEMS = [
   { name: "About", path: ROUTES.ABOUT, translationKey: "about" },
   {
     name: "EV Solutions",
-    path: "/ev-solutions",
+    path: ROUTES.EV_SOLUTIONS,
     translationKey: "evSolutions",
   },
-  { name: "Products", path: "/products", translationKey: "products" },
-  { name: "Support", path: "/support", translationKey: "support" },
+  { name: "Products", path: ROUTES.PRODUCTS, translationKey: "products" },
+  { name: "Support", path: ROUTES.SUPPORT, translationKey: "support" },
 ];
