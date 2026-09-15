@@ -93,11 +93,22 @@
 }
 
 .description {
-  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
-  line-height: 1.75;
+  font-size: clamp(1rem, 1.8vw, 1.18rem);
+  line-height: 1.8;
   color: #000000;
   max-width: 680px;
   font-weight: 400;
+  padding: 1.25rem 1.6rem;
+  background: rgba(255, 255, 255, 0.756);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  border-radius: 16px;
+  border: 1px solid rgba(45, 90, 61, 0.18);
+  border-inline-start: 4px solid #2D5A3D;
+  box-shadow:
+    0 8px 30px rgba(45, 90, 61, 0.08),
+    inset 0 0 15px rgba(255, 255, 255, 0.6);
+  transition: all 0.2s ease;
 }
 
 .rightContent {
@@ -320,6 +331,11 @@
     gap: 1.5rem;
   }
 
+  .description {
+    padding: 1rem 1.15rem;
+    border-radius: 14px;
+  }
+
   .statCard {
     padding: 1.25rem 1.1rem;
     gap: 1rem;
@@ -376,7 +392,13 @@
 }
 
 :global(html[data-theme="dark"]) .description {
-  color: rgba(228, 237, 240, 0.85);
+  color: rgba(240, 248, 243, 0.95);
+  background: rgba(17, 24, 21, 0.75);
+  border-color: rgba(106, 184, 122, 0.2);
+  border-inline-start-color: var(--color-secondary);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 0 15px rgba(106, 184, 122, 0.05);
 }
 
 :global(html[data-theme="dark"]) .statCard {

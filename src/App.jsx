@@ -42,21 +42,17 @@ function ScrollManager() {
     ScrollTrigger.getAll().forEach((st) => st.kill());
     ScrollTrigger.clearScrollMemory();
 
-    // 2. Reset any GSAP-applied inline styles on the body/html
+    // Reset styles that GSAP pins might have written to body/html
     gsap.set("body", { clearProps: "all" });
     gsap.set("html", { clearProps: "all" });
 
-    // 3. Reset scroll position instantly (before paint)
+    // 2. Reset scroll position instantly (before paint)
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
 
-    // 4. Let ScrollTrigger recalculate after the new page mounts
-    const raf = requestAnimationFrame(() => {
-      ScrollTrigger.refresh(true);
-    });
-
-    return () => cancelAnimationFrame(raf);
+    // 3. Let ScrollTrigger recalculate layout for the new page
+    ScrollTrigger.refresh(true);
   }, [pathname]);
 
   return null;

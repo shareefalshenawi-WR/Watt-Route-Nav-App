@@ -167,15 +167,14 @@ const MobileAppIcon = () => (
 const EVSolutions = () => {
   const { t } = useTranslation();
 
-  // Smooth title
   const titleAnimation = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       y: 30,
       scale: 0.95
     },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       scale: 1,
       transition: {
@@ -184,7 +183,6 @@ const EVSolutions = () => {
       }
     }
   };
-
 
   const solutions = [
     {
@@ -231,8 +229,6 @@ const EVSolutions = () => {
     },
   ];
 
-
-
   return (
     <section className={styles.section} id="ev-solutions">
       <div className={styles.container}>
@@ -243,7 +239,7 @@ const EVSolutions = () => {
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <motion.h2 
+          <motion.h2
             className={styles.title}
             variants={titleAnimation}
             initial="hidden"
@@ -267,7 +263,6 @@ const EVSolutions = () => {
             return (
               <motion.div key={solution.id} variants={fadeInUp} className={styles.cardWrapper}>
                 <div className={styles.card}>
-
                   <img
                     className={styles.cardBgImage}
                     src={solution.bgImage}

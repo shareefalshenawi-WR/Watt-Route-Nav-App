@@ -11,17 +11,33 @@ export const useWindowSize = () => {
   });
 
   useEffect(() => {
+    let timeoutId = null;
+
     const handleResize = () => {
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
+      // Debounce 150ms to avoid firing on every resize pixel
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+        // Only update state when values actually changed
+        setWindowSize((prev) =>
+          prev.width !== w || prev.height !== h ? { width: w, height: h } : prev
+        );
+      }, 150);
     };
 
     window.addEventListener("resize", handleResize, { passive: true });
-    handleResize(); // Set initial size
+    // Set initial size immediately (no debounce needed on mount)
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    setWindowSize((prev) =>
+      prev.width !== w || prev.height !== h ? { width: w, height: h } : prev
+    );
 
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   return windowSize;

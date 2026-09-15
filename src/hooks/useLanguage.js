@@ -2,8 +2,8 @@ import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
 
 /**
- * Custom hook for managing language selection with localStorage persistence
- * Also handles RTL support for Arabic
+ * Custom hook for managing language selection with localStorage persistence.
+ * Also handles RTL support for Arabic by setting html[dir] and html[lang].
  */
 export const useLanguage = () => {
   const { i18n } = useTranslation();
@@ -13,7 +13,7 @@ export const useLanguage = () => {
     const currentLanguage = i18n.language;
     const isArabic = currentLanguage === "ar";
 
-    // Update document direction
+    // Update document direction — this triggers the CSS [dir="rtl"] rules
     document.documentElement.dir = isArabic ? "rtl" : "ltr";
     document.documentElement.lang = currentLanguage;
     document.body.setAttribute("data-language", currentLanguage);

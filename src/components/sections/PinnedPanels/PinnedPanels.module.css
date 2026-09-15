@@ -1,7 +1,13 @@
-/* Main section container */
+/* Main section container
+   direction: ltr is CRITICAL here.
+   When Arabic (RTL) is active, the browser flips the flexbox row direction,
+   which reverses the panels and breaks GSAP's xPercent animation. By locking
+   the section, track, and panel to LTR, the physical layout stays left-to-right
+   for GSAP while Arabic text inside .panelContent is rendered RTL via its own rule. */
 .section {
   position: relative;
   width: 100%;
+  direction: ltr;
 }
 
 /* Horizontal slider track */
@@ -11,6 +17,7 @@
   height: 100vh;
   will-change: transform;
   transform: translateZ(0);
+  direction: ltr;
 }
 
 /* Single panel card */
@@ -25,6 +32,7 @@
   overflow: hidden;
   will-change: transform, opacity;
   backface-visibility: hidden;
+  direction: ltr;
 }
 
 /* Panel background image */
@@ -47,7 +55,7 @@
   z-index: 1;
 }
 
-/* Content wrapper inside panel */
+/* Content wrapper inside panel — always centered regardless of language */
 .panelContent {
   position: relative;
   z-index: 2;
@@ -60,6 +68,14 @@
   flex-direction: column;
   align-items: center;
   gap: clamp(1rem, 2.5vh, 2rem);
+  /* Re-enable RTL for text rendering inside the panel */
+  direction: inherit;
+}
+
+/* In Arabic mode, restore RTL text direction inside the content box only */
+:global(html[dir="rtl"]) .panelContent {
+  direction: rtl;
+  text-align: center;
 }
 
 .title {
@@ -72,20 +88,22 @@
 }
 
 .description {
-  font-size: clamp(1rem, 1.8vw, 1.35rem);
+  font-size: clamp(1rem, 2vw, 1.35rem);
   line-height: 1.7;
-  opacity: 0.92;
+  color: rgba(255, 255, 255, 0.92);
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
   max-width: 600px;
   margin: 0;
 }
 
-/* Progress dots for active slide */
+/* Progress dots — always LTR regardless of language */
 .progressDots {
   display: flex;
+  flex-direction: row;
   gap: 0.6rem;
   align-items: center;
   margin-top: 0.5rem;
+  direction: ltr;
 }
 
 .dot {

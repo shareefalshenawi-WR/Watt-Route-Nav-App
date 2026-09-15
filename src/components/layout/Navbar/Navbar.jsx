@@ -48,7 +48,6 @@ const Navbar = () => {
       : "transparent"
     : "scrolled";
 
-  // Map nav items to translation keys
   const translatedNavItems = NAV_ITEMS.map((item) => ({
     ...item,
     translatedName: t(`navbar.${item.translationKey}`),
@@ -104,62 +103,66 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* CTA Button */}
-        <Link to={ROUTES.DOWNLOAD_APP} className={styles.ctaButtonLink}>
-          <Button variant="secondary" className={styles.ctaButton}>
-            {t("navbar.downloadApp")}
-          </Button>
-        </Link>
+        {/* Right Actions: CTA, Language Switcher, Theme Toggle, Mobile Menu */}
+        <div className={styles.rightActions}>
+          {/* CTA Button */}
+          <Link to={ROUTES.DOWNLOAD_APP} className={styles.ctaButtonLink}>
+            <Button variant="secondary" className={styles.ctaButton}>
+              {t("navbar.downloadApp")}
+            </Button>
+          </Link>
 
-        {/* Language Switcher */}
-        <div className={styles.languageSwitcher}>
+          {/* Language Switcher */}
+          <div className={styles.languageSwitcher}>
+            <button
+              onClick={() => changeLanguage("en")}
+              className={`${styles.langButton} ${
+                currentLanguage === "en" ? styles.active : ""
+              }`}
+              aria-label="Switch to English"
+              title="English"
+            >
+              EN
+            </button>
+            <span className={styles.langSeparator}>|</span>
+            <button
+              onClick={() => changeLanguage("ar")}
+              className={`${styles.langButton} ${
+                currentLanguage === "ar" ? styles.active : ""
+              }`}
+              aria-label="Switch to Arabic"
+              title="العربية"
+            >
+              AR
+            </button>
+          </div>
+
+          {/* Dark Mode Toggle */}
           <button
-            onClick={() => changeLanguage("en")}
-            className={`${styles.langButton} ${
-              currentLanguage === "en" ? styles.active : ""
+            className={`${styles.themeToggle} ${
+              navbarState === "scrolled" ? styles.themeToggleScrolled : ""
             }`}
-            aria-label="Switch to English"
-            title="English"
+            onClick={toggleTheme}
+            aria-label={isDark ? t("navbar.lightMode") : t("navbar.darkMode")}
+            title={isDark ? t("navbar.lightMode") : t("navbar.darkMode")}
           >
-            EN
+            {isDark ? <SunIcon /> : <MoonIcon />}
           </button>
-          <span className={styles.langSeparator}>|</span>
+
+          {/* Mobile Menu Toggle */}
           <button
-            onClick={() => changeLanguage("ar")}
-            className={`${styles.langButton} ${
-              currentLanguage === "ar" ? styles.active : ""
-            }`}
-            aria-label="Switch to Arabic"
-            title="العربية"
+            className={styles.menuToggle}
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+            aria-expanded={menuOpen}
           >
-            AR
+            <span
+              className={`${styles.burger} ${menuOpen ? styles.open : ""} ${
+                navbarState === "scrolled" ? styles.burgerScrolled : ""
+              }`}
+            ></span>
           </button>
         </div>
-
-        {/* Dark Mode Toggle */}
-        <button
-          className={`${styles.themeToggle} ${
-            navbarState === "scrolled" ? styles.themeToggleScrolled : ""
-          }`}
-          onClick={toggleTheme}
-          aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-          title={isDark ? "Light mode" : "Dark mode"}
-        >
-          {isDark ? <SunIcon /> : <MoonIcon />}
-        </button>
-
-        {/* Mobile Menu Toggle */}
-        <button
-          className={styles.menuToggle}
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-        >
-          <span
-            className={`${styles.burger} ${menuOpen ? styles.open : ""} ${
-              navbarState === "scrolled" ? styles.burgerScrolled : ""
-            }`}
-          ></span>
-        </button>
       </div>
 
       {/* Mobile Menu */}
@@ -169,6 +172,7 @@ const Navbar = () => {
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}
+          transition={{ duration: 0.3 }}
         >
           {translatedNavItems.map((item) => (
             <Link
@@ -226,10 +230,10 @@ const Navbar = () => {
               toggleTheme();
               setMenuOpen(false);
             }}
-            aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+            aria-label={isDark ? t("navbar.lightMode") : t("navbar.darkMode")}
           >
             {isDark ? <SunIcon /> : <MoonIcon />}
-            <span>{isDark ? "Light Mode" : "Dark Mode"}</span>
+            <span>{isDark ? t("navbar.lightMode") : t("navbar.darkMode")}</span>
           </button>
         </motion.div>
       )}

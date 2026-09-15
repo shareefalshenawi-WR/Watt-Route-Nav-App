@@ -148,21 +148,24 @@
 /* ── Feature Chips ───────────────────────────── */
 .featuresGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.6rem;
-  margin-bottom: 2.5rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin-bottom: 2.25rem;
+  width: 100%;
 }
 
 .featureChip {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.75rem 1rem;
+  padding: 0.65rem 0.85rem;
   background: #e8e5df;
   border: 1px solid #c8c4bc;
   border-radius: 12px;
   transition: all 0.22s ease;
   cursor: default;
+  min-width: 0;
+  text-align: start;
 }
 
 .featureChip:hover {
@@ -173,17 +176,24 @@
 }
 
 .featureIcon {
-  width: 45px;
-  height: 45px;
+  width: 36px;
+  height: 36px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: rgba(45, 90, 61, 0.08);
+  border-radius: 9px;
+  transition: background 0.2s ease;
+}
+
+.featureChip:hover .featureIcon {
+  background: rgba(45, 90, 61, 0.15);
 }
 
 .featureIconImg {
-  width: 42px;
-  height: 42px;
+  width: 22px;
+  height: 22px;
   object-fit: contain;
   display: block;
 }
@@ -192,15 +202,18 @@
   font-size: 0.85rem;
   font-weight: 600;
   color: #1a1a1a;
+  line-height: 1.3;
+  text-align: start;
+  word-break: break-word;
 }
 
 /* ── CTA Button ──────────────────────────────── */
 .ctaButton {
   display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 1rem 1.5rem;
+  justify-content: center;
+  text-align: center;
+  padding: 0.95rem 2rem;
   background: #2d5a3d;
   color: #fff;
   border-radius: 14px;
@@ -212,7 +225,7 @@
   position: relative;
   overflow: hidden;
   width: fit-content;
-  min-width: 260px;
+  min-width: 240px;
   box-shadow: 0 4px 20px rgba(45, 90, 61, 0.3);
 }
 
@@ -244,21 +257,9 @@
 .ctaButtonInner {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-}
-
-.ctaIcon {
-  font-size: 1.15rem;
-}
-
-.ctaArrow {
-  font-size: 1.2rem;
-  font-weight: 700;
-  transition: transform 0.2s ease;
-}
-
-.ctaButton:hover .ctaArrow {
-  transform: translateX(4px);
+  justify-content: center;
+  text-align: center;
+  width: 100%;
 }
 
 .ctaSubtext {
@@ -493,6 +494,7 @@
   justify-content: center;
   gap: 0;
   width: 100%;
+  direction: ltr;
 }
 
 /* Arrow buttons — hidden on desktop, shown on mobile */
@@ -527,212 +529,17 @@
   transform: scale(0.92);
 }
 
-.appContent {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: 0.5rem 0.75rem 0;
-  gap: 0.5rem;
-  overflow: hidden;
-}
-
-.appMapArea {
-  flex: 1;
-  background: #dce8dc;
-  border-radius: 12px;
-  position: relative;
-  overflow: hidden;
-  min-height: 110px;
-}
-
-.appMapPin {
-  position: absolute;
-  top: 22px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 1.3rem;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-}
-
-.appMapLine {
-  position: absolute;
-  top: 40%;
-  left: 10%;
-  right: 10%;
-  height: 2px;
-  background: rgba(45, 90, 61, 0.3);
-  border-radius: 1px;
-}
-
-.appMapLine2 {
-  position: absolute;
-  top: 55%;
-  left: 15%;
-  right: 25%;
-  height: 2px;
-  background: rgba(45, 90, 61, 0.2);
-  border-radius: 1px;
-}
-
-.appMapStation {
-  position: absolute;
-  bottom: 14px;
-  right: 20px;
-  font-size: 1.1rem;
-  background: #fff;
-  border-radius: 50%;
-  width: 28px;
-  height: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-
-.appCard {
-  background: #fff;
-  border-radius: 12px;
-  padding: 0.6rem 0.75rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-}
-
-.appCardTitle {
-  font-size: 0.6rem;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin-bottom: 0.4rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.appCardRow {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-bottom: 0.3rem;
-}
-
-.appCardDot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #2d5a3d;
-  flex-shrink: 0;
-}
-
-.appCardDotBusy {
-  background: #d97706;
-}
-
-.appCardText {
-  font-size: 0.58rem;
-  color: #3a3a3a;
-  flex: 1;
-}
-
-.appCardBadge {
-  font-size: 0.5rem;
-  font-weight: 700;
-  background: rgba(45, 90, 61, 0.12);
-  color: #2d5a3d;
-  padding: 0.15rem 0.45rem;
-  border-radius: 999px;
-  white-space: nowrap;
-}
-
-.appCardBadgeBusy {
-  background: rgba(217, 119, 6, 0.12);
-  color: #d97706;
-}
-
-.appNav {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 0.5rem 0.25rem;
-  background: #fff;
-  border-radius: 12px;
-  font-size: 1rem;
-  margin-bottom: 0.35rem;
-  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.04);
-}
-
-.appNavActive {
-  background: #2d5a3d;
-  border-radius: 8px;
-  padding: 0.2rem 0.45rem;
-  font-size: 0.85rem;
-}
-
-.floatingBadge {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  background: #fff;
-  border: 1px solid #c8c4bc;
-  border-radius: 12px;
-  padding: 0.5rem 0.85rem;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: #1a1a1a;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  white-space: nowrap;
-  z-index: 5;
-}
-
-.floatingBadgeIcon {
-  font-size: 1rem;
-}
-
-.badge1 {
-  top: 8%;
-  left: -2%;
-  animation: floatBadge1 5s ease-in-out infinite;
-}
-
-.badge2 {
-  top: 38%;
-  right: -4%;
-  animation: floatBadge2 6s ease-in-out infinite;
-}
-
-.badge3 {
-  bottom: 14%;
-  left: -4%;
-  animation: floatBadge1 7s ease-in-out infinite reverse;
-}
-
-@keyframes floatBadge1 {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
-@keyframes floatBadge2 {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(8px);
-  }
-}
 
 /* Responsive */
 @media (max-width: 1024px) {
   .productLayout {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2.5rem;
   }
 
   .mockupWrapper {
     order: -1;
-    padding: 2rem 2rem 3.5rem;
+    padding: 1.5rem 1rem 2.5rem;
   }
 
   .infoBlock {
@@ -741,7 +548,30 @@
   }
 
   .featuresGrid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: 680px;
+    margin: 0 auto 2rem;
+    gap: 0.6rem;
+  }
+
+  .featureChip {
+    padding: 0.6rem 0.75rem;
+    gap: 0.6rem;
+  }
+
+  .featureIcon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+  }
+
+  .featureIconImg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .featureLabel {
+    font-size: 0.82rem;
   }
 
   .floatingBadge {
@@ -751,7 +581,7 @@
 
 @media (max-width: 768px) {
   .section {
-    padding: 4rem 0 5rem;
+    padding: 3.5rem 0 4.5rem;
   }
 
   .container {
@@ -759,16 +589,88 @@
   }
 
   .header {
-    margin-bottom: 3rem;
+    margin-bottom: 2.25rem;
   }
 
-  .featuresGrid {
-    grid-template-columns: repeat(2, 1fr);
+  .mockupWrapper {
+    padding: 0.75rem 0 1.75rem;
+  }
+
+  .navWrapper {
+    gap: 0.75rem;
+  }
+
+  /* arrows on mobile */
+  .sliderArrow {
+    display: flex;
+    margin: 0;
+    width: 38px;
+    height: 38px;
+  }
+
+  .sliderArrow svg {
+    width: 18px;
+    height: 18px;
   }
 
   .iphoneFrame {
-    width: 210px;
-    height: 428px;
+    width: 185px;
+    height: 375px;
+    border-radius: 34px;
+    padding: 10px 7px 7px;
+  }
+
+  .iphoneNotch {
+    width: 62px;
+    height: 17px;
+    top: 10px;
+  }
+
+  .iphoneScreen {
+    border-radius: 26px;
+  }
+
+  .sliderDots {
+    bottom: 18px;
+    gap: 6px;
+  }
+
+  .sliderDot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .mockupGlow {
+    width: 240px;
+    height: 240px;
+  }
+
+  .featuresGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 480px;
+    gap: 0.5rem;
+    margin: 0 auto 1.75rem;
+  }
+
+  .featureChip {
+    padding: 0.55rem 0.7rem;
+    gap: 0.55rem;
+    border-radius: 10px;
+  }
+
+  .featureIcon {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+  }
+
+  .featureIconImg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .featureLabel {
+    font-size: 0.78rem;
   }
 
   .badge1 {
@@ -791,38 +693,217 @@
   }
 
   .ctaButton {
-    width: 65%;
+    width: 100%;
+    max-width: 300px;
     min-width: unset;
-  }
-
-  /* arrows on mobile */
-  .sliderArrow {
-    display: flex;
-    margin: 0 1rem;
-  }
-
-  .sliderDots {
-    display: none;
+    padding: 0.85rem 1.5rem;
+    font-size: 0.95rem;
   }
 }
 
 @media (max-width: 480px) {
-  .featuresGrid {
-    grid-template-columns: 1fr 1fr;
+  .section {
+    padding: 2.75rem 0 3.5rem;
+  }
+
+  .header {
+    margin-bottom: 1.75rem;
+  }
+
+  .mockupWrapper {
+    padding: 0.5rem 0 1.25rem;
+  }
+
+  .navWrapper {
+    gap: 0.5rem;
+  }
+
+  .sliderArrow {
+    width: 34px;
+    height: 34px;
+  }
+
+  .sliderArrow svg {
+    width: 16px;
+    height: 16px;
   }
 
   .iphoneFrame {
-    width: 190px;
-    height: 388px;
+    width: 160px;
+    height: 326px;
+    border-radius: 28px;
+    padding: 8px 6px 6px;
+  }
+
+  .iphoneNotch {
+    width: 52px;
+    height: 14px;
+    top: 8px;
+  }
+
+  .iphoneScreen {
+    border-radius: 22px;
+  }
+
+  .iphoneSideLeft {
+    top: 70px;
+    gap: 6px;
+  }
+
+  .iphoneButton {
+    width: 2px;
+    height: 20px;
+  }
+
+  .iphoneSideRight {
+    top: 78px;
+  }
+
+  .iphoneButtonRight {
+    width: 2px;
+    height: 36px;
+  }
+
+  .iphoneBottom {
+    bottom: 5px;
+  }
+
+  .iphoneHomeBar {
+    width: 48px;
+    height: 3px;
+  }
+
+  .sliderDots {
+    bottom: 14px;
+    gap: 5px;
+  }
+
+  .sliderDot {
+    width: 5px;
+    height: 5px;
+  }
+
+  .mockupGlow {
+    width: 180px;
+    height: 180px;
+  }
+
+  .featuresGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.45rem;
+    max-width: 100%;
+    margin: 0 auto 1.5rem;
+  }
+
+  .featureChip {
+    padding: 0.45rem 0.55rem;
+    gap: 0.45rem;
+    border-radius: 9px;
+    min-height: 46px;
+  }
+
+  .featureIcon {
+    width: 26px;
+    height: 26px;
+    border-radius: 7px;
+  }
+
+  .featureIconImg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .featureLabel {
+    font-size: 0.74rem;
+    line-height: 1.2;
+  }
+
+  .ctaButton {
+    width: 100%;
+    max-width: 270px;
+    padding: 0.8rem 1.25rem;
+    font-size: 0.9rem;
   }
 
   .floatingBadge {
     display: none;
   }
+}
+
+@media (max-width: 360px) {
+  .navWrapper {
+    gap: 0.35rem;
+  }
+
+  .sliderArrow {
+    width: 30px;
+    height: 30px;
+  }
+
+  .sliderArrow svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .iphoneFrame {
+    width: 140px;
+    height: 285px;
+    border-radius: 24px;
+    padding: 7px 5px 5px;
+  }
+
+  .iphoneNotch {
+    width: 44px;
+    height: 12px;
+    top: 7px;
+  }
+
+  .iphoneScreen {
+    border-radius: 18px;
+  }
+
+  .iphoneHomeBar {
+    width: 40px;
+    height: 3px;
+  }
 
   .mockupGlow {
-    width: 260px;
-    height: 260px;
+    width: 150px;
+    height: 150px;
+  }
+
+  .featuresGrid {
+    gap: 0.35rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .featureChip {
+    padding: 0.4rem 0.45rem;
+    gap: 0.35rem;
+    border-radius: 8px;
+    min-height: 42px;
+  }
+
+  .featureIcon {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+  }
+
+  .featureIconImg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .featureLabel {
+    font-size: 0.68rem;
+    line-height: 1.15;
+  }
+
+  .ctaButton {
+    max-width: 230px;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
   }
 }
 
@@ -896,6 +977,14 @@
   box-shadow: 0 4px 16px rgba(106, 184, 122, 0.12);
 }
 
+:global(html[data-theme="dark"]) .featureIcon {
+  background: rgba(106, 184, 122, 0.1);
+}
+
+:global(html[data-theme="dark"]) .featureChip:hover .featureIcon {
+  background: rgba(106, 184, 122, 0.2);
+}
+
 :global(html[data-theme="dark"]) .featureIconImg {
   filter: brightness(0) invert(0.9);
 }
@@ -916,30 +1005,6 @@
 
 :global(html[data-theme="dark"]) .iphoneScreen {
   background: #0a0d0f;
-}
-
-:global(html[data-theme="dark"]) .appCard {
-  background: #171d20;
-}
-
-:global(html[data-theme="dark"]) .appCardTitle {
-  color: var(--color-text);
-}
-
-:global(html[data-theme="dark"]) .appCardText {
-  color: var(--color-text-muted);
-}
-
-:global(html[data-theme="dark"]) .appMapArea {
-  background: #1a2526;
-}
-
-:global(html[data-theme="dark"]) .appNav {
-  background: #171d20;
-}
-
-:global(html[data-theme="dark"]) .appMapStation {
-  background: #1d2528;
 }
 
 :global(html[data-theme="dark"]) .mockupGlow {

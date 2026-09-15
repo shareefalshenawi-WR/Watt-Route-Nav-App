@@ -33,6 +33,7 @@ const domevFeatures = [
 const Products = () => {
   const { t } = useTranslation();
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [touchStart, setTouchStart] = useState(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -44,6 +45,22 @@ const Products = () => {
   const goNext = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
   const goPrev = () =>
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = (e) => {
+    if (touchStart === null) return;
+    const touchEnd = e.changedTouches[0].clientX;
+    const diff = touchStart - touchEnd;
+    if (diff > 40) {
+      goNext();
+    } else if (diff < -40) {
+      goPrev();
+    }
+    setTouchStart(null);
+  };
 
   return (
     <section className={styles.section} id="products">
@@ -120,10 +137,8 @@ const Products = () => {
               id="domev-register-interest-btn"
             >
               <span className={styles.ctaButtonInner}>
-                <span className={styles.ctaIcon}></span>
                 {t("products.ctaButton")}
               </span>
-              <span className={styles.ctaArrow}>→</span>
             </a>
 
             <p className={styles.ctaSubtext}>{t("products.ctaSubtext")}</p>
@@ -177,7 +192,11 @@ const Products = () => {
                   <div className={styles.iphoneNotch} />
 
                   {/* Screen Content */}
-                  <div className={styles.iphoneScreen}>
+                  <div
+                    className={styles.iphoneScreen}
+                    onTouchStart={handleTouchStart}
+                    onTouchEnd={handleTouchEnd}
+                  >
                     <AnimatePresence mode="wait">
                       <motion.img
                         key={currentSlide}

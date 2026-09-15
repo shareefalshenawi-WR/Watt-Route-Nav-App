@@ -9,6 +9,33 @@ gsap.registerPlugin(ScrollTrigger);
 const sharedGradient =
   "linear-gradient(135deg, rgba(30, 69, 82, 0.82) 0%, rgba(30, 69, 82, 0.82) 35%, rgba(42, 94, 110, 0.82) 60%, rgba(54, 98, 98, 0.82) 85%, rgba(54, 98, 98, 0.82) 100%)";
 
+const panels = [
+  {
+    id: 1,
+    titleKey: "pinnedPanels.panel1.title",
+    descKey: "pinnedPanels.panel1.desc",
+    backgroundImage: "/images/panels/panelfour.webp",
+  },
+  {
+    id: 2,
+    titleKey: "pinnedPanels.panel2.title",
+    descKey: "pinnedPanels.panel2.desc",
+    backgroundImage: "/images/panels/panelone.webp",
+  },
+  {
+    id: 3,
+    titleKey: "pinnedPanels.panel3.title",
+    descKey: "pinnedPanels.panel3.desc",
+    backgroundImage: "/images/panels/paneltwo.webp",
+  },
+  {
+    id: 4,
+    titleKey: "pinnedPanels.panel4.title",
+    descKey: "pinnedPanels.panel4.desc",
+    backgroundImage: "/images/panels/panelthree.webp",
+  },
+];
+
 // Pinned panels component for feature slides
 const PinnedPanels = () => {
   const { t } = useTranslation();
@@ -17,39 +44,11 @@ const PinnedPanels = () => {
   const panelsRef = useRef([]);
   const contentRefs = useRef([]);
 
-  // 4 panels
-  const panels = [
-    {
-      id: 1,
-      titleKey: "pinnedPanels.panel1.title",
-      descKey: "pinnedPanels.panel1.desc",
-      backgroundImage: "/images/panels/panelfour.webp",
-    },
-    {
-      id: 2,
-      titleKey: "pinnedPanels.panel2.title",
-      descKey: "pinnedPanels.panel2.desc",
-      backgroundImage: "/images/panels/panelone.webp",
-    },
-    {
-      id: 3,
-      titleKey: "pinnedPanels.panel3.title",
-      descKey: "pinnedPanels.panel3.desc",
-      backgroundImage: "/images/panels/paneltwo.webp",
-    },
-    {
-      id: 4,
-      titleKey: "pinnedPanels.panel4.title",
-      descKey: "pinnedPanels.panel4.desc",
-      backgroundImage: "/images/panels/panelthree.webp",
-    },
-  ];
-
   useLayoutEffect(() => {
     const container = containerRef.current;
     const track = trackRef.current;
-    const panelEls = panelsRef.current.filter(Boolean);
-    const contentEls = contentRefs.current.filter(Boolean);
+    const panelEls = panelsRef.current.slice(0, panels.length).filter(Boolean);
+    const contentEls = contentRefs.current.slice(0, panels.length).filter(Boolean);
 
     if (!container || !track || panelEls.length === 0) return;
 
@@ -80,24 +79,29 @@ const PinnedPanels = () => {
           onUpdate(self) {
             const activeIndex = Math.round(self.progress * (totalPanels - 1));
             contentEls.forEach((el, i) => {
-              const isActive = i === activeIndex;
-              const alreadySet = el.dataset.active === String(isActive);
-              if (!alreadySet) {
+              if (i === activeIndex) {
                 gsap.to(el, {
-                  opacity: isActive ? 1 : 0,
-                  y: isActive ? 0 : i < activeIndex ? -50 : 50,
+                  opacity: 1,
+                  y: 0,
                   duration: 0.45,
-                  ease: isActive ? "power2.out" : "power2.in",
+                  ease: "power2.out",
                   overwrite: "auto",
                 });
-                el.dataset.active = String(isActive);
+              } else {
+                gsap.to(el, {
+                  opacity: 0,
+                  y: i < activeIndex ? -50 : 50,
+                  duration: 0.45,
+                  ease: "power2.in",
+                  overwrite: "auto",
+                });
               }
             });
           },
         },
       });
 
-      // Move track horizontally left
+      // Move track horizontally - always LTR regardless of document direction
       tl.to(track, {
         xPercent: -((totalPanels - 1) * 100),
         ease: "none",
@@ -106,44 +110,36 @@ const PinnedPanels = () => {
       return () => {
         tl.kill();
         gsap.set(track, { clearProps: "xPercent" });
-        contentEls.forEach((el) => {
-          gsap.set(el, { clearProps: "opacity,y" });
-          delete el.dataset.active;
-        });
+        contentEls.forEach((el) => gsap.set(el, { clearProps: "opacity,y" }));
       };
     });
 
-    // Mobile vertical scroll animation
+    // Mobile vertical scroll setup
     mm.add("(max-width: 768px)", () => {
-      gsap.set(track, { clearProps: "xPercent,transform" });
+      gsap.set(track, { clearProps: "xPercent" });
+      panelEls.forEach((p) => gsap.set(p, { clearProps: "all" }));
+      contentEls.forEach((el) => gsap.set(el, { clearProps: "opacity,y" }));
 
-      contentEls.forEach((el) => {
-        gsap.set(el, { opacity: 1, y: 0 });
-      });
+      panelEls.forEach((panel, i) => {
+        const content = contentEls[i];
+        if (!content) return;
 
-      // Fade up panels one by one on scroll
-      panelEls.forEach((panel) => {
         gsap.fromTo(
-          panel,
-          { opacity: 0, y: 60 },
+          content,
+          { opacity: 0, y: 40 },
           {
             opacity: 1,
             y: 0,
-            duration: 1,
+            duration: 0.8,
             ease: "power2.out",
             scrollTrigger: {
               trigger: panel,
-              start: "top 88%",
-              end: "top 30%",
+              start: "top 80%",
               toggleActions: "play none none reverse",
             },
-          },
+          }
         );
       });
-
-      return () => {
-        panelEls.forEach((p) => gsap.set(p, { clearProps: "opacity,y" }));
-      };
     });
 
     ScrollTrigger.refresh();
@@ -151,10 +147,13 @@ const PinnedPanels = () => {
     return () => {
       mm.revert();
     };
+    // Empty deps: GSAP runs once per mount. Language changes trigger a full
+    // remount via the key prop set on <PinnedPanels> in Home/index.jsx.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <section className={styles.section} ref={containerRef}>
+    <section className={styles.section} id="pinned-panels" ref={containerRef}>
       <div className={styles.track} ref={trackRef}>
         {panels.map((panel, index) => (
           <div

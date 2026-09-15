@@ -124,7 +124,7 @@ const Hero = () => {
             alt="EV Charging Stations"
             className={styles.bgImage}
             fetchPriority="high"
-            decoding="sync"
+            decoding="async"
             loading="eager"
             width="1920"
             height="1080"

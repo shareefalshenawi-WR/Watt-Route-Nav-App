@@ -109,12 +109,18 @@
   color: var(--color-secondary);
 }
 
+.rightActions {
+  display: flex;
+  align-items: center;
+  gap: 1.9rem;
+  z-index: 1001;
+}
+
 .ctaButton {
   white-space: nowrap;
 }
 
 .ctaButtonLink {
-  margin-left: 1rem;
   text-decoration: none;
   display: inline-block;
 }
@@ -123,7 +129,6 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-left: 1.5rem;
   padding: 0.5rem 0;
 }
 
@@ -175,17 +180,47 @@
 
 .menuToggle {
   display: none;
-  background: none;
-  border: none;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 0;
+  flex-shrink: 0;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 1001;
-  
+}
+
+.menuToggle:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: scale(1.05);
+}
+
+.menuToggle:active {
+  transform: scale(0.95);
+}
+
+.scrolled .menuToggle {
+  background: rgba(30, 69, 82, 0.08);
+  border-color: rgba(30, 69, 82, 0.18);
+  box-shadow: 0 2px 6px rgba(30, 69, 82, 0.05);
+}
+
+.scrolled .menuToggle:hover {
+  background: rgba(30, 69, 82, 0.14);
+  border-color: var(--color-secondary);
 }
 
 .burger {
   display: block;
-  width: 25px;
+  width: 18px;
   height: 2px;
   position: relative;
   transition: all var(--transition-normal);
@@ -202,11 +237,12 @@
 .burger::after {
   content: "";
   position: absolute;
-  width: 25px;
+  width: 18px;
   height: 2px;
   transition: all var(--transition-normal);
   background: white;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  left: 0;
 }
 
 .burgerScrolled::before,
@@ -216,15 +252,16 @@
 }
 
 .burger::before {
-  top: -8px;
+  top: -6px;
 }
 
 .burger::after {
-  bottom: -8px;
+  bottom: -6px;
 }
 
 .burger.open {
   background: transparent;
+  box-shadow: none;
 }
 
 .burger.open::before {
@@ -261,7 +298,11 @@
   }
 
   .menuToggle {
-    display: block;
+    display: flex;
+  }
+
+  .rightActions {
+    gap: 0.65rem;
   }
 
   .logo {
@@ -349,49 +390,100 @@
     padding: 0 1rem;
   }
 
+  .rightActions {
+    gap: 0.5rem;
+  }
+
+  .themeToggle,
+  .menuToggle {
+    width: 36px;
+    height: 36px;
+  }
+
   .logo {
-    font-size: 1.125rem;
+    font-size: 1.15rem;
     gap: 0.5rem;
   }
 
   .logoImage {
-    width: 30px;
-    height: 40px;
+    width: 28px;
+    height: 38px;
+  }
+}
+
+@media (max-width: 360px) {
+  .container {
+    padding: 0 0.75rem;
+  }
+
+  .rightActions {
+    gap: 0.35rem;
+  }
+
+  .themeToggle,
+  .menuToggle {
+    width: 33px;
+    height: 33px;
+  }
+
+  .logo {
+    font-size: 1rem;
+    gap: 0.35rem;
+  }
+
+  .logoImage {
+    width: 24px;
+    height: 34px;
   }
 }
 
 /* 
    Theme Toggle Button
-    */
+*/
 .themeToggle {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.25);
   color: white;
   cursor: pointer;
-  margin-left: 0.75rem;
-  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  padding: 0;
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
   flex-shrink: 0;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .themeToggle:hover {
   background: rgba(255, 255, 255, 0.25);
-  transform: scale(1.1) rotate(15deg);
+  border-color: rgba(255, 255, 255, 0.45);
+  transform: scale(1.08) rotate(15deg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
 }
 
+.themeToggle:active {
+  transform: scale(0.95);
+}
+
+.scrolled .themeToggle,
 .themeToggleScrolled {
   background: rgba(30, 69, 82, 0.08);
-  border-color: rgba(30, 69, 82, 0.2);
+  border-color: rgba(30, 69, 82, 0.18);
   color: var(--color-primary);
+  box-shadow: 0 2px 6px rgba(30, 69, 82, 0.05);
 }
 
+.scrolled .themeToggle:hover,
 .themeToggleScrolled:hover {
-  background: rgba(30, 69, 82, 0.15);
+  background: rgba(30, 69, 82, 0.14);
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+  box-shadow: 0 4px 12px rgba(45, 90, 61, 0.12);
 }
 
 /* Mobile Dark Toggle */
@@ -477,15 +569,55 @@
   color: rgba(255, 255, 255, 0.25);
 }
 
-/* Theme toggle on scrolled dark */
+/* Theme toggle dark mode */
+:global(html[data-theme="dark"]) .themeToggle {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: var(--color-text);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+:global(html[data-theme="dark"]) .themeToggle:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+  box-shadow: 0 4px 16px rgba(106, 184, 122, 0.2);
+}
+
+:global(html[data-theme="dark"]) .scrolled .themeToggle,
 :global(html[data-theme="dark"]) .themeToggleScrolled {
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 255, 255, 0.15);
   color: var(--color-text);
 }
 
+:global(html[data-theme="dark"]) .scrolled .themeToggle:hover,
 :global(html[data-theme="dark"]) .themeToggleScrolled:hover {
-  background: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.16);
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+/* Menu toggle dark mode */
+:global(html[data-theme="dark"]) .menuToggle {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+:global(html[data-theme="dark"]) .menuToggle:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: var(--color-secondary);
+}
+
+:global(html[data-theme="dark"]) .scrolled .menuToggle {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+:global(html[data-theme="dark"]) .scrolled .menuToggle:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: var(--color-secondary);
 }
 
 /* Mobile menu dark mode */
