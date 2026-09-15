@@ -129,6 +129,7 @@
 
 .productNameGreenV {
   color: #2d5a3d;
+  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
 }
 
 .productTagline {

@@ -79,7 +79,7 @@
     "eyebrow": "Our Product",
     "title": "Introducing DOMEv",
     "subtitle": "The all-in-one EV charging app built for Egypt. Find stations, pay seamlessly, and drive with confidence.",
-    "badge": "Now in development",
+    "badge": "The Beta Version is now live",
     "tagline": "Your EV. Your Route. Fully Charged.",
     "description": "DOMEv is Watt Route's flagship mobile application, designed to eliminate range anxiety for EV drivers across Egypt. Discover charging stations, launch sessions, manage payments, and plan smarter routes. All from one beautifully crafted app.",
     "featureMap": "Interactive Map",
@@ -228,12 +228,18 @@
   "helpPages": {
     "userGuide": "User Guide",
     "userGuideDesc": "This section is coming soon. We're preparing detailed guides to help you get the most out of Watt Route.",
+    "userGuidePlaceholder": "We're building a comprehensive user guide with step-by-step instructions, screenshots, and troubleshooting tips. Check back soon or contact support for immediate help.",
     "videoTutorials": "Video Tutorials",
     "videoTutorialsDesc": "Video tutorials are coming soon — clear walkthroughs and how-tos to help you use Watt Route like a pro.",
     "videoTutorialsPlaceholder": "We'll be publishing short, focused videos covering common tasks such as finding stations, starting charging sessions, and managing your account.",
     "communityForum": "Community Forum",
     "communityForumDesc": "Our community hub is coming soon. Share tips, ask questions, and connect with other EV drivers.",
-    "communityForumPlaceholder": "We're building a safe and helpful community forum. You will be able to post, reply, and follow topics when it's ready."
+    "communityForumPlaceholder": "We're building a safe and helpful community forum. You will be able to post, reply, and follow topics when it's ready.",
+    "backToSupport": "Back to Support"
+  },
+  "common": {
+    "comingSoon": "Coming Soon",
+    "backToSupport": "Back to Support"
   },
   "downloadAppPage": {
     "comingSoonTitle": "Coming Soon",

@@ -50,13 +50,14 @@ const UserGuidePage = () => {
                 {t("common.comingSoon")}
               </h2>
               <p className={styles.placeholderText}>
-                We're building a comprehensive user guide with step-by-step
-                instructions, screenshots, and troubleshooting tips. Check back
-                soon or contact support for immediate help.
+                {t(
+                  "helpPages.userGuidePlaceholder",
+                  "We're building a comprehensive user guide with step-by-step instructions, screenshots, and troubleshooting tips. Check back soon or contact support for immediate help."
+                )}
               </p>
-              <Link to={ROUTES.HOME}>
+              <Link to={ROUTES.SUPPORT}>
                 <Button variant="secondary" size="large">
-                  Back to Home
+                  {t("helpPages.backToSupport", "Back to Support")}
                 </Button>
               </Link>
             </div>

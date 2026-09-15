@@ -54,9 +54,9 @@ const CommunityForumPage = () => {
               <p className={styles.placeholderText}>
                 {t("helpPages.communityForumPlaceholder")}
               </p>
-              <Link to={ROUTES.HOME}>
+              <Link to={ROUTES.SUPPORT}>
                 <Button variant="secondary" size="large">
-                  Back to Home
+                  {t("helpPages.backToSupport", "Back to Support")}
                 </Button>
               </Link>
             </div>

@@ -28,30 +28,18 @@ import PrivacyPolicyPage from "./pages/PrivacyPolicyPage/index.jsx";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage/index.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
-
-/**
- * Kills ALL active GSAP ScrollTrigger instances and resets scroll position.
- * This is critical when navigating away from pages that use pinned ScrollTriggers
- * (like Hero and PinnedPanels), otherwise the pin persists and blocks navigation.
- */
 function ScrollManager() {
   const { pathname } = useLocation();
 
   useLayoutEffect(() => {
-    // 1. Kill every active ScrollTrigger so pinned sections are released
     ScrollTrigger.getAll().forEach((st) => st.kill());
     ScrollTrigger.clearScrollMemory();
-
-    // Reset styles that GSAP pins might have written to body/html
     gsap.set("body", { clearProps: "all" });
     gsap.set("html", { clearProps: "all" });
 
-    // 2. Reset scroll position instantly (before paint)
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-
-    // 3. Let ScrollTrigger recalculate layout for the new page
     ScrollTrigger.refresh(true);
   }, [pathname]);
 
