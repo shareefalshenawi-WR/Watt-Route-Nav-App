@@ -252,7 +252,7 @@
 
   .rightContent {
     justify-content: center;
-    order: 0; /* logo appears above text */
+    order: 0; 
   }
 
   .logoImage {
@@ -377,9 +377,9 @@
 :global(html[data-theme="dark"]) .bgOverlay {
   background: linear-gradient(
     180deg,
-    rgba(8, 12, 14, 0) 0%,
-    rgba(8, 12, 14, 0.75) 50%,
-    rgba(8, 12, 14, 0.5) 100%
+    rgba(34, 49, 56, 0) 0%,
+    rgba(52, 72, 82, 0.75) 50%,
+    rgba(52, 72, 82, 0.5) 100%
   );
 }
 
