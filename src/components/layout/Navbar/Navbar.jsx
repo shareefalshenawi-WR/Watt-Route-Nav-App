@@ -103,11 +103,11 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* Right Actions: CTA, Language Switcher, Theme Toggle, Mobile Menu */}
+        {/* Right Actions*/}
         <div className={styles.rightActions}>
           {/* CTA Button */}
           <Link to={ROUTES.DOWNLOAD_APP} className={styles.ctaButtonLink}>
-            <Button variant="secondary" className={styles.ctaButton}>
+            <Button variant="secondary" size="small" className={styles.ctaButton}>
               {t("navbar.downloadApp")}
             </Button>
           </Link>

@@ -5,12 +5,9 @@
   min-height: 100vh;
 }
 
-/* =========================================
-   Hero Section
-   ========================================= */
+/*Hero Section  */
 .heroSection {
   position: relative;
-  /* Fallback colour shown before image loads */
   background: #1e4552;
   color: white;
   padding: calc(var(--spacing-xxl) * 1.5) 0 var(--spacing-xxl);
@@ -20,7 +17,6 @@
   border-bottom-right-radius: var(--radius-xl);
 }
 
-/* Wrapper that fills the entire hero section */
 .heroBackground {
   position: absolute;
   inset: 0;
@@ -29,8 +25,7 @@
   z-index: 0;
 }
 
-/* Background photo – loaded as <img> for browser-native priority.
-   Replace/populate when the image is ready (see JSX comment). */
+/*Background photo*/
 .heroBgImage {
   position: absolute;
   inset: 0;
@@ -41,7 +36,7 @@
   will-change: transform;
 }
 
-/* Dark overlay to keep text legible over the photo */
+/* Dark overlay */
 .heroOverlay {
   position: absolute;
   inset: 0;
@@ -118,9 +113,7 @@
   flex-wrap: wrap;
 }
 
-/* =========================================
-   Why Choose Us Section
-   ========================================= */
+/* Why Choose Us Section */
 .whyChoose {
   padding: var(--spacing-xxl) 0;
   background: var(--color-background);
@@ -224,35 +217,42 @@
   font-size: 1rem;
 }
 
-/* =========================================
-   CTA Section
-   ========================================= */
+/*CTA Section */
 .ctaSection {
   padding: var(--spacing-xxl) 0 calc(var(--spacing-xxl) * 1.5);
   background: var(--color-background);
 }
 
 .ctaContent {
-  background: var(--gradient-secondary);
+  position: relative;
+  background: #14323c url("/images/Cta/Ev cta-bg.webp") center center / cover no-repeat;
   border-radius: var(--radius-xl);
-  padding: var(--spacing-xl);
+  padding: calc(var(--spacing-xl) * 1.5) var(--spacing-xl);
   text-align: center;
   color: white;
-  position: relative;
   overflow: hidden;
-  box-shadow: var(--shadow-glow);
+  box-shadow: 0 16px 48px rgba(30, 69, 82, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  isolation: isolate;
 }
 
-.ctaContent::after {
+.ctaContent::before {
   content: "";
   position: absolute;
-  top: -50%;
-  left: -10%;
-  width: 400px;
-  height: 400px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(18, 45, 54, 0.84) 0%,
+    rgba(26, 62, 74, 0.76) 45%,
+    rgba(38, 80, 62, 0.82) 100%
+  );
+  z-index: 1;
   pointer-events: none;
+}
+
+.ctaContent > * {
+  position: relative;
+  z-index: 2;
 }
 
 .ctaTitle {
@@ -260,19 +260,22 @@
   font-size: clamp(2rem, 4vw, 3rem);
   margin-bottom: var(--spacing-md);
   font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  letter-spacing: -0.02em;
 }
 
 .ctaText {
   font-size: 1.2rem;
   opacity: 0.95;
-  max-width: 600px;
+  max-width: 620px;
   margin: 0 auto var(--spacing-lg);
-  line-height: 1.6;
+  line-height: 1.7;
+  color: #f1f7f4;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
 }
 
-/* =========================================
-   Responsive Adjustments
-   ========================================= */
+/*Responsive Adjustments */
 @media (max-width: 768px) {
   .page {
     padding-top: 70px;
@@ -297,6 +300,11 @@
     grid-template-columns: 1fr;
     gap: var(--spacing-md);
   }
+
+  .ctaContent {
+    padding: 2.5rem 1.25rem;
+    border-radius: var(--radius-lg);
+  }
 }
 
 @media (max-width: 480px) {
@@ -306,9 +314,7 @@
   }
 }
 
-/* 
-   DARK MODE
-    */
+/*DARK MODE*/
 :global(html[data-theme="dark"]) .page {
   background-color: #080c0e;
 }
@@ -361,5 +367,19 @@
 
 :global(html[data-theme="dark"]) .ctaSection {
   background: #080c0e;
+}
+
+:global(html[data-theme="dark"]) .ctaContent {
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+:global(html[data-theme="dark"]) .ctaContent::before {
+  background: linear-gradient(
+    135deg,
+    rgba(8, 18, 22, 0.88) 0%,
+    rgba(12, 28, 35, 0.82) 45%,
+    rgba(18, 42, 32, 0.86) 100%
+  );
 }
 
