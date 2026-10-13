@@ -259,12 +259,17 @@
     "productOf": "PRODUCT OF WATT ROUTE",
     "card1Title": "Station Aggregator",
     "card1Desc": "Locate and navigate to every charging station in Egypt, regardless of the operator. Check real-time charger status, availability, power output, and connection compatibility in one single map interface.",
+    "card1Badge": "Nationwide Coverage",
     "card2Title": "Unified Mobile Wallet",
     "card2Desc": "Pre-load your digital DOME Wallet and pay seamlessly across multiple networks. Say goodbye to the hassle of downloading dozens of separate CPO applications and setting up multiple cards.",
+    "card2Badge": "Instant Payment",
     "card3Title": "Smart Session Control",
     "card3Desc": "Initiate charging sessions effortlessly via QR scanning, track real-time energy flow (kWh), monitor battery percentage, and receive alerts directly on your device when your session is complete.",
+    "card3Badge": "Real-Time Telemetry",
     "footerText": "Watt Route is committed to expanding charging accessibility, optimizing network infrastructure efficiency, and delivering a reliable charging journey for every EV driver in Egypt, ensuring a sustainable path to a greener future.",
-    "downloadApp": "Download Mobile App"
+    "downloadApp": "Download Mobile App",
+    "ecosystemBadge": "Unified EV Charging Platform",
+    "appCompatibility": "Available for iOS & Android"
   },
   "downloadAppSection": {
     "title": "Download",

@@ -1,32 +1,37 @@
+/* DOMEv Products Page */
+
 .page {
   position: relative;
   min-height: 100vh;
-  padding: 140px 0 100px;
+  padding: 135px 0 85px;
   color: #1A1A1A;
+  background-color: #f2f5f3;
   overflow: hidden;
-  background-color: #EBE9E4;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: var(--font-primary, system-ui, -apple-system, sans-serif);
   isolation: isolate;
 }
 
-
+/* Background */
 .bgContainer {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
 }
 
 .bgImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
-  opacity: 0.88;
-  will-change: transform;
+  object-position: center 25%;
+  opacity: 0.92;
   display: block;
+  transform: scale(1.02);
+  filter: saturate(1.05) contrast(1.02);
+  transition: opacity 0.5s ease;
 }
 
 .bgOverlay {
@@ -34,215 +39,340 @@
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(242, 240, 235, 0) 0%,
-    rgba(242, 240, 235, 0.65) 50%,
-    rgba(255, 255, 254, 0.37) 100%
+    rgba(242, 245, 243, 0.42) 0%,
+    rgba(242, 245, 243, 0.65) 35%,
+    rgba(94, 107, 99, 0.88) 75%,
+    rgba(75, 86, 78, 0.616) 100%
   );
+  pointer-events: none;
+}
+
+.ambientGlow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 70% 22%,
+    rgba(86, 145, 102, 0.18) 0%,
+    transparent 55%
+  );
+  pointer-events: none;
 }
 
 /* Main Container */
 .container {
   position: relative;
   z-index: 2;
-  max-width: 1240px;
+  max-width: 1260px;
   margin: 0 auto;
-  padding: 0 clamp(1rem, 4vw, 2rem);
+  padding: 0 clamp(1.2rem, 4vw, 2.5rem);
   display: flex;
   flex-direction: column;
-  gap: 4.5rem;
+  gap: clamp(2.8rem, 5vw, 4.2rem);
 }
 
-/* Top Section layout */
+/* Top Section */
 .topSection {
   display: grid;
-  grid-template-columns: 1.3fr 0.7fr;
-  gap: 4rem;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: clamp(2.5rem, 5vw, 4.5rem);
   align-items: center;
 }
 
 .leftContent {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.4rem;
+  align-items: flex-start;
 }
 
+
+@keyframes pulseDot {
+  0% {
+    box-shadow: 0 0 0 0 rgba(45, 90, 61, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(45, 90, 61, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(45, 90, 61, 0);
+  }
+}
+
+
+
+/* Main Heading */
 .title {
-  font-size: clamp(2rem, 5.8vw, 4.4rem);
+  font-size: clamp(2.2rem, 5.2vw, 4.2rem);
   font-weight: 900;
-  line-height: 1.1;
+  line-height: 1.12;
   letter-spacing: -0.03em;
   color: #1A1A1A;
+  margin: 0;
 }
 
 .highlight {
-  color: #2D5A3D;
-  position: relative;
+  background: linear-gradient(135deg, #2D5A3D 0%, #3e7b53 50%, #569166 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   display: inline-block;
+  position: relative;
 }
 
-.highlight::after {
-  content: "";
-  position: absolute;
-  bottom: 6px;
-  left: -2px;
-  right: -2px;
-  height: 8px;
-  background: rgba(45, 90, 61, 0.12);
-  z-index: -1;
-  border-radius: 2px;
+/* Description Glass Card */
+.descriptionCard {
+  width: 100%;
+  max-width: 680px;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-inline-start: 4px solid #2D5A3D;
+  padding: 1.25rem 1.6rem;
+  box-shadow:
+    0 10px 30px rgba(45, 90, 61, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .description {
-  font-size: clamp(1rem, 1.8vw, 1.18rem);
+  font-size: clamp(0.98rem, 1.4vw, 1.12rem);
   line-height: 1.8;
-  color: #000000;
-  max-width: 680px;
+  color: #2b3330;
   font-weight: 400;
-  padding: 1.25rem 1.6rem;
-  background: rgba(255, 255, 255, 0.756);
-  backdrop-filter: blur(0px);
-  -webkit-backdrop-filter: blur(0px);
-  border-radius: 16px;
-  border: 1px solid rgba(45, 90, 61, 0.18);
-  border-inline-start: 4px solid #2D5A3D;
-  box-shadow:
-    0 8px 30px rgba(45, 90, 61, 0.08),
-    inset 0 0 15px rgba(255, 255, 255, 0.6);
-  transition: all 0.2s ease;
+  margin: 0;
 }
 
+/* Right Brand Showcase */
 .rightContent {
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
 
+
 .logoImage {
+  position: relative;
+  z-index: 1;
   width: 100%;
-  max-width: 400px;
+  max-width: 320px;
   height: auto;
   object-fit: contain;
   display: block;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.06));
 }
 
-/* Stats-Features Grid */
+
+
+
+/* Feature Cards Grid */
 .statsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  gap: 1.85rem;
 }
 
 .statCard {
   display: flex;
-  gap: 1.35rem;
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  padding: 2.2rem 1.85rem;
-  border-radius: 20px;
+  flex-direction: column;
+  gap: 1.25rem;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  padding: 2rem 1.85rem;
+  border-radius: 22px;
   box-shadow:
-    0 8px 32px rgba(45, 90, 61, 0.06),
-    inset 0 0 12px rgba(255, 255, 255, 0.2);
-  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1),
-              background 0.28s ease,
+    0 10px 30px rgba(45, 90, 61, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.28s ease,
               border-color 0.28s ease,
               box-shadow 0.28s ease;
-  will-change: transform;
+  cursor: default;
 }
 
 .statCard:hover {
-  background: rgba(255, 255, 255, 0.32);
-  border-color: rgba(45, 90, 61, 0.3);
-  transform: translateY(-6px);
-  box-shadow: 
-    0 15px 35px rgba(45, 90, 61, 0.08),
-    0 4px 12px rgba(0, 0, 0, 0.01);
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(45, 90, 61, 0.35);
+  box-shadow:
+    0 18px 40px rgba(45, 90, 61, 0.12),
+    0 0 24px rgba(86, 145, 102, 0.12);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
 .iconWrapper {
   flex-shrink: 0;
-  width: 56px;
-  height: 56px;
+  width: 54px;
+  height: 54px;
   border-radius: 16px;
-  background: rgba(45, 90, 61, 0.08);
-  border: 1px solid rgba(45, 90, 61, 0.15);
+  background: linear-gradient(135deg, rgba(86, 145, 102, 0.14) 0%, rgba(45, 90, 61, 0.08) 100%);
+  border: 1px solid rgba(45, 90, 61, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
   color: #2D5A3D;
-  box-shadow: inset 0 0 10px rgba(45, 90, 61, 0.05);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: inset 0 0 12px rgba(45, 90, 61, 0.06);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.featureSvg {
+  width: 28px;
+  height: 28px;
 }
 
 .statCard:hover .iconWrapper {
-  background: #2D5A3D;
+  background: linear-gradient(135deg, #2D5A3D 0%, #468c5b 100%);
   color: #ffffff;
-  transform: scale(1.08) rotate(6deg);
-  box-shadow: 0 4px 15px rgba(45, 90, 61, 0.3);
+  transform: scale(1.08) rotate(4deg);
+  box-shadow: 0 6px 20px rgba(45, 90, 61, 0.32);
+}
+
+.cardBadge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #2D5A3D;
+  background: rgba(86, 145, 102, 0.1);
+  border: 1px solid rgba(86, 145, 102, 0.2);
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  white-space: nowrap;
 }
 
 .cardTextContent {
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
-  min-width: 0; 
 }
 
 .cardTitle {
-  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+  font-size: clamp(1.12rem, 1.5vw, 1.32rem);
   font-weight: 700;
   color: #1A1A1A;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
+  margin: 0;
 }
 
 .cardDescription {
-  font-size: clamp(0.82rem, 1.2vw, 0.9rem);
-  line-height: 1.65;
-  color: #242423;
+  font-size: clamp(0.86rem, 1.15vw, 0.94rem);
+  line-height: 1.7;
+  color: #3b4540;
   font-weight: 400;
+  margin: 0;
 }
 
-/* Bottom text section */
+/* --------------------------------------------------------------------------
+   Bottom Banner & CTA
+   -------------------------------------------------------------------------- */
 .bottomSection {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: clamp(1.6rem, 4vw, 2.8rem);
-  max-width: 960px;
-  margin: 0 auto;
-}
-
-.bottomText {
-  font-size: clamp(0.92rem, 1.8vw, 1.1rem);
-  line-height: 1.8;
-  color: #000000;
-  font-weight: 500;
-}
-
-/* Download Button */
-.ctaWrapper {
   display: flex;
   justify-content: center;
   width: 100%;
 }
 
+.bottomCard {
+  width: 100%;
+  max-width: 980px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.8rem;
+  padding: clamp(2rem, 4vw, 2.8rem) clamp(1.5rem, 4vw, 3rem);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow:
+    0 12px 35px rgba(45, 90, 61, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
 
+.bottomText {
+  font-size: clamp(0.95rem, 1.4vw, 1.08rem);
+  line-height: 1.85;
+  color: #2b3330;
+  font-weight: 500;
+  max-width: 820px;
+  margin: 0;
+}
 
-/* Large tablet / small desktop */
-@media (max-width: 1200px) {
+.ctaGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.ctaLink {
+  text-decoration: none;
+}
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-weight: 600;
+  box-shadow: 0 4px 18px rgba(86, 145, 102, 0.35);
+}
+
+.ctaIcon {
+  display: block;
+}
+
+.compatibilityTag {
+  font-size: 0.78rem;
+  color: #5c6863;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* --------------------------------------------------------------------------
+   RTL (Arabic) Adjustments
+   -------------------------------------------------------------------------- */
+:global(html[dir="rtl"]) .leftContent {
+  align-items: flex-start;
+}
+
+:global(html[dir="rtl"]) .cardBadge {
+  letter-spacing: normal;
+}
+
+:global(html[dir="rtl"]) .eyebrowText {
+  letter-spacing: normal;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Layouts
+   -------------------------------------------------------------------------- */
+@media (max-width: 1100px) {
+  .topSection {
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 3rem;
+  }
+
+  .logoCard {
+    padding: 1.8rem 2rem;
+  }
+
   .logoImage {
-    max-width: 300px;
+    max-width: 270px;
   }
 }
 
-/* Tablet */
-@media (max-width: 1024px) {
+@media (max-width: 960px) {
   .topSection {
     grid-template-columns: 1fr;
-    gap: 2rem;
     text-align: center;
+    gap: 2.2rem;
   }
 
   .leftContent {
@@ -252,187 +382,238 @@
 
   .rightContent {
     justify-content: center;
-    order: 0; 
+    order: 0;
   }
 
-  .logoImage {
-    max-width: 260px;
-  }
-
-  .description {
-    max-width: 600px;
+  .descriptionCard {
+    border-inline-start-width: 1px;
+    border-top: 3px solid #2D5A3D;
+    text-align: center;
   }
 
   .statsGrid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-
-  .container {
-    gap: 3.5rem;
+    gap: 1.4rem;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 680px) {
   .page {
-    padding: 100px 0 60px;
+    padding: 105px 0 60px;
   }
 
   .container {
-    gap: 2.5rem;
-  }
-
-  .logoImage {
-    max-width: 200px;
+    gap: 2.2rem;
   }
 
   .statsGrid {
     grid-template-columns: 1fr;
-    gap: 1.25rem;
+    gap: 1.15rem;
   }
 
   .statCard {
-    padding: 1.5rem 1.4rem;
-   
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    background: rgba(255, 255, 255, 0.75);
+    padding: 1.5rem 1.35rem;
+    border-radius: 18px;
   }
 
-  
-  .statCard:hover {
-    transform: none;
-  }
-
-  .statCard:hover .iconWrapper {
-    transform: none;
-  }
-
-  .bottomSection {
-    gap: 1.75rem;
-  }
-}
-
-/* Small phone */
-@media (max-width: 480px) {
-  .page {
-    padding: 88px 0 50px;
-  }
-
-  .container {
-    gap: 2rem;
+  .logoCard {
+    padding: 1.5rem 1.8rem;
+    border-radius: 20px;
   }
 
   .logoImage {
-    max-width: 160px;
+    max-width: 210px;
   }
 
-  .topSection {
-    gap: 1.5rem;
+  .bottomCard {
+    padding: 1.6rem 1.2rem;
+    border-radius: 20px;
   }
 
-  .description {
-    padding: 1rem 1.15rem;
-    border-radius: 14px;
-  }
-
-  .statCard {
-    padding: 1.25rem 1.1rem;
-    gap: 1rem;
-    border-radius: 16px;
-  }
-
-  .iconWrapper {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
+  .ctaBtn {
+    width: 100%;
+    justify-content: center;
   }
 }
 
-/* Very small phone (360px and below) */
-@media (max-width: 360px) {
+@media (max-width: 400px) {
   .page {
-    padding: 80px 0 44px;
+    padding: 95px 0 50px;
   }
 
-  .logoImage {
-    max-width: 130px;
-  }
-
-  .statCard {
+  .cardHeader {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.85rem;
+    gap: 0.75rem;
+  }
+
+  .logoImage {
+    max-width: 180px;
   }
 }
 
-/* 
-   DARK MODE
-    */
+/* ==========================================================================
+   DARK MODE ADAPTATION
+   ========================================================================== */
 :global(html[data-theme="dark"]) .page {
-  background-color: #080c0e;
-  color: var(--color-text);
+  background-color: #060b0d;
+  color: var(--color-text, #e4edf0);
 }
 
 :global(html[data-theme="dark"]) .bgOverlay {
   background: linear-gradient(
     180deg,
-    rgba(34, 49, 56, 0) 0%,
-    rgba(52, 72, 82, 0.75) 50%,
-    rgba(52, 72, 82, 0.5) 100%
+    rgba(6, 11, 13, 0.58) 0%,
+    rgba(6, 11, 13, 0.76) 35%,
+    rgba(6, 11, 13, 0.92) 75%,
+    rgba(6, 11, 13, 0.98) 100%
   );
 }
 
+:global(html[data-theme="dark"]) .ambientGlow {
+  background: radial-gradient(
+    circle at 70% 22%,
+    rgba(106, 184, 122, 0.22) 0%,
+    transparent 60%
+  );
+}
+
+:global(html[data-theme="dark"]) .eyebrow {
+  background: rgba(106, 184, 122, 0.12);
+  border-color: rgba(106, 184, 122, 0.3);
+  box-shadow: 0 0 16px rgba(106, 184, 122, 0.15);
+}
+
+:global(html[data-theme="dark"]) .pulseDot {
+  background: #6ab87a;
+  animation-name: pulseDotDark;
+}
+
+@keyframes pulseDotDark {
+  0% {
+    box-shadow: 0 0 0 0 rgba(106, 184, 122, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(106, 184, 122, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(106, 184, 122, 0);
+  }
+}
+
+:global(html[data-theme="dark"]) .eyebrowText {
+  color: #6ab87a;
+}
+
 :global(html[data-theme="dark"]) .title {
-  color: var(--color-text);
+  color: var(--color-text, #e4edf0);
 }
 
 :global(html[data-theme="dark"]) .highlight {
-  color: var(--color-secondary);
+  background: linear-gradient(135deg, #6ab87a 0%, #82d494 50%, #569166 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+:global(html[data-theme="dark"]) .descriptionCard {
+  background: rgba(14, 22, 26, 0.78);
+  border-color: rgba(255, 255, 255, 0.08);
+  border-inline-start-color: #6ab87a;
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 :global(html[data-theme="dark"]) .description {
-  color: rgba(240, 248, 243, 0.95);
-  background: rgba(17, 24, 21, 0.75);
-  border-color: rgba(106, 184, 122, 0.2);
-  border-inline-start-color: var(--color-secondary);
+  color: rgba(228, 237, 240, 0.9);
+}
+
+:global(html[data-theme="dark"]) .logoCard {
+  background: rgba(14, 22, 26, 0.82);
+  border-color: rgba(255, 255, 255, 0.1);
   box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.4),
-    inset 0 0 15px rgba(106, 184, 122, 0.05);
+    0 20px 45px rgba(0, 0, 0, 0.6),
+    inset 0 0 25px rgba(106, 184, 122, 0.06);
+}
+
+:global(html[data-theme="dark"]) .logoCard:hover {
+  border-color: rgba(106, 184, 122, 0.35);
+  box-shadow:
+    0 24px 55px rgba(0, 0, 0, 0.7),
+    0 0 35px rgba(106, 184, 122, 0.25);
+}
+
+:global(html[data-theme="dark"]) .logoImage {
+  /* Ensure black text logo is crystal white with an emerald neon glow in dark mode */
+  filter: brightness(0) invert(1) drop-shadow(0 0 16px rgba(106, 184, 122, 0.45));
+}
+
+:global(html[data-theme="dark"]) .logoBadge {
+  background: rgba(106, 184, 122, 0.12);
+  border-color: rgba(106, 184, 122, 0.25);
+  color: #6ab87a;
+}
+
+:global(html[data-theme="dark"]) .statusDot {
+  background: #6ab87a;
+  box-shadow: 0 0 8px #6ab87a;
 }
 
 :global(html[data-theme="dark"]) .statCard {
-  background: rgba(17, 22, 24, 0.75);
-  border-color: rgba(255, 255, 255, 0.07);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  background: rgba(14, 22, 26, 0.74);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 :global(html[data-theme="dark"]) .statCard:hover {
-  background: rgba(23, 29, 32, 0.85);
-  border-color: rgba(106, 184, 122, 0.25);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  background: rgba(18, 28, 33, 0.88);
+  border-color: rgba(106, 184, 122, 0.35);
+  box-shadow:
+    0 20px 48px rgba(0, 0, 0, 0.65),
+    0 0 28px rgba(106, 184, 122, 0.2);
 }
 
 :global(html[data-theme="dark"]) .iconWrapper {
-  background: rgba(106, 184, 122, 0.1);
-  border-color: rgba(106, 184, 122, 0.18);
-  color: var(--color-secondary);
+  background: rgba(106, 184, 122, 0.12);
+  border-color: rgba(106, 184, 122, 0.25);
+  color: #6ab87a;
+  box-shadow: inset 0 0 12px rgba(106, 184, 122, 0.1);
 }
 
 :global(html[data-theme="dark"]) .statCard:hover .iconWrapper {
-  background: var(--color-secondary);
-  color: #080c0e;
+  background: #6ab87a;
+  color: #060b0d;
+  box-shadow: 0 6px 22px rgba(106, 184, 122, 0.45);
+}
+
+:global(html[data-theme="dark"]) .cardBadge {
+  color: #6ab87a;
+  background: rgba(106, 184, 122, 0.12);
+  border-color: rgba(106, 184, 122, 0.25);
 }
 
 :global(html[data-theme="dark"]) .cardTitle {
-  color: var(--color-text);
+  color: var(--color-text, #e4edf0);
 }
 
 :global(html[data-theme="dark"]) .cardDescription {
-  color: var(--color-text-muted);
+  color: var(--color-text-muted, #8ab4be);
+}
+
+:global(html[data-theme="dark"]) .bottomCard {
+  background: rgba(14, 22, 26, 0.78);
+  border-color: rgba(255, 255, 255, 0.09);
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 :global(html[data-theme="dark"]) .bottomText {
-  color: rgba(228, 237, 240, 0.8);
+  color: rgba(228, 237, 240, 0.88);
 }
 
+:global(html[data-theme="dark"]) .compatibilityTag {
+  color: #8ab4be;
+}
