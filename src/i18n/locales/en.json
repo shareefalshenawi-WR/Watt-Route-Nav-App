@@ -39,7 +39,50 @@
     "uptimeReliability": "Uptime Reliability",
     "ultraFastCharging": "Ultra-Fast Charging",
     "globalGoalsHeading": "Aligned with Global & National Goals",
-    "discoverMore": "Discover More"
+    "discoverMore": "Discover More",
+    "redesignHeadline1": "Drive Smarter.",
+    "redesignHeadline2": "Charge Smarter.",
+    "redesignSubtext": "Watt Route isn't just an app; it is the Backbone. We are re-building the EV charging Eco system in the MENA to eliminate range anxiety and accelerate the transition to sustainable mobility.",
+    "exploreDomev": "Explore DOMEv",
+    "liveSession": "DOMEv LIVE",
+    "fastCharging": "FAST CHARGING",
+    "estRange": "Est. Range",
+    "delivered": "Delivered",
+    "to80": "To 80%",
+    "cairoGateway": "Cairo Gateway Hub",
+    "stallInfo": "Stall #04 • 160kW CCS2",
+    "optimizeRoute": "Optimize Route",
+    "ultraFastNetwork": "160 kW DC Ultra-Fast",
+    "uptimeReliable": "99.9% Grid Reliability"
+  },
+  "dualCarAnimation": {
+    "watermark": "WATT ROUTE",
+    "phase1": {
+      "badge": "CONNECTED MOBILITY",
+      "title": "Two Directions. One Unified Grid.",
+      "desc": "Seamless EV navigation linking Alexandria, Cairo, and the Red Sea corridor with dynamic power distribution."
+    },
+    "phase2": {
+      "badge": "INTELLIGENT TELEMETRY",
+      "title": "Synchronized Motion & Energy",
+      "desc": "Smart bi-directional routing balancing charging loads in real-time, eliminating range anxiety across Egyptian highways."
+    },
+    "phase3": {
+      "badge": "SUSTAINABLE MOMENTUM",
+      "title": "The Future of Egyptian Transit",
+      "desc": "Empowering thousands of EV drivers with 99.9% network uptime and ultra-fast charging capability."
+    },
+    "stats": {
+      "stat1Number": "600+",
+      "stat1Label": "Charging Hubs",
+      "stat2Number": "160 kW",
+      "stat2Label": "Peak DC Speed",
+      "stat3Number": "99.9%",
+      "stat3Label": "Network Uptime"
+    },
+    "badgeCar1": "Sedan EV • Northbound",
+    "badgeCar2": "SUV EV • Southbound",
+    "cta": "Explore DOMEv App"
   },
   "evSolutions": {
     "title": "Powered EV Charging Solutions",
@@ -157,11 +200,8 @@
     "findChargingStationsDescription": "Our charging station finder is currently under development. We're working hard to bring you the best experience for locating EV charging stations across Egypt."
   },
   "common": {
-    "loading": "Loading...",
-    "error": "Something went wrong",
-    "errorMessage": "Sorry — an unexpected error occurred while loading this section.",
-    "reload": "Reload",
-    "comingSoon": "Coming Soon"
+    "comingSoon": "Coming Soon",
+    "backToSupport": "Back to Support"
   },
   "aboutPage": {
     "pageTitle": "Driving Egypt Toward a",
@@ -235,10 +275,6 @@
     "communityForum": "Community Forum",
     "communityForumDesc": "Our community hub is coming soon. Share tips, ask questions, and connect with other EV drivers.",
     "communityForumPlaceholder": "We're building a safe and helpful community forum. You will be able to post, reply, and follow topics when it's ready.",
-    "backToSupport": "Back to Support"
-  },
-  "common": {
-    "comingSoon": "Coming Soon",
     "backToSupport": "Back to Support"
   },
   "downloadAppPage": {
@@ -381,5 +417,78 @@
     "section11Text": "For questions, complaints, or legal notices related to these Terms, contact:<br/><br/>Watt Route for Electric Vehicles Technology Services<br/>Email: <a href=\"mailto:legal@wattrouteapp.com\">legal@wattrouteapp.com</a><br/>Location: Cairo, Egypt",
     "emailLabel": "Email",
     "phoneLabel": "Phone"
+  },
+  "finalLapLanding": {
+    "liveStatus": "Live EV Network in Egypt • 600+ Charging Points Across All Governorates",
+    "heroTag": "Next-Gen EV Mobility Backbone",
+    "heroTitlePrefix": "Driving Egypt Toward a",
+    "heroTitleHighlight": "Greener Horizon",
+    "heroSubtitle": "Watt Route connects every EV driver in Egypt to smart charging, real-time stall telemetry, and AI route planning. Eliminate range anxiety once and for all.",
+    "ctaPrimary": "Download DOMEv App",
+    "ctaSecondary": "How Smart Routing Works",
+    "exploreNetwork": "Explore Live Network",
+    "simBadge": "LIVE ROUTE TELEMETRY",
+    "routeOption1": "Cairo → Alex Desert Rd (218 km)",
+    "routeOption2": "Cairo → El Gouna Red Sea (435 km)",
+    "batteryLabel": "Battery Buffer",
+    "batteryState": "84% SOC (+210 km safe range)",
+    "nextHubLabel": "Next Optimal High-Speed Stop",
+    "station1Name": "Sidi Abdel Rahman Super Hub",
+    "station1Location": "KM 130 Alexandria Highway",
+    "station1Power": "160 kW DC Ultra-Fast",
+    "station1Available": "3 of 4 Stalls Free",
+    "station1Time": "18 min to 80%",
+    "station2Name": "Ras Gharib Coastal Fast Hub",
+    "station2Location": "KM 145 Zafarana Road",
+    "station2Power": "120 kW DC Dual CCS2",
+    "station2Available": "4 of 4 Stalls Free",
+    "station2Time": "22 min to 80%",
+    "routeActiveStatus": "Real-time stall sensors verified 12s ago",
+    "howItWorksEyebrow": "Seamless Flow",
+    "howItWorksTitle": "How Smart EV Mobility Works",
+    "howItWorksSubtitle": "Engineered to eliminate uncertainty. Three rapid steps from departure to full charge.",
+    "step1Badge": "STEP 01 • INTELLIGENCE",
+    "step1Title": "Predictive Route Optimization",
+    "step1Desc": "Input your destination. Watt Route factors in highway speed, real-time AC usage, elevation hills, and battery degradation to plot the perfect trip.",
+    "step2Badge": "STEP 02 • TELEMETRY",
+    "step2Title": "Live Stall Availability",
+    "step2Desc": "Never arrive at an occupied or broken charger. Live hardware sensors update stall status every 15 seconds across every major highway.",
+    "step3Badge": "STEP 03 • ONE-TAP PAY",
+    "step3Title": "Universal In-App Wallet",
+    "step3Desc": "Leave behind 6 different RFID cards. Plug in, scan the QR code with DOMEv, and pay instantly via InstaPay, Meeza, or credit card.",
+    "hubShowcaseEyebrow": "Curated Infrastructure",
+    "hubShowcaseTitle": "High-Speed EV Charging Hubs",
+    "hubShowcaseSubtitle": "Strategically placed 160kW DC ultra-fast stations covering Egypt's main arteries.",
+    "filterAll": "All Hubs",
+    "filterUltraFast": "160kW Ultra-Fast",
+    "filterHighway": "Desert Corridors",
+    "filterCoastal": "Coastal Highways",
+    "comparisonEyebrow": "Why Watt Route",
+    "comparisonTitle": "The Old EV Journey vs The Watt Route Standard",
+    "comparisonSubtitle": "Compare the legacy guesswork with our synchronized infrastructure backbone.",
+    "oldWayTitle": "The Fragmented Experience",
+    "oldWaySubtitle": "Without Watt Route",
+    "oldWayItem1": "Juggling 5+ different CPO apps & RFID cards",
+    "oldWayItem2": "Arriving at 'ghost' broken or blocked chargers",
+    "oldWayItem3": "Constant range anxiety & speed throttling",
+    "oldWayItem4": "Waiting hours at slow 7kW AC destination plugs",
+    "wattWayTitle": "The Watt Route Standard",
+    "wattWaySubtitle": "Powered by DOMEv",
+    "wattWayItem1": "One unified app & wallet for all Egyptian networks",
+    "wattWayItem2": "99.9% real-time verified stall telemetry",
+    "wattWayItem3": "AI battery buffers guaranteeing you never stall",
+    "wattWayItem4": "Priority routing to 160kW DC superchargers",
+    "testimonialsEyebrow": "Driver Stories",
+    "testimonialsTitle": "Trusted by Over 25,000 EV Drivers",
+    "testimonialsSubtitle": "Real experiences from electric vehicle owners across Egypt.",
+    "faqEyebrow": "Clear Answers",
+    "faqTitle": "Frequently Asked Questions",
+    "faqSubtitle": "Everything you need to know about charging, payments, and compatibility.",
+    "finalCtaEyebrow": "Ready to Hit the Road?",
+    "finalCtaTitle": "Eliminate Range Anxiety on Your Next Journey",
+    "finalCtaSubtitle": "Download DOMEv today and join the largest connected EV ecosystem in Egypt and the MENA region.",
+    "downloadAppStore": "App Store",
+    "downloadGooglePlay": "Google Play",
+    "getAppNow": "Get Started Free"
   }
 }

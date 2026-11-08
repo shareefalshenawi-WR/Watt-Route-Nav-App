@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" fill="none">
+  <!-- Defs for glowing gradients -->
+  <defs>
+    <linearGradient id="trackGradLeft" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#569166" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#7bbfd4" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#1e4552" stop-opacity="0.2" />
+    </linearGradient>
+    <linearGradient id="trackGradRight" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#569166" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#7bbfd4" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#1e4552" stop-opacity="0.2" />
+    </linearGradient>
+    <filter id="trackGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Left Lane - Southbound Dual Tracks -->
+  <g class="southbound-tracks" filter="url(#trackGlow)">
+    <path d="M 295,0 C 290,300 270,550 295,1000" stroke="url(#trackGradLeft)" stroke-width="4" stroke-linecap="round" stroke-dasharray="8 4" opacity="0.85" />
+    <path d="M 335,0 C 330,300 310,550 335,1000" stroke="url(#trackGradLeft)" stroke-width="4" stroke-linecap="round" stroke-dasharray="8 4" opacity="0.85" />
+  </g>
+
+  <!-- Right Lane - Northbound Dual Tracks -->
+  <g class="northbound-tracks" filter="url(#trackGlow)">
+    <path d="M 665,1000 C 670,700 690,450 665,0" stroke="url(#trackGradRight)" stroke-width="4" stroke-linecap="round" stroke-dasharray="8 4" opacity="0.85" />
+    <path d="M 705,1000 C 710,700 730,450 705,0" stroke="url(#trackGradRight)" stroke-width="4" stroke-linecap="round" stroke-dasharray="8 4" opacity="0.85" />
+  </g>
+</svg>
+

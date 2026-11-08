@@ -56,7 +56,11 @@ const Navbar = () => {
   return (
     <motion.nav
       className={`${styles.navbar} ${
-        navbarState === "scrolled" ? styles.scrolled : ""
+        navbarState === "scrolled"
+          ? styles.scrolled
+          : isHomePage
+          ? styles.homeTransparent
+          : ""
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}

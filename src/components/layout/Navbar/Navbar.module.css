@@ -5,14 +5,25 @@
   right: 0;
   z-index: var(--z-navbar);
   padding: 1rem 0;
-  /* transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); */
+  transition: opacity 0.35s ease, transform 0.35s ease, background 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
   background: transparent;
 }
 
+.homeTransparent {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-20px);
+}
+
+/* Scrolled state — dark brand identity, matches Hero dark aesthetic */
 .scrolled {
-  background: rgba(252, 251, 249, 0.98);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 2px 20px rgba(30, 69, 82, 0.08);
+  background: rgba(8, 18, 24, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow:
+    0 1px 0 rgba(149, 170, 166, 0.1),
+    0 4px 24px rgba(0, 0, 0, 0.45);
+  border-bottom: 1px solid rgba(149, 170, 166, 0.1);
 }
 
 .container {
@@ -44,7 +55,7 @@
 }
 
 .logoScrolled {
-  filter: none;
+  filter: brightness(0) invert(1);
 }
 
 .logoText {
@@ -54,8 +65,9 @@
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Scrolled: logo text stays white against dark navbar */
 .textScrolled {
-  color: var(--color-primary);
+  color: #ffffff;
   text-shadow: none;
 }
 
@@ -81,8 +93,9 @@
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
 
+/* Scrolled: nav links stay white against dark navbar */
 .linkScrolled {
-  color: var(--color-primary);
+  color: rgba(230, 240, 243, 0.85);
   text-shadow: none;
 }
 
@@ -107,8 +120,9 @@
   text-shadow: none;
 }
 
+/* Scrolled: link hover uses brand accent green */
 .linkScrolled:hover {
-  color: var(--color-secondary);
+  color: #6ab87a;
 }
 
 .rightActions {
@@ -166,21 +180,23 @@
   margin: 0 0.25rem;
 }
 
+/* Scrolled state: language buttons — white on dark navbar */
 .scrolled .langButton {
-  color: var(--color-primary);
+  color: rgba(199, 209, 206, 0.85);
   text-shadow: none;
 }
 
 .scrolled .langButton:hover {
-  background: rgba(30, 69, 82, 0.1);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .scrolled .langButton.active {
-  background: rgba(30, 69, 82, 0.15);
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
 }
 
 .scrolled .langSeparator {
-  color: rgba(30, 69, 82, 0.4);
+  color: rgba(149, 170, 166, 0.45);
 }
 
 .menuToggle {
@@ -212,15 +228,16 @@
   transform: scale(0.95);
 }
 
+/* Scrolled: menu toggle on dark navbar */
 .scrolled .menuToggle {
-  background: rgba(30, 69, 82, 0.08);
-  border-color: rgba(30, 69, 82, 0.18);
-  box-shadow: 0 2px 6px rgba(30, 69, 82, 0.05);
+  background: rgba(149, 170, 166, 0.12);
+  border-color: rgba(149, 170, 166, 0.25);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 .scrolled .menuToggle:hover {
-  background: rgba(30, 69, 82, 0.14);
-  border-color: var(--color-secondary);
+  background: rgba(149, 170, 166, 0.2);
+  border-color: #569166;
 }
 
 .burger {
@@ -233,8 +250,9 @@
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
+/* Scrolled: burger stays visible (white) on dark navbar */
 .burgerScrolled {
-  background: var(--color-primary);
+  background: rgba(199, 209, 206, 0.9);
   box-shadow: none;
 }
 
@@ -252,7 +270,7 @@
 
 .burgerScrolled::before,
 .burgerScrolled::after {
-  background: var(--color-primary);
+  background: rgba(199, 209, 206, 0.9);
   box-shadow: none;
 }
 
@@ -363,25 +381,27 @@
     flex-direction: column;
     gap: 0;
     padding: 1rem;
-    background: white;
-    border-top: 1px solid var(--color-light-gray);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: rgba(8, 18, 24, 0.97);
+    border-top: 1px solid rgba(149, 170, 166, 0.1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
     max-height: calc(100vh - 75px);
     overflow-y: auto;
   }
 
   .mobileNavLink {
-    color: var(--color-primary);
+    color: rgba(199, 209, 206, 0.85);
     font-weight: 500;
     padding: 1rem;
-    border-bottom: 1px solid var(--color-light-gray);
+    border-bottom: 1px solid rgba(149, 170, 166, 0.1);
     transition: var(--transition-normal);
+    text-decoration: none;
+    display: block;
   }
 
   .mobileNavLink:hover {
-    background: var(--color-background);
+    background: rgba(255, 255, 255, 0.05);
     padding-left: 1.5rem;
-    color: var(--color-secondary);
+    color: #6ab87a;
   }
 
   .mobileCtaButtonLink {
@@ -399,30 +419,30 @@
     flex-direction: column;
     gap: 0;
     padding: 0.5rem 0;
-    border-top: 1px solid var(--color-light-gray);
+    border-top: 1px solid rgba(149, 170, 166, 0.1);
   }
 
   .mobileLangButton {
     background: none;
     border: none;
-    color: var(--color-primary);
+    color: rgba(199, 209, 206, 0.85);
     font-weight: 500;
     padding: 1rem;
-    border-bottom: 1px solid var(--color-light-gray);
+    border-bottom: 1px solid rgba(149, 170, 166, 0.1);
     cursor: pointer;
     transition: var(--transition-normal);
     text-align: left;
   }
 
   .mobileLangButton:hover {
-    background: var(--color-background);
+    background: rgba(255, 255, 255, 0.05);
     padding-left: 1.5rem;
-    color: var(--color-secondary);
+    color: #6ab87a;
   }
 
   .mobileLangButton.active {
-    background: rgba(30, 69, 82, 0.1);
-    color: var(--color-secondary);
+    background: rgba(86, 145, 102, 0.15);
+    color: #6ab87a;
     font-weight: 600;
   }
 
@@ -516,31 +536,32 @@
   transform: scale(0.95);
 }
 
+/* Scrolled: theme toggle on dark navbar — stays glassy white */
 .scrolled .themeToggle,
 .themeToggleScrolled {
-  background: rgba(30, 69, 82, 0.08);
-  border-color: rgba(30, 69, 82, 0.18);
-  color: var(--color-primary);
-  box-shadow: 0 2px 6px rgba(30, 69, 82, 0.05);
+  background: rgba(149, 170, 166, 0.1);
+  border-color: rgba(149, 170, 166, 0.22);
+  color: #c7d1ce;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
 }
 
 .scrolled .themeToggle:hover,
 .themeToggleScrolled:hover {
-  background: rgba(30, 69, 82, 0.14);
-  border-color: var(--color-secondary);
-  color: var(--color-secondary);
-  box-shadow: 0 4px 12px rgba(45, 90, 61, 0.12);
+  background: rgba(149, 170, 166, 0.18);
+  border-color: #569166;
+  color: #6ab87a;
+  box-shadow: 0 4px 12px rgba(86, 145, 102, 0.2);
 }
 
-/* Mobile Dark Toggle */
+/* Mobile Dark Toggle — always on dark menu now */
 .mobileDarkToggle {
   display: flex;
   align-items: center;
   gap: 0.75rem;
   background: none;
   border: none;
-  border-top: 1px solid var(--color-light-gray);
-  color: var(--color-primary);
+  border-top: 1px solid rgba(149, 170, 166, 0.1);
+  color: rgba(199, 209, 206, 0.85);
   font-weight: 500;
   font-size: 0.95rem;
   font-family: var(--font-primary);
@@ -552,26 +573,30 @@
 }
 
 .mobileDarkToggle:hover {
-  background: var(--color-background);
-  color: var(--color-secondary);
+  background: rgba(255, 255, 255, 0.05);
+  color: #6ab87a;
 }
 
 /* 
    DARK MODE OVERRIDES
-    */
+   Note: Most scrolled state styles already look correct on dark bg
+   since scrolled navbar is now always dark. Only minor tweaks needed.
+*/
 :global(html[data-theme="dark"]) .navbar {
   background: transparent;
 }
 
+/* Dark mode: scrolled navbar is slightly darker */
 :global(html[data-theme="dark"]) .scrolled {
-  background: rgba(10, 14, 16, 0.97);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(6, 14, 18, 0.96);
+  box-shadow:
+    0 1px 0 rgba(149, 170, 166, 0.08),
+    0 4px 24px rgba(0, 0, 0, 0.6);
+  border-bottom: 1px solid rgba(149, 170, 166, 0.08);
 }
 
-
 :global(html[data-theme="dark"]) .textScrolled {
-  color: var(--color-text);
+  color: #ffffff;
 }
 
 :global(html[data-theme="dark"]) .logoScrolled {
@@ -580,26 +605,26 @@
 
 /* Nav links */
 :global(html[data-theme="dark"]) .linkScrolled {
-  color: var(--color-text);
+  color: rgba(230, 240, 243, 0.85);
 }
 
 :global(html[data-theme="dark"]) .linkScrolled:hover {
-  color: var(--color-secondary);
+  color: #6ab87a;
 }
 
 /* Burger */
 :global(html[data-theme="dark"]) .burgerScrolled {
-  background: var(--color-text);
+  background: rgba(199, 209, 206, 0.9);
 }
 
 :global(html[data-theme="dark"]) .burgerScrolled::before,
 :global(html[data-theme="dark"]) .burgerScrolled::after {
-  background: var(--color-text);
+  background: rgba(199, 209, 206, 0.9);
 }
 
 /* Language buttons on scrolled dark navbar */
 :global(html[data-theme="dark"]) .scrolled .langButton {
-  color: var(--color-text);
+  color: rgba(199, 209, 206, 0.85);
 }
 
 :global(html[data-theme="dark"]) .scrolled .langButton:hover {
@@ -608,11 +633,11 @@
 
 :global(html[data-theme="dark"]) .scrolled .langButton.active {
   background: rgba(255, 255, 255, 0.12);
-  color: var(--color-secondary);
+  color: #6ab87a;
 }
 
 :global(html[data-theme="dark"]) .scrolled .langSeparator {
-  color: rgba(255, 255, 255, 0.25);
+  color: rgba(149, 170, 166, 0.4);
 }
 
 /* Theme toggle dark mode */

@@ -1,0 +1,784 @@
+/* ==========================================================================
+   DualCarScrollSection — Premium Cinematic Automotive Scroll Experience
+   Watt Route / DOMEv Visual Identity
+   ========================================================================== */
+
+.section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(180deg, #10232a 0%, #0c181d 40%, #091216 100%);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+
+/* --------------------------------------------------------------------------
+   Roadway Environment & Architectural Markings
+   -------------------------------------------------------------------------- */
+
+.roadEnvironment {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Subtle highway telemetry grid pattern */
+.roadGrid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(149, 170, 166, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(149, 170, 166, 0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 90% 70% at 50% 50%, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 50%, black 30%, transparent 80%);
+}
+
+/* Highway Center Dividing Line */
+.centerDivider {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  transform: translateX(-50%);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(149, 170, 166, 0.3) 0,
+    rgba(149, 170, 166, 0.3) 32px,
+    transparent 32px,
+    transparent 64px
+  );
+  box-shadow: 0 0 12px rgba(86, 145, 102, 0.2);
+}
+
+/* Highway Outer Lane Borders */
+.laneBorderLeft {
+  position: absolute;
+  left: 12%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    rgba(86, 145, 102, 0) 0%,
+    rgba(86, 145, 102, 0.35) 20%,
+    rgba(123, 191, 212, 0.45) 50%,
+    rgba(86, 145, 102, 0.35) 80%,
+    rgba(86, 145, 102, 0) 100%
+  );
+  box-shadow: 0 0 10px rgba(86, 145, 102, 0.15);
+}
+
+.laneBorderRight {
+  position: absolute;
+  right: 12%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    rgba(86, 145, 102, 0) 0%,
+    rgba(86, 145, 102, 0.35) 20%,
+    rgba(123, 191, 212, 0.45) 50%,
+    rgba(86, 145, 102, 0.35) 80%,
+    rgba(86, 145, 102, 0) 100%
+  );
+  box-shadow: 0 0 10px rgba(86, 145, 102, 0.15);
+}
+
+/* Highway Route & Telemetry Tags */
+.telemetryMarkerLeft {
+  position: absolute;
+  left: calc(12% + 14px);
+  top: 15%;
+  font-family: var(--font-primary);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(149, 170, 166, 0.45);
+  writing-mode: vertical-rl;
+  user-select: none;
+}
+
+.telemetryMarkerRight {
+  position: absolute;
+  right: calc(12% + 14px);
+  bottom: 15%;
+  font-family: var(--font-primary);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(149, 170, 166, 0.45);
+  writing-mode: vertical-rl;
+  user-select: none;
+}
+
+/* Giant Architectural Background Watermark */
+.watermark {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: clamp(5rem, 15vw, 16rem);
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(149, 170, 166, 0.08);
+  user-select: none;
+  pointer-events: none;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   SVG Tire Tracks Layer (Dynamic Progressive Path Drawing)
+   -------------------------------------------------------------------------- */
+
+.tracksSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  overflow: visible;
+}
+
+.tireTrackRubber {
+  fill: none;
+  stroke: rgba(10, 20, 25, 0.85);
+  stroke-width: 7;
+  stroke-linecap: round;
+}
+
+.tireTrackEnergy {
+  fill: none;
+  stroke: url(#trackEnergyGlow);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 5px rgba(86, 145, 102, 0.6));
+}
+
+.tireTrackEnergySecondary {
+  fill: none;
+  stroke: url(#trackEnergyCyan);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 5px rgba(123, 191, 212, 0.6));
+}
+
+/* --------------------------------------------------------------------------
+   Vehicles Layer
+   -------------------------------------------------------------------------- */
+
+.vehiclesLayer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* Vehicle 1 (Sedan) — Left lane (Southbound) */
+.car1Wrapper {
+  position: absolute;
+  left: 28%;
+  top: 50%;
+  width: 140px;
+  height: 290px;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+/* Vehicle 2 (SUV) — Right lane (Northbound) */
+.car2Wrapper {
+  position: absolute;
+  left: 72%;
+  top: 50%;
+  width: 146px;
+  height: 280px;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+.vehicleImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: relative;
+  z-index: 3;
+  filter: 
+    drop-shadow(0 26px 28px rgba(0, 0, 0, 0.85))
+    drop-shadow(0 8px 12px rgba(0, 0, 0, 0.65));
+}
+
+/* Realistic Ground Ambient Occlusion Shadow */
+.contactShadow {
+  position: absolute;
+  inset: 6% 10% 4% 10%;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.5) 60%,
+    transparent 100%
+  );
+  filter: blur(10px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Realistic Headlight Projection Beams */
+.headlightDown {
+  position: absolute;
+  left: 50%;
+  top: 85%;
+  transform: translateX(-50%);
+  width: 240px;
+  height: 380px;
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    rgba(215, 245, 255, 0.3) 0%,
+    rgba(123, 191, 212, 0.15) 35%,
+    rgba(86, 145, 102, 0.05) 65%,
+    transparent 100%
+  );
+  clip-path: polygon(34% 0%, 66% 0%, 100% 100%, 0% 100%);
+  filter: blur(12px);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.headlightUp {
+  position: absolute;
+  left: 50%;
+  bottom: 85%;
+  transform: translateX(-50%);
+  width: 240px;
+  height: 380px;
+  background: radial-gradient(
+    ellipse at 50% 100%,
+    rgba(215, 245, 255, 0.3) 0%,
+    rgba(123, 191, 212, 0.15) 35%,
+    rgba(86, 145, 102, 0.05) 65%,
+    transparent 100%
+  );
+  clip-path: polygon(0% 0%, 100% 0%, 66% 100%, 34% 100%);
+  filter: blur(12px);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Sleek LED Taillight Strip Glow */
+.taillightStripTop {
+  position: absolute;
+  top: 4px;
+  left: 25%;
+  right: 25%;
+  height: 4px;
+  background: #ff3344;
+  border-radius: 2px;
+  box-shadow: 
+    0 0 10px #ff2233,
+    0 0 20px rgba(255, 34, 51, 0.75),
+    0 -4px 15px rgba(255, 34, 51, 0.5);
+  z-index: 4;
+}
+
+.taillightStripBottom {
+  position: absolute;
+  bottom: 4px;
+  left: 25%;
+  right: 25%;
+  height: 4px;
+  background: #ff3344;
+  border-radius: 2px;
+  box-shadow: 
+    0 0 10px #ff2233,
+    0 0 20px rgba(255, 34, 51, 0.75),
+    0 4px 15px rgba(255, 34, 51, 0.5);
+  z-index: 4;
+}
+
+/* Micro Telemetry Tag attached to Car */
+.carTelemetryTag {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  background: rgba(14, 28, 34, 0.75);
+  border: 1px solid rgba(149, 170, 166, 0.25);
+  border-radius: 4px;
+  font-family: var(--font-primary);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--color-light-gray);
+  backdrop-filter: blur(8px);
+  z-index: 5;
+  user-select: none;
+}
+
+.carTelemetryLeft {
+  right: calc(100% + 12px);
+}
+
+.carTelemetryRight {
+  left: calc(100% + 12px);
+}
+
+.hudStatusPulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #569166;
+  box-shadow: 0 0 8px #569166;
+  animation: pulseGlow 2s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.5; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+/* --------------------------------------------------------------------------
+   Storytelling & Typography Center Stage
+   -------------------------------------------------------------------------- */
+
+.storyStage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 580px;
+  z-index: 5;
+  pointer-events: auto;
+}
+
+.storyCard {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  padding: 2.25rem 2rem;
+  background: rgba(14, 28, 34, 0.78);
+  border: 1px solid rgba(149, 170, 166, 0.18);
+  border-radius: var(--radius-xl);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 
+    0 24px 48px rgba(0, 0, 0, 0.6),
+    0 4px 16px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  will-change: opacity, transform;
+}
+
+/* Eyebrow Badge */
+.eyebrowBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.35rem 0.95rem;
+  margin-bottom: 1rem;
+  background: rgba(86, 145, 102, 0.18);
+  border: 1px solid rgba(86, 145, 102, 0.45);
+  border-radius: 999px;
+  font-family: var(--font-primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: #6ab87a;
+  text-transform: uppercase;
+}
+
+.eyebrowIcon {
+  width: 14px;
+  height: 14px;
+  color: #6ab87a;
+}
+
+/* Section Main Heading */
+.storyHeading {
+  font-family: var(--font-heading);
+  font-size: clamp(1.65rem, 2.75vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.22;
+  color: #ffffff;
+  margin-bottom: 0.85rem;
+  letter-spacing: -0.01em;
+}
+
+.storyHeadingHighlight {
+  background: linear-gradient(135deg, #ffffff 30%, #7bbfd4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline;
+}
+
+/* Description Text */
+.storyDescription {
+  font-family: var(--font-primary);
+  font-size: clamp(0.9rem, 1.15vw, 1.05rem);
+  line-height: 1.65;
+  color: #c7d1ce;
+  margin-bottom: 1.25rem;
+  max-width: 460px;
+}
+
+/* Phase 3 Live Telemetry Stats Grid */
+.telemetryGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(149, 170, 166, 0.15);
+}
+
+.telemetryStat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.statValue {
+  font-family: var(--font-heading);
+  font-size: clamp(1.15rem, 1.8vw, 1.6rem);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.statLabel {
+  font-family: var(--font-primary);
+  font-size: 0.72rem;
+  color: #95aaa6;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 2px;
+}
+
+/* Action CTA Area */
+.ctaWrapper {
+  margin-top: 0.5rem;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.85rem 1.85rem;
+  background: linear-gradient(135deg, #569166 0%, #68a878 100%);
+  color: #ffffff;
+  font-family: var(--font-primary);
+  font-size: 0.925rem;
+  font-weight: 600;
+  border-radius: var(--radius-lg);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(86, 145, 102, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(86, 145, 102, 0.5);
+  filter: brightness(1.08);
+}
+
+.ctaIcon {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+}
+
+.ctaButton:hover .ctaIcon {
+  transform: translateX(3px);
+}
+
+/* Scroll Direction Indicator at bottom */
+.scrollIndicator {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: rgba(149, 170, 166, 0.6);
+  font-family: var(--font-primary);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  user-select: none;
+  pointer-events: none;
+  z-index: 6;
+}
+
+.scrollMouse {
+  width: 18px;
+  height: 28px;
+  border: 1.5px solid rgba(149, 170, 166, 0.4);
+  border-radius: 10px;
+  position: relative;
+}
+
+.scrollWheel {
+  width: 2.5px;
+  height: 6px;
+  background: #569166;
+  border-radius: 2px;
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: wheelScroll 1.8s infinite ease-in-out;
+}
+
+@keyframes wheelScroll {
+  0% { transform: translate(-50%, 0); opacity: 1; }
+  100% { transform: translate(-50%, 10px); opacity: 0; }
+}
+
+/* --------------------------------------------------------------------------
+   RTL Support (Arabic)
+   -------------------------------------------------------------------------- */
+
+:global([dir="rtl"]) .ctaButton:hover .ctaIcon {
+  transform: translateX(-3px);
+}
+
+:global([dir="rtl"]) .telemetryMarkerLeft {
+  left: auto;
+  right: calc(12% + 14px);
+}
+
+:global([dir="rtl"]) .telemetryMarkerRight {
+  right: auto;
+  left: calc(12% + 14px);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Breakpoints
+   -------------------------------------------------------------------------- */
+
+/* Tablet (769px - 1024px) */
+@media (max-width: 1024px) {
+  .car1Wrapper {
+    left: 24%;
+    width: 115px;
+    height: 235px;
+  }
+
+  .car2Wrapper {
+    left: 76%;
+    width: 120px;
+    height: 230px;
+  }
+
+  .laneBorderLeft {
+    left: 8%;
+  }
+
+  .laneBorderRight {
+    right: 8%;
+  }
+
+  .storyStage {
+    max-width: 480px;
+  }
+
+  .storyCard {
+    padding: 1.75rem 1.5rem;
+  }
+
+  .storyHeading {
+    font-size: 1.85rem;
+  }
+}
+
+/* Mobile (max-width: 768px) */
+@media (max-width: 768px) {
+  .car1Wrapper {
+    left: 18%;
+    width: 80px;
+    height: 165px;
+  }
+
+  .car2Wrapper {
+    left: 82%;
+    width: 84px;
+    height: 160px;
+  }
+
+  .laneBorderLeft {
+    left: 5%;
+  }
+
+  .laneBorderRight {
+    right: 5%;
+  }
+
+  .telemetryMarkerLeft,
+  .telemetryMarkerRight,
+  .carTelemetryTag {
+    display: none;
+  }
+
+  .headlightDown,
+  .headlightUp {
+    width: 150px;
+    height: 220px;
+  }
+
+  .storyStage {
+    width: 92%;
+    max-width: 360px;
+  }
+
+  .storyCard {
+    padding: 1.35rem 1rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .eyebrowBadge {
+    font-size: 0.68rem;
+    padding: 0.25rem 0.75rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .storyHeading {
+    font-size: 1.35rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .storyDescription {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-bottom: 0.85rem;
+  }
+
+  .telemetryGrid {
+    gap: 0.5rem;
+    padding-top: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .statValue {
+    font-size: 1.15rem;
+  }
+
+  .statLabel {
+    font-size: 0.65rem;
+  }
+
+  .ctaButton {
+    padding: 0.7rem 1.35rem;
+    font-size: 0.85rem;
+  }
+
+  .watermark {
+    font-size: 18vw;
+    -webkit-text-stroke: 1px rgba(149, 170, 166, 0.06);
+  }
+}
+
+/* Extra small mobile (max-width: 480px) */
+@media (max-width: 480px) {
+  .car1Wrapper {
+    left: 14%;
+    width: 68px;
+    height: 140px;
+  }
+
+  .car2Wrapper {
+    left: 86%;
+    width: 72px;
+    height: 136px;
+  }
+
+  .storyStage {
+    max-width: 320px;
+  }
+
+  .storyCard {
+    padding: 1.15rem 0.85rem;
+  }
+
+  .storyHeading {
+    font-size: 1.2rem;
+  }
+
+  .storyDescription {
+    font-size: 0.78rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Reduced Motion Accessibility
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .section {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .viewport {
+    height: auto;
+    min-height: 100vh;
+    padding: 4rem 1rem;
+  }
+
+  .car1Wrapper {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: rotate(180deg) !important;
+  }
+
+  .car2Wrapper {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none !important;
+  }
+
+  .storyStage {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    margin-top: 2rem;
+  }
+
+  .storyCard {
+    position: relative;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .tracksSvg,
+  .centerDivider,
+  .scrollIndicator {
+    display: none;
+  }
+}
+
