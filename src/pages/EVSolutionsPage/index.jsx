@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import EVSolutions from "../../components/sections/EVSolutions/EVSolutions";
+import Features from "../../components/sections/Features/Features";
 import Button from "../../components/common/Button/Button";
 import { Link } from "react-router-dom";
 import { fadeInUp, stagger } from "../../utils/animations";
@@ -57,8 +57,8 @@ const EVSolutionsPage = () => {
         </div>
       </section>
 
-      {/* Solutions Section */}
-      <EVSolutions />
+      {/* Features Section */}
+      <Features />
 
       {/* Why Choose Us Section */}
       <section className={styles.whyChoose}>

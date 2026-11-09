@@ -84,38 +84,96 @@
     "badgeCar2": "SUV EV • Southbound",
     "cta": "Explore DOMEv App"
   },
-  "evSolutions": {
-    "title": "Powered EV Charging Solutions",
-    "subtitle": "Smart, reliable, and seamless charging designed for your electric journey.",
-    "smartCharging": "Smart Charging Sessions",
-    "smartChargingDesc": "Plug in and go with smart AC/DC charging.",
-    "unifiedPayment": "Unified Payment",
-    "unifiedPaymentDesc": "Seamless and secure payment through mobile application.",
-    "realTimeStatus": "Real-Time Status",
-    "realTimeStatusDesc": "Plan your route with confidence and see charger availability and station details instantly.",
-    "support24": "24/7 Support",
-    "support24Desc": "Get 24/7 assistance for charging technical support whenever you need it.",
-    "reliable": "Reliable",
-    "reliableDesc": "99.9% uptime backed by secure infrastructure for hassle-free charging.",
-    "mobileApp": "Mobile App",
-    "mobileAppDesc": "Seamlessly manage your charging experience through the mobile application."
+  "features": {
+    "title": "Technical Specifications",
+    "visualAlt": "DOMEv Smart EV Charging Station hardware with connected charging cable and LED status indicator",
+    "whatsIncluded": {
+      "title": "Your Charging Experience",
+      "items": [
+        "Smart Charging Station Discovery",
+        "Intelligent Route Planning",
+        "Real-Time Charger Status",
+        "24/7 Customer Support"
+      ]
+    },
+    "cards": [
+      {
+        "id": "smart-charging",
+        "title": "Smart Charging Sessions",
+        "desc": "Plug in and go with smart AC/DC charging.",
+        "bgImage": "/images/cards/card-1.webp"
+      },
+      {
+        "id": "unified-payment",
+        "title": "Unified Payment",
+        "desc": "Seamless and secure payment through mobile application.",
+        "bgImage": "/images/cards/card-2.webp"
+      },
+      {
+        "id": "real-time-status",
+        "title": "Real-Time Status",
+        "desc": "Plan your route with confidence and see charger availability and station details instantly.",
+        "bgImage": "/images/cards/card-3.webp"
+      },
+      {
+        "id": "support-24",
+        "title": "24/7 Support",
+        "desc": "Get 24/7 assistance for charging technical support whenever you need it.",
+        "bgImage": "/images/cards/card-4.webp"
+      },
+      {
+        "id": "reliable",
+        "title": "Reliable",
+        "desc": "99.9% uptime backed by secure infrastructure for hassle-free charging.",
+        "bgImage": "/images/cards/card-5.webp"
+      },
+      {
+        "id": "mobile-app",
+        "title": "Mobile App",
+        "desc": "Seamlessly manage your charging experience through the mobile application.",
+        "bgImage": "/images/cards/card-6.webp"
+      }
+    ]
   },
-  "pinnedPanels": {
-    "panel1": {
+  "editorialStory": {
+    "sectionEyebrow": "The Watt Route Narrative",
+    "sectionTitle": "Intelligent Electric Mobility, Refined for Egypt",
+    "sectionSubtitle": "A curated editorial journey through the four pillars powering Egypt's electric vehicle transition.",
+    "story1": {
+      "number": "01",
+      "eyebrow": "INTELLIGENT ROUTING",
       "title": "Seamless EV Navigation",
-      "desc": "Intelligent route optimization that factors in battery levels, elevation, charger availability, and real-time traffic across Egypt."
+      "desc": "Intelligent route optimization that factors in battery levels, elevation, charger availability, and real-time traffic across Egypt.",
+      "tag1": "Dynamic Elevation & Energy",
+      "tag2": "Live Traffic Intelligence",
+      "badge": "CORRIDOR TELEMETRY 01"
     },
-    "panel2": {
+    "story2": {
+      "number": "02",
+      "eyebrow": "NATIONAL IMPACT",
       "title": "Driving Egypt's Green Future",
-      "desc": "Join 25,000+ EV drivers reducing carbon emissions across Egypt. Every charge brings us closer to cleaner air and a sustainable tomorrow."
+      "desc": "Join 25,000+ EV drivers reducing carbon emissions across Egypt. Every charge brings us closer to cleaner air and a sustainable tomorrow.",
+      "tag1": "25,000+ Active EV Drivers",
+      "tag2": "Egypt Vision 2030 Aligned",
+      "badge": "NATIONAL DECARBONIZATION"
     },
-    "panel3": {
+    "story3": {
+      "number": "03",
+      "eyebrow": "CONNECTED ECOSYSTEM",
       "title": "Smart Connected Ecosystem",
-      "desc": "One app, endless possibilities. Find stations, check availability, start charging, and pay all seamlessly integrated. Your complete EV charging companion."
+      "desc": "One app, endless possibilities. Find stations, check availability, start charging, and pay all seamlessly integrated. Your complete EV charging companion.",
+      "tag1": "Unified DOMEv Platform",
+      "tag2": "Instant One-Tap Payments",
+      "badge": "INTEGRATED CHARGING"
     },
-    "panel4": {
+    "story4": {
+      "number": "04",
+      "eyebrow": "FASTGRID INFRASTRUCTURE",
       "title": "Ultra-Fast Charging Network",
-      "desc": "Experience lightning-fast charging with our 160kW DC chargers. From 10% to 80% in around 45 minutes. Your time is valuable we make every minute count."
+      "desc": "Experience lightning-fast charging with our 160kW DC chargers. From 10% to 80% in around 45 minutes. Your time is valuable we make every minute count.",
+      "tag1": "160kW High-Speed DC",
+      "tag2": "10% to 80% in 45 Mins",
+      "badge": "ULTRA-FAST HIGHWAY GRID"
     }
   },
   "products": {

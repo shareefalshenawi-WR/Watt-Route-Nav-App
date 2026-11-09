@@ -1,4 +1,4 @@
-import { useRef, useLayoutEffect } from "react";
+import { useRef, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import gsap from "gsap";
@@ -65,15 +65,13 @@ const DownloadIcon = () => (
   </svg>
 );
 
-/**
- * Hero Component — Premium Full-Screen Automotive Showcase
- * Dark cinematic full-viewport layout with integrated minimal nav,
- * editorial headline, and 3/4 perspective EV vehicle visual composition.
- */
 const Hero = () => {
   const { t } = useTranslation();
   const { currentLanguage, changeLanguage } = useLanguage();
   const { isDark, toggleTheme } = useTheme();
+
+  const switchToEn = useCallback(() => changeLanguage("en"), [changeLanguage]);
+  const switchToAr = useCallback(() => changeLanguage("ar"), [changeLanguage]);
 
   // Animation refs
   const sectionRef = useRef(null);
@@ -86,7 +84,8 @@ const Hero = () => {
   const trustFooterRef = useRef(null);
   const vehicleStageRef = useRef(null);
 
-  useLayoutEffect(() => {
+  
+  useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
 
@@ -108,10 +107,8 @@ const Hero = () => {
         trustFooterRef.current,
       ].filter(Boolean);
 
-      // Header drops in from top
       tl.from(headerRef.current, { opacity: 0, y: -20, duration: 0.7 });
 
-      // Left column staggered reveal
       tl.from(
         leftElements,
         { opacity: 0, y: 28, duration: 0.65, stagger: 0.08 },
@@ -145,13 +142,9 @@ const Hero = () => {
       className={styles.heroSection}
       aria-label="Hero Section"
     >
-      {/* Ambient lighting & grid texture */}
       <div className={styles.ambientGlow} aria-hidden="true" />
       <div className={styles.subtleGrid} aria-hidden="true" />
 
-      {/* ----------------------------------------------------------------
-          Integrated Minimal Navigation
-          ---------------------------------------------------------------- */}
       <header ref={headerRef} className={styles.heroHeader}>
         {/* Brand Logo */}
         <Link to="/" className={styles.brandLogo} aria-label="Watt Route Home">
@@ -189,7 +182,7 @@ const Hero = () => {
           <div className={styles.langSwitcher}>
             <button
               type="button"
-              onClick={() => changeLanguage("en")}
+              onClick={switchToEn}
               className={`${styles.langBtn} ${
                 currentLanguage === "en" ? styles.activeLang : ""
               }`}
@@ -200,7 +193,7 @@ const Hero = () => {
             <span aria-hidden="true">|</span>
             <button
               type="button"
-              onClick={() => changeLanguage("ar")}
+              onClick={switchToAr}
               className={`${styles.langBtn} ${
                 currentLanguage === "ar" ? styles.activeLang : ""
               }`}
@@ -228,9 +221,7 @@ const Hero = () => {
         </div>
       </header>
 
-      {/* ----------------------------------------------------------------
-          Hero Body: Two-Column Composition
-          ---------------------------------------------------------------- */}
+      {/*  Hero Body: Two-Column Composition*/}
       <div className={styles.heroBody}>
         {/* Left Column: Editorial Content */}
         <div className={styles.heroLeft}>
@@ -291,6 +282,8 @@ const Hero = () => {
                   alt="Egypt Vision 2030"
                   width="48"
                   height="48"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <span>Egypt Vision 2030</span>
               </div>
@@ -300,6 +293,8 @@ const Hero = () => {
                   alt="UN SDG 7"
                   width="48"
                   height="48"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <span>UN SDG 7</span>
               </div>
@@ -309,6 +304,8 @@ const Hero = () => {
                   alt="UN SDG 13"
                   width="48"
                   height="48"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <span>UN SDG 13</span>
               </div>
@@ -322,14 +319,14 @@ const Hero = () => {
           <div ref={vehicleStageRef} className={styles.vehicleStage}>
             <div className={styles.vehicleGroundShadow} aria-hidden="true" />
             <img
-              src="/images/hero-ev-vehicle.png"
+              src="/images/hero-ev-vehicle.webp"
               alt="Watt Route Luxury Electric Sports Sedan"
               className={styles.evImage}
               width="820"
               height="460"
               loading="eager"
               fetchPriority="high"
-              decoding="sync"
+              decoding="async"
             />
           </div>
         </div>

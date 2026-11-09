@@ -1,0 +1,458 @@
+.section {
+  position: relative;
+  width: 100%;
+  padding: clamp(4.5rem, 6.5vw, 7rem) 0;
+  background-color: #ededef;
+  transition: var(--theme-transition);
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 4vw, 3rem);
+}
+
+/* Master Two-Column Layout */
+.layoutGrid {
+  display: grid;
+  grid-template-columns: 380px minmax(0, 1fr);
+  gap: clamp(3rem, 5vw, 5.5rem);
+  align-items: start;
+}
+
+/* 
+   LEFT COLUMN: Hardware Visual & "What's Included" Card
+    */
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  position: sticky;
+  top: 6rem;
+}
+
+/* Product Visual Container */
+.visualContainer {
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hardwareImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  filter: drop-shadow(0 16px 28px rgba(0, 0, 0, 0.08));
+}
+
+.hardwareImage:hover {
+  transform: scale(1.03);
+}
+
+/* "What's Included" */
+.includedCard {
+  width: 100%;
+  max-width: 360px;
+  margin-top: 1.5rem;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 1.4rem 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.includedCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.06);
+}
+
+.includedHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.85rem;
+}
+
+:global(html[dir="rtl"]) .includedHeader {
+  gap: 0.6rem;
+}
+
+.packageIcon {
+  width: 19px;
+  height: 19px;
+  stroke: #1a1a1a;
+  flex-shrink: 0;
+}
+
+.includedTitle {
+  font-family: var(--font-heading);
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.includedList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.includedItem {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #555555;
+}
+
+:global(html[dir="rtl"]) .includedItem {
+  text-align: right;
+}
+
+/*  RIGHT COLUMN: Heading & Two-Column Specification Cards */
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.heading {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 3.4vw, 3.15rem);
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 clamp(2rem, 3.5vw, 2.75rem) 0;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  text-align: center;
+}
+
+:global(html[dir="rtl"]) .heading {
+  text-align: center;
+}
+
+/* Two-Column Cards Grid */
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.15rem;
+}
+
+/*  FEATURE SPECIFICATION CARD  */
+.featureCard {
+  position: relative;
+  min-height: 145px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #131b1e7e;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.35s ease,
+              border-color 0.35s ease;
+}
+
+.featureCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(94, 117, 112, 0.904);
+  box-shadow: 0 12px 28px -4px rgba(92, 183, 225, 0.22);
+}
+
+/* Underlying Background Image */
+.cardBgImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.55;
+  filter: contrast(0.8) saturate(1.1);
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.featureCard:hover .cardBgImage {
+  transform: scale(1.06);
+  opacity: 1.50;
+}
+
+/* Overlay Layer  */
+.cardOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(135deg, rgb(13 28 31 / 31%) 0%, rgb(14 21 24 / 76%) 100%
+100%
+);
+  transition: background 0.35s ease;
+  pointer-events: none;
+}
+
+.featureCard:hover .cardOverlay {
+  background: linear-gradient(13deg, rgb(12 18 20 / 0%) 0%, rgb(18 21 23 / 48%) 100% 100%)
+}
+
+/* Card Content Container */
+.cardContent {
+  position: relative;
+  z-index: 3;
+  padding: 1.35rem 1.45rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.cardHeaderRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.55rem;
+}
+
+:global(html[dir="rtl"]) .cardHeaderRow {
+  gap: 0.75rem;
+}
+
+.cardIconWrapper {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: rgba(86, 145, 102, 0.22);
+  border: 1px solid rgba(86, 145, 102, 0.35);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background-color 0.25s ease, transform 0.25s ease, color 0.25s ease;
+}
+
+.featureCard:hover .cardIconWrapper {
+  background: var(--color-secondary);
+  color: #ffffff;
+  transform: scale(1.06);
+}
+
+.cardIcon {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+}
+
+.cardTitle {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.3;
+  margin: 0;
+}
+
+:global(html[dir="rtl"]) .cardTitle {
+  text-align: right;
+}
+
+.cardDesc {
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.82);
+  margin: 0;
+}
+
+:global(html[dir="rtl"]) .cardDesc {
+  text-align: right;
+}
+
+/*  HERO-STYLE BUTTONS  */
+
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 1.05rem 2.4rem;
+  background: linear-gradient(135deg, #569166 0%, #68a878 100%);
+  color: #ffffff;
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 999px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 22px rgba(86, 145, 102, 0.42);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.btnPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(86, 145, 102, 0.6);
+  filter: brightness(1.08);
+}
+
+.btnSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.95rem 1.85rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(149, 170, 166, 0.24);
+  color: #ffffff;
+  font-family: var(--font-primary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 999px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.btnSecondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(149, 170, 166, 0.45);
+  transform: translateY(-2px);
+}
+
+/*  RESPONSIVE DESIGN  */
+
+/* Tablet (992px and down) */
+@media (max-width: 992px) {
+  .layoutGrid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .leftColumn {
+    position: static;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .visualContainer,
+  .includedCard {
+    max-width: 420px;
+  }
+
+  .heading {
+    text-align: center;
+    margin-bottom: 2.25rem;
+  }
+
+  :global(html[dir="rtl"]) .heading {
+    text-align: center;
+  }
+}
+
+/* Mobile (680px and down) */
+@media (max-width: 680px) {
+  .section {
+    padding: 3.5rem 0;
+  }
+
+  .cardsGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .heading {
+    font-size: 2rem;
+    margin-bottom: 1.75rem;
+    text-align: center;
+  }
+
+  .featureCard {
+    min-height: auto;
+  }
+
+  .cardContent {
+    padding: 1.25rem;
+  }
+
+  .cardTitle {
+    font-size: 1rem;
+  }
+
+  .cardDesc {
+    font-size: 0.84rem;
+  }
+
+  .visualContainer,
+  .includedCard {
+    max-width: 100%;
+  }
+
+  .btnPrimary,
+  .btnSecondary {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/*  DARK MODE  */
+:global(html[data-theme="dark"]) .section {
+  background-color: #0a0f12;
+}
+
+:global(html[data-theme="dark"]) .hardwareImage {
+  filter: drop-shadow(0 16px 32px rgba(0, 0, 0, 0.45));
+}
+
+:global(html[data-theme="dark"]) .includedCard {
+  background: #141d22;
+  border-color: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+:global(html[data-theme="dark"]) .packageIcon {
+  stroke: #e4edf0;
+}
+
+:global(html[data-theme="dark"]) .includedTitle {
+  color: #e4edf0;
+}
+
+:global(html[data-theme="dark"]) .includedItem {
+  color: #9cb0b8;
+}
+
+:global(html[data-theme="dark"]) .heading {
+  color: #e4edf0;
+  text-align: center;
+}
+
+:global(html[data-theme="dark"]) .featureCard {
+  background: #0d171c;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+:global(html[data-theme="dark"]) .cardOverlay {
+  background: linear-gradient(
+    135deg,
+    rgba(8, 16, 20, 0.86) 0%,
+    rgba(6, 12, 16, 0.94) 100%
+  );
+}
+
+:global(html[data-theme="dark"]) .featureCard:hover .cardOverlay {
+  background: linear-gradient(
+    135deg,
+    rgba(8, 16, 20, 0.78) 0%,
+    rgba(6, 12, 16, 0.88) 100%
+  );
+}
