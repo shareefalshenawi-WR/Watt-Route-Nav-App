@@ -176,16 +176,16 @@ const Features = () => {
         >
           {/*  LEFT COLUMN  */}
           <motion.div className={styles.leftColumn} variants={visualVariants}>
-            {/*  Product Visual  */}
+            {/*  EV Charging Station & Car Visual  */}
             <div className={styles.visualContainer}>
               <img
-                src="/images/domev-smart-charger.png"
-                alt={t("features.visualAlt", "DOMEv Smart EV Charging Station Hardware")}
-                className={styles.hardwareImage}
+                src="/images/ev-charging-car.webp"
+                alt={t("features.visualAlt", "Modern electric vehicle charging at an EV charging station")}
+                className={styles.visualImage}
                 loading="lazy"
                 decoding="async"
-                width="640"
-                height="640"
+                width="1200"
+                height="896"
               />
             </div>
 

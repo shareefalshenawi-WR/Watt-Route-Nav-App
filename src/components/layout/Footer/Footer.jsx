@@ -16,12 +16,7 @@ const Footer = () => {
   const footerLinks = {
     company: [
       { name: t("footer.aboutUs"), path: ROUTES.ABOUT, key: "aboutUs" },
-      {
-        name: t("footer.evSolutions"),
-        path: ROUTES.EV_SOLUTIONS,
-        key: "evSolutions",
-      },
-      { name: t("footer.products"), path: ROUTES.PRODUCTS, key: "products" },
+      { name: t("footer.domev", "DOMEv"), path: ROUTES.DOMEV, key: "domev" },
       { name: t("footer.support"), path: ROUTES.SUPPORT, key: "support" },
     ],
     contact: [

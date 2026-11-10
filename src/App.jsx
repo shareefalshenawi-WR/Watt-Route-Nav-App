@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
+  Navigate,
   useLocation,
 } from "react-router-dom";
 import gsap from "gsap";
@@ -16,8 +17,7 @@ import "./App.css";
 
 // Page imports
 import Home from "./pages/Home/index.jsx";
-import EVSolutionsPage from "./pages/EVSolutionsPage/index.jsx";
-import ProductsPage from "./pages/ProductsPage/index.jsx";
+import DomevPage from "./pages/DomevPage/index.jsx";
 import SupportPage from "./pages/SupportPage/index.jsx";
 import DownloadAppPage from "./pages/DownloadAppPage/index.jsx";
 import UserGuidePage from "./pages/UserGuidePage/index.jsx";
@@ -60,28 +60,37 @@ function AppRoutes() {
         }
       />
       <Route
-        path={ROUTES.EV_SOLUTIONS}
-        element={
-          <ErrorBoundary>
-            <EVSolutionsPage />
-          </ErrorBoundary>
-        }
-      />
-      <Route
-        path={ROUTES.PRODUCTS}
-        element={
-          <ErrorBoundary>
-            <ProductsPage />
-          </ErrorBoundary>
-        }
-      />
-      <Route
         path={ROUTES.ABOUT}
         element={
           <ErrorBoundary>
             <AboutPage />
           </ErrorBoundary>
         }
+      />
+      <Route
+        path={ROUTES.DOMEV}
+        element={
+          <ErrorBoundary>
+            <DomevPage />
+          </ErrorBoundary>
+        }
+      />
+      <Route
+        path={ROUTES.SUPPORT}
+        element={
+          <ErrorBoundary>
+            <SupportPage />
+          </ErrorBoundary>
+        }
+      />
+      {/* Backwards-compatible redirects for removed routes */}
+      <Route
+        path="/ev-solutions"
+        element={<Navigate to={ROUTES.DOMEV} replace />}
+      />
+      <Route
+        path="/products"
+        element={<Navigate to={ROUTES.DOMEV} replace />}
       />
       <Route
         path={ROUTES.HELP_USER_GUIDE}

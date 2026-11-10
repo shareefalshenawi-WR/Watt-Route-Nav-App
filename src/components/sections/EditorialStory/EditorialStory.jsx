@@ -13,6 +13,8 @@ const stories = [
     fallbackTitleKey: "pinnedPanels.panel1.title",
     descKey: "editorialStory.story1.desc",
     fallbackDescKey: "pinnedPanels.panel1.desc",
+    defaultDesc:
+      "Intelligent route optimization that factors in battery levels, elevation, charger availability, and real-time traffic across Egypt.",
     tag1Key: "editorialStory.story1.tag1",
     tag2Key: "editorialStory.story1.tag2",
     badgeKey: "editorialStory.story1.badge",
@@ -31,6 +33,8 @@ const stories = [
     fallbackTitleKey: "pinnedPanels.panel2.title",
     descKey: "editorialStory.story2.desc",
     fallbackDescKey: "pinnedPanels.panel2.desc",
+    defaultDesc:
+      "Join 25,000+ EV drivers reducing carbon emissions across Egypt. Every charge brings us closer to cleaner air and a sustainable tomorrow.",
     tag1Key: "editorialStory.story2.tag1",
     tag2Key: "editorialStory.story2.tag2",
     badgeKey: "editorialStory.story2.badge",
@@ -49,6 +53,8 @@ const stories = [
     fallbackTitleKey: "pinnedPanels.panel3.title",
     descKey: "editorialStory.story3.desc",
     fallbackDescKey: "pinnedPanels.panel3.desc",
+    defaultDesc:
+      "One app, endless possibilities. Find stations, check availability, start charging, and pay all seamlessly integrated. Your complete EV charging companion.",
     tag1Key: "editorialStory.story3.tag1",
     tag2Key: "editorialStory.story3.tag2",
     badgeKey: "editorialStory.story3.badge",
@@ -67,6 +73,8 @@ const stories = [
     fallbackTitleKey: "pinnedPanels.panel4.title",
     descKey: "editorialStory.story4.desc",
     fallbackDescKey: "pinnedPanels.panel4.desc",
+    defaultDesc:
+      "Seamlessly connect to Egypt's network of ultra-fast DC charging stations up to 160kW operated by partner CPOs. DOMEv guides you to verified high-speed chargers along your route, enabling fast charging from 10% to 80% in around 45 minutes with live stall availability and unified payment.",
     tag1Key: "editorialStory.story4.tag1",
     tag2Key: "editorialStory.story4.tag2",
     badgeKey: "editorialStory.story4.badge",
@@ -143,7 +151,7 @@ const EditorialStory = () => {
             const resolvedNumber = t(story.numberKey, story.defaultNumber);
             const resolvedEyebrow = t(story.eyebrowKey, story.defaultEyebrow);
             const resolvedTitle = t(story.titleKey, t(story.fallbackTitleKey));
-            const resolvedDesc = t(story.descKey, t(story.fallbackDescKey));
+            const resolvedDesc = t(story.descKey, story.defaultDesc || t(story.fallbackDescKey));
             const tag1 = t(story.tag1Key, "");
             const tag2 = t(story.tag2Key, "");
             const badge = t(story.badgeKey, "");

@@ -1,0 +1,770 @@
+
+.page {
+  padding-top: 76px;
+  background-color: var(--color-background, #fcfbf9);
+  color: var(--color-text, #11232b);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 1. HERO SHOWCASE SECTION */
+.heroSection {
+  position: relative;
+  min-height: calc(100vh - 76px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3.5rem 0 5rem;
+  overflow: hidden;
+  background: radial-gradient(ellipse 80% 60% at 75% 45%, rgba(123, 191, 212, 0.22) 0%, rgb(26 49 32 / 12%) 40%, #e7e4dd 85%), radial-gradient(circle 500px at 15% 25%, rgba(86, 145, 102, 0.14) 0%, #ffffff00 70%);
+   ;
+  transition: background 0.35s ease;
+}
+
+/* Concentric Radar / Wave Rings */
+.radarContainer {
+  position: absolute;
+  top: 50%;
+  right: 25%;
+  transform: translate(50%, -50%);
+  width: 1100px;
+  height: 1100px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.radarRing {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid rgba(86, 145, 102, 0.16);
+  pointer-events: none;
+  transition: border-color 0.35s ease;
+}
+
+.radarRing:nth-child(1) {
+  width: 380px;
+  height: 380px;
+  border-color: rgba(86, 145, 102, 0.24);
+}
+
+.radarRing:nth-child(2) {
+  width: 620px;
+  height: 620px;
+  border-color: rgba(86, 145, 102, 0.18);
+}
+
+.radarRing:nth-child(3) {
+  width: 860px;
+  height: 860px;
+  border-color: rgba(86, 145, 102, 0.12);
+}
+
+.radarRing:nth-child(4) {
+  width: 1100px;
+  height: 1100px;
+  border-color: rgba(86, 145, 102, 0.08);
+}
+
+/* Giant Mint Arc on bottom right corner */
+.heroCornerArc {
+  position: absolute;
+  bottom: -220px;
+  right: -160px;
+  width: 620px;
+  height: 620px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(86, 145, 102, 0.38) 0%,
+    rgba(106, 184, 122, 0.2) 50%,
+    transparent 72%
+  );
+  filter: blur(14px);
+  pointer-events: none;
+  z-index: 1;
+  transition: background 0.35s ease;
+}
+
+
+
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 3;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.95fr;
+  align-items: center;
+  gap: 3.5rem;
+}
+
+/* Left Hero Composition */
+.heroLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 4;
+}
+
+.heroTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 5.5vw, 4.8rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: #0e242d;
+  margin-bottom: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.heroHighlight {
+  color: inherit;
+  position: relative;
+  display: inline-block;
+}
+
+.heroDot {
+  color: #569166;
+}
+
+.coreDescription {
+  font-family: var(--font-primary);
+  font-size: clamp(1.05rem, 1.25vw, 1.2rem);
+  line-height: 1.75;
+  color: #3b5059;
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  transition: color 0.3s ease;
+}
+
+/* Action CTA Area */
+.heroActions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 2.75rem;
+  flex-wrap: wrap;
+}
+
+.primaryActionBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.85rem 1.95rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #569166 0%, #68a878 100%);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 6px 22px rgba(86, 145, 102, 0.38);
+  transition: all 0.25s ease;
+}
+
+.primaryActionBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(86, 145, 102, 0.52);
+  filter: brightness(1.05);
+}
+
+.secondaryActionBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: 999px;
+  background: rgba(30, 69, 82, 0.06);
+  border: 1px solid rgba(30, 69, 82, 0.18);
+  color: #1e4552;
+  font-family: var(--font-primary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.25s ease;
+}
+
+.secondaryActionBtn:hover {
+  background: rgba(86, 145, 102, 0.12);
+  border-color: #569166;
+  color: #2e663d;
+  transform: translateY(-2px);
+}
+
+/* App Store & Google Play Banner */
+.storeBadgesRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.storeIconsList {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.storeIconItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #1e4552;
+  opacity: 0.85;
+  transition: opacity 0.2s ease, transform 0.2s ease, color 0.3s ease;
+}
+
+.storeIconItem:hover {
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+.storeIconItem svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.storeLabel {
+  font-size: 0.85rem;
+  color: #5d7580;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+/* 
+   PHONE MOCKUP COMPONENT (Holding slide1.webp)
+    */
+.heroRight {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 5;
+}
+
+.phoneChassis {
+  width: 275px;
+  height: 560px;
+  background: #111a1f;
+  border: 10px solid #1c2a33;
+  border-radius: 46px;
+  box-shadow:
+    0 24px 60px rgba(30, 69, 82, 0.24),
+    0 0 0 1px rgba(86, 145, 102, 0.3),
+    inset 0 0 12px rgba(0, 0, 0, 0.9);
+  padding: 10px 8px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transform: rotate(-2deg);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.35s ease;
+}
+
+.phoneChassis:hover {
+  transform: rotate(0deg) scale(1.02);
+  box-shadow:
+    0 32px 80px rgba(30, 69, 82, 0.35),
+    0 0 0 2px rgba(106, 184, 122, 0.55);
+}
+
+/* Physical Side Buttons */
+.phoneSideLeft {
+  position: absolute;
+  left: -13px;
+  top: 110px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.phoneButton {
+  width: 4px;
+  height: 32px;
+  background: #233540;
+  border-radius: 2px 0 0 2px;
+}
+
+.phoneSideRight {
+  position: absolute;
+  right: -13px;
+  top: 130px;
+}
+
+.phoneButtonRight {
+  width: 4px;
+  height: 54px;
+  background: #233540;
+  border-radius: 0 2px 2px 0;
+}
+
+/* Top Notch / Dynamic Island */
+.phoneTopNotch {
+  width: 86px;
+  height: 20px;
+  background: #000000;
+  border-radius: 20px;
+  margin: 2px auto 6px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 9px;
+  z-index: 10;
+  flex-shrink: 0;
+}
+
+.cameraLens {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #111d24;
+  border: 1px solid #1a2f3b;
+}
+
+/* Phone Screen */
+.phoneScreen {
+  flex: 1;
+  width: 100%;
+  border-radius: 32px;
+  overflow: hidden;
+  position: relative;
+  background: #000000;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.6);
+}
+
+.mockupSlideImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.screenGloss {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 45%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+/* Bottom Home Indicator */
+.phoneHomeBar {
+  width: 80px;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.3);
+  margin: 8px auto 2px;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   2. WHAT IS DOMEV — ECOSYSTEM PILLARS SECTION
+   ========================================================================== */
+.ecosystemSection {
+  padding: 6.5rem 0 7rem;
+  position: relative;
+  background: #f4f3ef;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  transition: background 0.35s ease, border-color 0.35s ease;
+}
+
+.sectionHeader {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 4.5rem;
+}
+
+.sectionEyebrow {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #2e663d;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  transition: color 0.3s ease;
+}
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #0e242d;
+  margin-bottom: 1.25rem;
+  transition: color 0.3s ease;
+}
+
+.sectionSubtitle {
+  font-family: var(--font-primary);
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #4a616c;
+  transition: color 0.3s ease;
+}
+
+.pillarsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.75rem;
+}
+
+.pillarCard {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  padding: 2.25rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 24px rgba(30, 69, 82, 0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.pillarCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #569166, transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.pillarCard:hover {
+  transform: translateY(-8px);
+  border-color: rgba(86, 145, 102, 0.45);
+  box-shadow: 0 16px 36px rgba(86, 145, 102, 0.16);
+}
+
+.pillarCard:hover::before {
+  opacity: 1;
+}
+
+.cardIconBox {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(86, 145, 102, 0.12);
+  border: 1px solid rgba(86, 145, 102, 0.28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2e663d;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.cardIconBox svg {
+  width: 26px;
+  height: 26px;
+}
+
+.cardBadge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #1e4552;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.pillarTitle {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0e242d;
+  margin-bottom: 0.85rem;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+}
+
+.pillarDesc {
+  font-size: 0.95rem;
+  color: #4e646f;
+  line-height: 1.65;
+  transition: color 0.3s ease;
+}
+
+/* ==========================================================================
+   DARK THEME OVERRIDES (html[data-theme="dark"])
+   ========================================================================== */
+:global(html[data-theme="dark"]) .page {
+  background-color: #071318;
+  color: #ffffff;
+}
+
+:global(html[data-theme="dark"]) .heroSection {
+  background: radial-gradient(
+      ellipse 80% 60% at 75% 45%,
+      rgba(22, 68, 78, 0.45) 0%,
+      rgba(10, 26, 34, 0.8) 55%,
+      #071318 100%
+    ),
+    radial-gradient(
+      circle 450px at 15% 25%,
+      rgba(86, 145, 102, 0.18) 0%,
+      transparent 70%
+    );
+}
+
+:global(html[data-theme="dark"]) .radarRing {
+  border-color: rgba(106, 184, 122, 0.12);
+}
+
+:global(html[data-theme="dark"]) .radarRing:nth-child(1) {
+  border-color: rgba(106, 184, 122, 0.22);
+}
+
+:global(html[data-theme="dark"]) .radarRing:nth-child(2) {
+  border-color: rgba(106, 184, 122, 0.16);
+}
+
+:global(html[data-theme="dark"]) .radarRing:nth-child(3) {
+  border-color: rgba(106, 184, 122, 0.11);
+}
+
+:global(html[data-theme="dark"]) .radarRing:nth-child(4) {
+  border-color: rgba(106, 184, 122, 0.06);
+}
+
+:global(html[data-theme="dark"]) .heroCornerArc {
+  background: radial-gradient(
+    circle,
+    #569166 0%,
+    #418053 50%,
+    rgba(86, 145, 102, 0) 72%
+  );
+  opacity: 0.85;
+}
+
+:global(html[data-theme="dark"]) .floatingDot1,
+:global(html[data-theme="dark"]) .floatingDot2 {
+  background: #6ab87a;
+  box-shadow: 0 0 16px #6ab87a;
+}
+
+:global(html[data-theme="dark"]) .eyebrowBadge {
+  background: rgba(86, 145, 102, 0.14);
+  border-color: rgba(86, 145, 102, 0.35);
+  color: #6ab87a;
+}
+
+:global(html[data-theme="dark"]) .pulseIndicator {
+  background: #6ab87a;
+  box-shadow: 0 0 10px #6ab87a;
+}
+
+:global(html[data-theme="dark"]) .heroTitle {
+  color: #ffffff;
+}
+
+:global(html[data-theme="dark"]) .coreDescription {
+  color: rgba(230, 240, 243, 0.85);
+}
+
+:global(html[data-theme="dark"]) .secondaryActionBtn {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(149, 170, 166, 0.25);
+  color: #ffffff;
+}
+
+:global(html[data-theme="dark"]) .secondaryActionBtn:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(106, 184, 122, 0.5);
+  color: #6ab87a;
+}
+
+:global(html[data-theme="dark"]) .storeIconItem {
+  color: #ffffff;
+}
+
+:global(html[data-theme="dark"]) .storeLabel {
+  color: rgba(199, 209, 206, 0.7);
+}
+
+:global(html[data-theme="dark"]) .phoneChassis {
+  background: #0b1419;
+  border-color: #16242c;
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.75),
+    0 0 0 2px rgba(106, 184, 122, 0.35),
+    inset 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+:global(html[data-theme="dark"]) .phoneChassis:hover {
+  box-shadow:
+    0 32px 90px rgba(0, 0, 0, 0.85),
+    0 0 0 3px rgba(106, 184, 122, 0.55);
+}
+
+:global(html[data-theme="dark"]) .ecosystemSection {
+  background: #09171f;
+  border-top-color: rgba(149, 170, 166, 0.1);
+}
+
+:global(html[data-theme="dark"]) .sectionEyebrow {
+  color: #6ab87a;
+}
+
+:global(html[data-theme="dark"]) .sectionTitle {
+  color: #ffffff;
+}
+
+:global(html[data-theme="dark"]) .sectionSubtitle {
+  color: rgba(230, 240, 243, 0.78);
+}
+
+:global(html[data-theme="dark"]) .pillarCard {
+  background: rgba(14, 34, 44, 0.55);
+  border-color: rgba(149, 170, 166, 0.16);
+  box-shadow: none;
+}
+
+:global(html[data-theme="dark"]) .pillarCard:hover {
+  border-color: rgba(106, 184, 122, 0.4);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+}
+
+:global(html[data-theme="dark"]) .cardIconBox {
+  background: rgba(86, 145, 102, 0.15);
+  border-color: rgba(86, 145, 102, 0.35);
+  color: #6ab87a;
+}
+
+:global(html[data-theme="dark"]) .cardBadge {
+  color: #7bbfd4;
+}
+
+:global(html[data-theme="dark"]) .pillarTitle {
+  color: #ffffff;
+}
+
+:global(html[data-theme="dark"]) .pillarDesc {
+  color: rgba(199, 209, 206, 0.8);
+}
+
+/* ==========================================================================
+   RTL LANGUAGE SUPPORT
+   ========================================================================== */
+:global(html[dir="rtl"]) .heroCornerArc {
+  right: auto;
+  left: -160px;
+}
+
+:global(html[dir="rtl"]) .radarContainer {
+  right: auto;
+  left: 25%;
+  transform: translate(-50%, -50%);
+}
+
+:global(html[dir="rtl"]) .floatingDot1 {
+  right: auto;
+  left: 48%;
+}
+
+:global(html[dir="rtl"]) .floatingDot2 {
+  right: auto;
+  left: 12%;
+}
+
+:global(html[dir="rtl"]) .phoneChassis {
+  transform: rotate(2deg);
+}
+
+:global(html[dir="rtl"]) .phoneChassis:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 1100px) {
+  :global(html[dir="rtl"]) .radarContainer {
+    left: 50%;
+    right: auto;
+    transform: translate(-50%, -50%);
+  }
+
+  .heroGrid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+    text-align: center;
+  }
+
+  .heroLeft {
+    align-items: center;
+  }
+
+  .coreDescription {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .heroActions {
+    justify-content: center;
+  }
+
+  .storeBadgesRow {
+    align-items: center;
+  }
+
+  .radarContainer {
+    right: 50%;
+    transform: translate(50%, -50%);
+  }
+
+  .pillarsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .heroSection {
+    padding: 2.5rem 0 4rem;
+  }
+
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+
+  .pillarsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .phoneChassis {
+    width: 250px;
+    height: 510px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroTitle {
+    font-size: 2.1rem;
+  }
+
+  .phoneChassis {
+    width: 230px;
+    height: 470px;
+  }
+}

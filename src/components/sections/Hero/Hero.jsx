@@ -1,51 +1,9 @@
-import { useRef, useEffect, useCallback } from "react";
+import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import gsap from "gsap";
-import { useLanguage } from "../../../hooks/useLanguage";
-import { useTheme } from "../../../context/ThemeContext";
 import { ROUTES } from "../../../constants/routes";
 import styles from "./Hero.module.css";
-
-const SunIcon = () => (
-  <svg
-    width="16"
-    height="16"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <circle cx="12" cy="12" r="5" />
-    <line x1="12" y1="1" x2="12" y2="3" />
-    <line x1="12" y1="21" x2="12" y2="23" />
-    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-    <line x1="1" y1="12" x2="3" y2="12" />
-    <line x1="21" y1="12" x2="23" y2="12" />
-    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-  </svg>
-);
-
-const MoonIcon = () => (
-  <svg
-    width="16"
-    height="16"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-  </svg>
-);
 
 const DownloadIcon = () => (
   <svg
@@ -67,15 +25,9 @@ const DownloadIcon = () => (
 
 const Hero = () => {
   const { t } = useTranslation();
-  const { currentLanguage, changeLanguage } = useLanguage();
-  const { isDark, toggleTheme } = useTheme();
-
-  const switchToEn = useCallback(() => changeLanguage("en"), [changeLanguage]);
-  const switchToAr = useCallback(() => changeLanguage("ar"), [changeLanguage]);
 
   // Animation refs
   const sectionRef = useRef(null);
-  const headerRef = useRef(null);
   const badgeRef = useRef(null);
   const title1Ref = useRef(null);
   const title2Ref = useRef(null);
@@ -84,7 +36,6 @@ const Hero = () => {
   const trustFooterRef = useRef(null);
   const vehicleStageRef = useRef(null);
 
-  
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
@@ -107,12 +58,9 @@ const Hero = () => {
         trustFooterRef.current,
       ].filter(Boolean);
 
-      tl.from(headerRef.current, { opacity: 0, y: -20, duration: 0.7 });
-
       tl.from(
         leftElements,
-        { opacity: 0, y: 28, duration: 0.65, stagger: 0.08 },
-        "-=0.4"
+        { opacity: 0, y: 28, duration: 0.65, stagger: 0.08 }
       );
 
       // EV vehicle glides in from right
@@ -145,89 +93,12 @@ const Hero = () => {
       <div className={styles.ambientGlow} aria-hidden="true" />
       <div className={styles.subtleGrid} aria-hidden="true" />
 
-      <header ref={headerRef} className={styles.heroHeader}>
-        {/* Brand Logo */}
-        <Link to="/" className={styles.brandLogo} aria-label="Watt Route Home">
-          <img
-            src="/images/logo.webp"
-            alt="Watt Route Logo"
-            className={styles.logoImg}
-            width="35"
-            height="35"
-          />
-          <span className={styles.brandTitle}>
-            Watt Route<span className={styles.brandDot}>.</span>
-          </span>
-        </Link>
-
-        {/* Center Navigation */}
-        <nav className={styles.centerNav} aria-label="Main Navigation">
-          <Link to={ROUTES.EV_SOLUTIONS} className={styles.navLink}>
-            {t("navbar.evSolutions")}
-          </Link>
-          <Link to={ROUTES.PRODUCTS} className={styles.navLink}>
-            {t("navbar.products")}
-          </Link>
-          <Link to={ROUTES.ABOUT} className={styles.navLink}>
-            {t("navbar.about")}
-          </Link>
-          <Link to={ROUTES.SUPPORT} className={styles.navLink}>
-            {t("navbar.support")}
-          </Link>
-        </nav>
-
-        {/* Right Header Actions */}
-        <div className={styles.headerActions}>
-          {/* Language Switcher */}
-          <div className={styles.langSwitcher}>
-            <button
-              type="button"
-              onClick={switchToEn}
-              className={`${styles.langBtn} ${
-                currentLanguage === "en" ? styles.activeLang : ""
-              }`}
-              aria-label="Switch to English"
-            >
-              EN
-            </button>
-            <span aria-hidden="true">|</span>
-            <button
-              type="button"
-              onClick={switchToAr}
-              className={`${styles.langBtn} ${
-                currentLanguage === "ar" ? styles.activeLang : ""
-              }`}
-              aria-label="Switch to Arabic"
-            >
-              AR
-            </button>
-          </div>
-
-          {/* Theme Toggle */}
-          <button
-            type="button"
-            className={styles.themeBtn}
-            onClick={toggleTheme}
-            aria-label={isDark ? t("navbar.lightMode") : t("navbar.darkMode")}
-          >
-            {isDark ? <SunIcon /> : <MoonIcon />}
-          </button>
-
-          {/* Download App CTA */}
-          <Link to={ROUTES.DOWNLOAD_APP} className={styles.headerDownloadBtn}>
-            <DownloadIcon />
-            <span>{t("navbar.downloadApp")}</span>
-          </Link>
-        </div>
-      </header>
-
-      {/*  Hero Body: Two-Column Composition*/}
+      {/* Hero Body: Two-Column Composition */}
       <div className={styles.heroBody}>
         {/* Left Column: Editorial Content */}
         <div className={styles.heroLeft}>
           {/* Eyebrow Status Badge */}
           <div ref={badgeRef} className={styles.statusBadge}>
-            
             <span>{t("products.badge")}</span>
           </div>
 
@@ -249,18 +120,9 @@ const Hero = () => {
           {/* Action Buttons Row */}
           <div ref={ctaRowRef} className={styles.ctaRow}>
             {/* Primary: Explore DOMEv */}
-            <Link to={ROUTES.PRODUCTS} className={styles.primaryCta}>
+            <Link to={ROUTES.DOMEV} className={styles.primaryCta}>
               <span>{t("hero.exploreDomev")}</span>
-              <svg
-                className={styles.arrowIcon}
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.2"
-                aria-hidden="true"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
+              
             </Link>
 
             {/* Secondary: Download App */}

@@ -537,21 +537,12 @@ const DualCarScrollSection = () => {
           </div>
         </div>
 
-        {/*  Center Stage: Layered Automotive Storytelling Typography */}
+        {/*  Center Stage */}
         <div className={styles.storyStage}>
-          {/* Phase 1: Connected Mobility (Initial scroll) */}
+          {/* Phase 1*/}
           <div ref={phase1Ref} className={styles.storyCard}>
             <div className={styles.eyebrowBadge}>
-              <svg
-                className={styles.eyebrowIcon}
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <circle cx="12" cy="12" r="10" />
-                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20M2 12h20" />
-              </svg>
+              
               {t("dualCarAnimation.phase1.badge")}
             </div>
             <h2 className={styles.storyHeading}>
@@ -565,15 +556,7 @@ const DualCarScrollSection = () => {
           {/* Phase 2 */}
           <div ref={phase2Ref} className={styles.storyCard}>
             <div className={styles.eyebrowBadge}>
-              <svg
-                className={styles.eyebrowIcon}
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-              </svg>
+             
               {t("dualCarAnimation.phase2.badge")}
             </div>
             <h2 className={styles.storyHeading}>
@@ -587,15 +570,7 @@ const DualCarScrollSection = () => {
           {/* Phase 3 */}
           <div ref={phase3Ref} className={styles.storyCard}>
             <div className={styles.eyebrowBadge}>
-              <svg
-                className={styles.eyebrowIcon}
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-              </svg>
+             
               {t("dualCarAnimation.phase3.badge")}
             </div>
             <h2 className={styles.storyHeading}>
@@ -637,16 +612,7 @@ const DualCarScrollSection = () => {
             <div className={styles.ctaWrapper}>
               <Link to={ROUTES.DOWNLOAD_APP} className={styles.ctaButton}>
                 <span>{t("dualCarAnimation.cta")}</span>
-                <svg
-                  className={styles.ctaIcon}
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.2"
-                  aria-hidden="true"
-                >
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
+               
               </Link>
             </div>
           </div>

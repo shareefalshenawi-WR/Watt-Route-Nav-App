@@ -38,30 +38,29 @@ const Navbar = () => {
   const { isDark, toggleTheme } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
-  const scrolled = useScroll(50);
-
-  const isHomePage = location.pathname === ROUTES.HOME;
-
-  const navbarState = isHomePage
-    ? scrolled
-      ? "scrolled"
-      : "transparent"
-    : "scrolled";
+  const scrolled = useScroll(20);
 
   const translatedNavItems = NAV_ITEMS.map((item) => ({
     ...item,
     translatedName: t(`navbar.${item.translationKey}`),
   }));
 
+  const isItemActive = (path) => {
+    if (path === ROUTES.HOME) {
+      return location.pathname === ROUTES.HOME;
+    }
+    if (path === ROUTES.SUPPORT) {
+      return (
+        location.pathname === ROUTES.SUPPORT ||
+        location.pathname.startsWith("/help")
+      );
+    }
+    return location.pathname === path;
+  };
+
   return (
     <motion.nav
-      className={`${styles.navbar} ${
-        navbarState === "scrolled"
-          ? styles.scrolled
-          : isHomePage
-          ? styles.homeTransparent
-          : ""
-      }`}
+      className={`${styles.navbar} ${scrolled ? styles.scrolled : styles.unscrolled}`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
@@ -72,39 +71,34 @@ const Navbar = () => {
           <AsyncImage
             src="/images/logo.webp"
             alt="Watt Route Logo"
-            className={`${styles.logoImage} ${
-              navbarState === "scrolled" ? styles.logoScrolled : ""
-            }`}
+            className={styles.logoImage}
           />
-          <span
-            className={`${styles.logoText} ${
-              navbarState === "scrolled" ? styles.textScrolled : ""
-            }`}
-          >
+          <span className={styles.logoText}>
             Watt Route
           </span>
         </Link>
 
         {/* Desktop Menu */}
         <ul className={styles.navMenu}>
-          {translatedNavItems.map((item, index) => (
-            <motion.li
-              key={item.name}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-            >
-              <Link
-                to={item.path}
-                className={`${styles.navLink} ${
-                  navbarState === "scrolled" ? styles.linkScrolled : ""
-                } ${location.pathname === item.path ? styles.active : ""}`}
-                onClick={item.path === ROUTES.HOME ? scrollToTop : undefined}
+          {translatedNavItems.map((item, index) => {
+            const active = isItemActive(item.path);
+            return (
+              <motion.li
+                key={item.name}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.08 }}
               >
-                {item.translatedName}
-              </Link>
-            </motion.li>
-          ))}
+                <Link
+                  to={item.path}
+                  className={`${styles.navLink} ${active ? styles.active : ""}`}
+                  onClick={item.path === ROUTES.HOME ? scrollToTop : undefined}
+                >
+                  {item.translatedName}
+                </Link>
+              </motion.li>
+            );
+          })}
         </ul>
 
         {/* Right Actions*/}
@@ -143,9 +137,7 @@ const Navbar = () => {
 
           {/* Dark Mode Toggle */}
           <button
-            className={`${styles.themeToggle} ${
-              navbarState === "scrolled" ? styles.themeToggleScrolled : ""
-            }`}
+            className={styles.themeToggle}
             onClick={toggleTheme}
             aria-label={isDark ? t("navbar.lightMode") : t("navbar.darkMode")}
             title={isDark ? t("navbar.lightMode") : t("navbar.darkMode")}
@@ -161,9 +153,7 @@ const Navbar = () => {
             aria-expanded={menuOpen}
           >
             <span
-              className={`${styles.burger} ${menuOpen ? styles.open : ""} ${
-                navbarState === "scrolled" ? styles.burgerScrolled : ""
-              }`}
+              className={`${styles.burger} ${menuOpen ? styles.open : ""}`}
             ></span>
           </button>
         </div>
@@ -178,19 +168,22 @@ const Navbar = () => {
           exit={{ opacity: 0, height: 0 }}
           transition={{ duration: 0.3 }}
         >
-          {translatedNavItems.map((item) => (
-            <Link
-              key={item.name}
-              to={item.path}
-              className={styles.mobileNavLink}
-              onClick={() => {
-                setMenuOpen(false);
-                if (item.path === ROUTES.HOME) scrollToTop();
-              }}
-            >
-              {item.translatedName}
-            </Link>
-          ))}
+          {translatedNavItems.map((item) => {
+            const active = isItemActive(item.path);
+            return (
+              <Link
+                key={item.name}
+                to={item.path}
+                className={`${styles.mobileNavLink} ${active ? styles.mobileActive : ""}`}
+                onClick={() => {
+                  setMenuOpen(false);
+                  if (item.path === ROUTES.HOME) scrollToTop();
+                }}
+              >
+                {item.translatedName}
+              </Link>
+            );
+          })}
           <Link
             to={ROUTES.DOWNLOAD_APP}
             className={styles.mobileCtaButtonLink}

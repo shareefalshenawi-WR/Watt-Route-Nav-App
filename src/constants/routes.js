@@ -1,9 +1,8 @@
 export const ROUTES = {
   HOME: "/",
-  EV_SOLUTIONS: "/ev-solutions",
-  PRODUCTS: "/products",
-  SUPPORT: "/support",
   ABOUT: "/about",
+  DOMEV: "/domev",
+  SUPPORT: "/support",
   HELP_USER_GUIDE: "/help/user-guide",
   HELP_VIDEO_TUTORIALS: "/help/video-tutorials",
   HELP_COMMUNITY_FORUM: "/help/community-forum",
@@ -18,11 +17,6 @@ export const ROUTES = {
 export const NAV_ITEMS = [
   { name: "Home", path: ROUTES.HOME, translationKey: "home" },
   { name: "About", path: ROUTES.ABOUT, translationKey: "about" },
-  {
-    name: "EV Solutions",
-    path: ROUTES.EV_SOLUTIONS,
-    translationKey: "evSolutions",
-  },
-  { name: "Products", path: ROUTES.PRODUCTS, translationKey: "products" },
+  { name: "DOMEv", path: ROUTES.DOMEV, translationKey: "domev" },
   { name: "Support", path: ROUTES.SUPPORT, translationKey: "support" },
 ];
