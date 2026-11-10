@@ -76,9 +76,9 @@ const DualCarScrollSection = () => {
 
       // Desktop & Tablet Setup (>= 769px)
       mm.add("(min-width: 769px)", () => {
-        gsap.set(phase1Ref.current, { opacity: 1, y: 0, scale: 1 });
-        gsap.set(phase2Ref.current, { opacity: 0, y: 35, scale: 0.96 });
-        gsap.set(phase3Ref.current, { opacity: 0, y: 35, scale: 0.96 });
+        gsap.set(phase1Ref.current, { autoAlpha: 1, y: 0, scale: 1 });
+        gsap.set(phase2Ref.current, { autoAlpha: 0, y: 35, scale: 0.96 });
+        gsap.set(phase3Ref.current, { autoAlpha: 0, y: 35, scale: 0.96 });
 
         // Initial setup for cars
         gsap.set(car1, {
@@ -213,11 +213,10 @@ const DualCarScrollSection = () => {
         }
 
         // 5. STORYTELLING TYPOGRAPHY PHASES
-        // Phase 1 -> Phase 2 transition (around 0.28 - 0.42)
         tl.to(
           phase1Ref.current,
           {
-            opacity: 0,
+            autoAlpha: 0,
             y: -35,
             scale: 0.96,
             duration: 0.16,
@@ -229,7 +228,7 @@ const DualCarScrollSection = () => {
         tl.to(
           phase2Ref.current,
           {
-            opacity: 1,
+            autoAlpha: 1,
             y: 0,
             scale: 1,
             duration: 0.18,
@@ -242,7 +241,7 @@ const DualCarScrollSection = () => {
         tl.to(
           phase2Ref.current,
           {
-            opacity: 0,
+            autoAlpha: 0,
             y: -35,
             scale: 0.96,
             duration: 0.16,
@@ -254,7 +253,7 @@ const DualCarScrollSection = () => {
         tl.to(
           phase3Ref.current,
           {
-            opacity: 1,
+            autoAlpha: 1,
             y: 0,
             scale: 1,
             duration: 0.18,
@@ -276,9 +275,9 @@ const DualCarScrollSection = () => {
 
       // Mobile Setup (<= 768px)
       mm.add("(max-width: 768px)", () => {
-        gsap.set(phase1Ref.current, { opacity: 1, y: 0, scale: 1 });
-        gsap.set(phase2Ref.current, { opacity: 0, y: 25, scale: 0.97 });
-        gsap.set(phase3Ref.current, { opacity: 0, y: 25, scale: 0.97 });
+        gsap.set(phase1Ref.current, { autoAlpha: 1, y: 0, scale: 1 });
+        gsap.set(phase2Ref.current, { autoAlpha: 0, y: 25, scale: 0.97 });
+        gsap.set(phase3Ref.current, { autoAlpha: 0, y: 25, scale: 0.97 });
 
         gsap.set(car1, {
           y: "-110vh",
@@ -352,25 +351,25 @@ const DualCarScrollSection = () => {
         // Mobile Storytelling Transitions
         mobileTl.to(
           phase1Ref.current,
-          { opacity: 0, y: -25, duration: 0.16, ease: "power2.inOut" },
+          { autoAlpha: 0, y: -25, duration: 0.16, ease: "power2.inOut" },
           0.26
         );
 
         mobileTl.to(
           phase2Ref.current,
-          { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" },
+          { autoAlpha: 1, y: 0, duration: 0.18, ease: "power2.out" },
           0.38
         );
 
         mobileTl.to(
           phase2Ref.current,
-          { opacity: 0, y: -25, duration: 0.16, ease: "power2.inOut" },
+          { autoAlpha: 0, y: -25, duration: 0.16, ease: "power2.inOut" },
           0.6
         );
 
         mobileTl.to(
           phase3Ref.current,
-          { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" },
+          { autoAlpha: 1, y: 0, duration: 0.18, ease: "power2.out" },
           0.7
         );
       });
@@ -477,7 +476,7 @@ const DualCarScrollSection = () => {
           </g>
         </svg>
 
-        {/* Vehicles Layer (High-End Opposing Electric Vehicles) */}
+        {/* Vehicles Layer  */}
         <div className={styles.vehiclesLayer}>
           {/* VEHICLE 1:  */}
           <div ref={car1Ref} className={styles.car1Wrapper}>
@@ -508,12 +507,12 @@ const DualCarScrollSection = () => {
             </div>
           </div>
 
-          {/* VEHICLE 2: Luxury Electric SUV (Northbound, moving upward) */}
+          {/* VEHICLE 2 */}
           <div ref={car2Ref} className={styles.car2Wrapper}>
-            {/* Headlight illumination beam projecting upward onto asphalt */}
+            {/* Headlight  */}
             <div className={styles.headlightUp} />
 
-            {/* Realistic Ground Ambient Occlusion Shadow */}
+            {/* shadow */}
             <div className={styles.contactShadow} />
 
             {/* Vehicle 2 Top-down Image */}
@@ -563,7 +562,7 @@ const DualCarScrollSection = () => {
             </p>
           </div>
 
-          {/* Phase 2: Synchronized Power (Midpoint, as vehicles cross) */}
+          {/* Phase 2 */}
           <div ref={phase2Ref} className={styles.storyCard}>
             <div className={styles.eyebrowBadge}>
               <svg
@@ -585,7 +584,7 @@ const DualCarScrollSection = () => {
             </p>
           </div>
 
-          {/* Phase 3: Final Composition & National Network Stats */}
+          {/* Phase 3 */}
           <div ref={phase3Ref} className={styles.storyCard}>
             <div className={styles.eyebrowBadge}>
               <svg
@@ -636,19 +635,18 @@ const DualCarScrollSection = () => {
 
             {/* Call to Action */}
             <div className={styles.ctaWrapper}>
-              <Link to={ROUTES.DOWNLOAD_APP}>
-                <button type="button" className={styles.ctaButton}>
-                  <span>{t("dualCarAnimation.cta")}</span>
-                  <svg
-                    className={styles.ctaIcon}
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.2"
-                  >
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                </button>
+              <Link to={ROUTES.DOWNLOAD_APP} className={styles.ctaButton}>
+                <span>{t("dualCarAnimation.cta")}</span>
+                <svg
+                  className={styles.ctaIcon}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
               </Link>
             </div>
           </div>

@@ -77,7 +77,7 @@ const stories = [
   },
 ];
 
-// Refined, subtle easing for editorial motion
+// subtle easing for editorial motion
 const transitionConfig = {
   duration: 0.75,
   ease: [0.22, 1, 0.36, 1],
@@ -122,9 +122,7 @@ const EditorialStory = () => {
           viewport={{ once: true, amount: 0.3 }}
           transition={transitionConfig}
         >
-          <span className={styles.sectionEyebrow}>
-            {t("editorialStory.sectionEyebrow", "The Watt Route Narrative")}
-          </span>
+         
           <h2 className={styles.sectionTitle}>
             {t(
               "editorialStory.sectionTitle",
@@ -225,14 +223,6 @@ const EditorialStory = () => {
                         loading={index === 0 ? "eager" : "lazy"}
                         decoding="async"
                       />
-
-                      {/* Subtle Architectural Telemetry Overlay */}
-                      {badge && (
-                        <div className={styles.telemetryBadge}>
-                          <span className={styles.badgePulse} />
-                          <span className={styles.badgeText}>{badge}</span>
-                        </div>
-                      )}
                     </div>
                   </motion.div>
                 </motion.article>

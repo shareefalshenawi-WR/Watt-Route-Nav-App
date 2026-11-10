@@ -227,7 +227,7 @@ const Hero = () => {
         <div className={styles.heroLeft}>
           {/* Eyebrow Status Badge */}
           <div ref={badgeRef} className={styles.statusBadge}>
-            <span className={styles.pulseDot} />
+            
             <span>{t("products.badge")}</span>
           </div>
 

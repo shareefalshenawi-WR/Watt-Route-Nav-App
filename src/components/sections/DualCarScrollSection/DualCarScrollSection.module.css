@@ -12,6 +12,13 @@
   box-sizing: border-box;
 }
 
+.viewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
 
 /* --------------------------------------------------------------------------
    Roadway Environment & Architectural Markings
@@ -127,9 +134,9 @@
   width: 100%;
   text-align: center;
   font-family: var(--font-heading);
-  font-size: clamp(5rem, 15vw, 16rem);
+  font-size: clamp(2.5rem, 9vw, 12rem);
   font-weight: 900;
-  letter-spacing: 0.15em;
+  letter-spacing: clamp(0.05em, 1vw, 0.14em);
   color: transparent;
   -webkit-text-stroke: 1.5px rgba(149, 170, 166, 0.08);
   user-select: none;
@@ -353,40 +360,57 @@
   50% { opacity: 1; transform: scale(1.15); }
 }
 
-/* --------------------------------------------------------------------------
-   Storytelling & Typography Center Stage
-   -------------------------------------------------------------------------- */
 
 .storyStage {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 90%;
-  max-width: 580px;
+  width: min(92%, 560px);
+  max-width: 560px;
+  max-height: calc(100vh - 40px);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  align-items: center;
+  justify-items: center;
   z-index: 5;
-  pointer-events: auto;
+  pointer-events: none;
 }
 
 .storyCard {
-  position: absolute;
-  inset: 0;
+  grid-column: 1;
+  grid-row: 1;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   justify-content: center;
-  padding: 2.25rem 2rem;
-  background: rgba(14, 28, 34, 0.78);
-  border: 1px solid rgba(149, 170, 166, 0.18);
-  border-radius: var(--radius-xl);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  padding: 2.25rem 2.25rem;
+  background: rgba(14, 28, 34, 0.82);
+  border: 1px solid rgba(149, 170, 166, 0.22);
+  border-radius: var(--radius-xl, 24px);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   box-shadow: 
-    0 24px 48px rgba(0, 0, 0, 0.6),
+    0 24px 48px rgba(0, 0, 0, 0.65),
     0 4px 16px rgba(0, 0, 0, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  will-change: opacity, transform;
+  will-change: transform, opacity;
+  pointer-events: auto;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.storyCard:not(:first-child) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.storyCard > *:last-child {
+  margin-bottom: 0;
 }
 
 /* Eyebrow Badge */
@@ -405,6 +429,7 @@
   letter-spacing: 0.14em;
   color: #6ab87a;
   text-transform: uppercase;
+  flex-shrink: 0;
 }
 
 .eyebrowIcon {
@@ -416,12 +441,15 @@
 /* Section Main Heading */
 .storyHeading {
   font-family: var(--font-heading);
-  font-size: clamp(1.65rem, 2.75vw, 2.4rem);
+  font-size: clamp(1.45rem, 2.5vw, 2.2rem);
   font-weight: 700;
-  line-height: 1.22;
+  line-height: 1.25;
   color: #ffffff;
   margin-bottom: 0.85rem;
   letter-spacing: -0.01em;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  max-width: 100%;
 }
 
 .storyHeadingHighlight {
@@ -434,20 +462,22 @@
 /* Description Text */
 .storyDescription {
   font-family: var(--font-primary);
-  font-size: clamp(0.9rem, 1.15vw, 1.05rem);
-  line-height: 1.65;
+  font-size: clamp(0.88rem, 1.1vw, 1rem);
+  line-height: 1.6;
   color: #c7d1ce;
   margin-bottom: 1.25rem;
   max-width: 460px;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
-/* Phase 3 Live Telemetry Stats Grid */
+/* Phase 3 */
 .telemetryGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
   width: 100%;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
   padding-top: 1rem;
   border-top: 1px solid rgba(149, 170, 166, 0.15);
 }
@@ -456,45 +486,60 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 0;
+  text-align: center;
 }
 
 .statValue {
   font-family: var(--font-heading);
-  font-size: clamp(1.15rem, 1.8vw, 1.6rem);
+  font-size: clamp(1.05rem, 1.8vw, 1.55rem);
   font-weight: 700;
   color: #ffffff;
   letter-spacing: -0.02em;
+  white-space: nowrap;
+  max-width: 100%;
 }
 
 .statLabel {
   font-family: var(--font-primary);
-  font-size: 0.72rem;
+  font-size: clamp(0.64rem, 0.8vw, 0.72rem);
   color: #95aaa6;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  margin-top: 2px;
+  margin-top: 3px;
+  line-height: 1.25;
+  text-align: center;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 /* Action CTA Area */
 .ctaWrapper {
-  margin-top: 0.5rem;
+  margin-top: 0.25rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .ctaButton {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  padding: 0.85rem 1.85rem;
+  padding: 0.8rem 1.75rem;
   background: linear-gradient(135deg, #569166 0%, #68a878 100%);
   color: #ffffff;
   font-family: var(--font-primary);
   font-size: 0.925rem;
   font-weight: 600;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-lg, 12px);
   border: none;
+  text-decoration: none;
   cursor: pointer;
   box-shadow: 0 4px 18px rgba(86, 145, 102, 0.35);
   transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  user-select: none;
 }
 
 .ctaButton:hover {
@@ -558,12 +603,26 @@
   100% { transform: translate(-50%, 10px); opacity: 0; }
 }
 
-/* --------------------------------------------------------------------------
-   RTL Support (Arabic)
-   -------------------------------------------------------------------------- */
+
+
+:global([dir="rtl"]) .ctaIcon {
+  transform: scaleX(-1);
+}
 
 :global([dir="rtl"]) .ctaButton:hover .ctaIcon {
-  transform: translateX(-3px);
+  transform: scaleX(-1) translateX(3px);
+}
+
+:global([dir="rtl"]) .eyebrowBadge,
+:global([dir="rtl"]) .storyHeading,
+:global([dir="rtl"]) .storyDescription,
+:global([dir="rtl"]) .statLabel,
+:global([dir="rtl"]) .statValue,
+:global([dir="rtl"]) .ctaButton,
+:global([dir="rtl"]) .telemetryMarkerLeft,
+:global([dir="rtl"]) .telemetryMarkerRight,
+:global([dir="rtl"]) .carTelemetryTag {
+  letter-spacing: 0 !important;
 }
 
 :global([dir="rtl"]) .telemetryMarkerLeft {
@@ -576,22 +635,20 @@
   left: calc(12% + 14px);
 }
 
-/* --------------------------------------------------------------------------
-   Responsive Breakpoints
-   -------------------------------------------------------------------------- */
+/*  Responsive  */
 
 /* Tablet (769px - 1024px) */
 @media (max-width: 1024px) {
   .car1Wrapper {
-    left: 24%;
-    width: 115px;
-    height: 235px;
+    left: 20%;
+    width: 105px;
+    height: 215px;
   }
 
   .car2Wrapper {
-    left: 76%;
-    width: 120px;
-    height: 230px;
+    left: 80%;
+    width: 110px;
+    height: 210px;
   }
 
   .laneBorderLeft {
@@ -602,39 +659,66 @@
     right: 8%;
   }
 
+  .telemetryMarkerLeft,
+  .telemetryMarkerRight,
+  .carTelemetryTag {
+    display: none;
+  }
+
   .storyStage {
+    width: min(90%, 480px);
     max-width: 480px;
   }
 
   .storyCard {
-    padding: 1.75rem 1.5rem;
+    padding: 1.75rem 1.65rem;
   }
 
   .storyHeading {
-    font-size: 1.85rem;
+    font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+    margin-bottom: 0.65rem;
+  }
+
+  .storyDescription {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .telemetryGrid {
+    gap: 0.75rem;
+    padding-top: 0.85rem;
+    margin-bottom: 1rem;
+  }
+
+  .statValue {
+    font-size: 1.25rem;
+  }
+
+  .statLabel {
+    font-size: 0.68rem;
   }
 }
 
 /* Mobile (max-width: 768px) */
 @media (max-width: 768px) {
   .car1Wrapper {
-    left: 18%;
-    width: 80px;
-    height: 165px;
+    left: 16%;
+    width: 75px;
+    height: 155px;
   }
 
   .car2Wrapper {
-    left: 82%;
-    width: 84px;
-    height: 160px;
+    left: 84%;
+    width: 78px;
+    height: 150px;
   }
 
   .laneBorderLeft {
-    left: 5%;
+    left: 4%;
   }
 
   .laneBorderRight {
-    right: 5%;
+    right: 4%;
   }
 
   .telemetryMarkerLeft,
@@ -645,58 +729,65 @@
 
   .headlightDown,
   .headlightUp {
-    width: 150px;
-    height: 220px;
+    width: 140px;
+    height: 200px;
   }
 
   .storyStage {
-    width: 92%;
-    max-width: 360px;
+    width: min(92%, 390px);
+    max-width: 390px;
+    max-height: calc(100vh - 32px);
   }
 
   .storyCard {
-    padding: 1.35rem 1rem;
-    border-radius: var(--radius-lg);
+    padding: 1.35rem 1.15rem;
+    border-radius: var(--radius-lg, 18px);
   }
 
   .eyebrowBadge {
     font-size: 0.68rem;
     padding: 0.25rem 0.75rem;
-    margin-bottom: 0.6rem;
-  }
-
-  .storyHeading {
-    font-size: 1.35rem;
     margin-bottom: 0.5rem;
   }
 
+  .storyHeading {
+    font-size: clamp(1.2rem, 3.8vw, 1.4rem);
+    line-height: 1.25;
+    margin-bottom: 0.45rem;
+  }
+
   .storyDescription {
-    font-size: 0.85rem;
+    font-size: clamp(0.8rem, 2.4vw, 0.88rem);
     line-height: 1.5;
-    margin-bottom: 0.85rem;
+    margin-bottom: 0.75rem;
   }
 
   .telemetryGrid {
-    gap: 0.5rem;
-    padding-top: 0.75rem;
-    margin-bottom: 1rem;
+    gap: 0.4rem;
+    padding-top: 0.65rem;
+    margin-bottom: 0.85rem;
   }
 
   .statValue {
-    font-size: 1.15rem;
+    font-size: clamp(0.95rem, 3.2vw, 1.15rem);
+    white-space: nowrap;
   }
 
   .statLabel {
-    font-size: 0.65rem;
+    font-size: 0.62rem;
+  }
+
+  .ctaWrapper {
+    margin-top: 0.25rem;
   }
 
   .ctaButton {
-    padding: 0.7rem 1.35rem;
-    font-size: 0.85rem;
+    padding: 0.65rem 1.35rem;
+    font-size: 0.825rem;
   }
 
   .watermark {
-    font-size: 18vw;
+    font-size: clamp(2.5rem, 12vw, 5rem);
     -webkit-text-stroke: 1px rgba(149, 170, 166, 0.06);
   }
 }
@@ -704,31 +795,147 @@
 /* Extra small mobile (max-width: 480px) */
 @media (max-width: 480px) {
   .car1Wrapper {
-    left: 14%;
-    width: 68px;
-    height: 140px;
+    left: 12%;
+    width: 62px;
+    height: 128px;
   }
 
   .car2Wrapper {
-    left: 86%;
-    width: 72px;
-    height: 136px;
+    left: 88%;
+    width: 66px;
+    height: 124px;
   }
 
   .storyStage {
-    max-width: 320px;
+    width: 92%;
+    max-width: 340px;
   }
 
   .storyCard {
-    padding: 1.15rem 0.85rem;
+    padding: 1.15rem 0.9rem;
+    border-radius: 16px;
+  }
+
+  .eyebrowBadge {
+    font-size: 0.62rem;
+    padding: 0.2rem 0.65rem;
+    margin-bottom: 0.4rem;
   }
 
   .storyHeading {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .storyDescription {
+    font-size: 0.76rem;
+    line-height: 1.45;
+    margin-bottom: 0.6rem;
+  }
+
+  .telemetryGrid {
+    gap: 0.3rem;
+    padding-top: 0.5rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .statValue {
+    font-size: 0.95rem;
+  }
+
+  .statLabel {
+    font-size: 0.58rem;
+    letter-spacing: 0.04em;
+  }
+
+  .ctaButton {
+    padding: 0.55rem 1.15rem;
+    font-size: 0.78rem;
+  }
+}
+
+/* Extra compact mobile (max-width: 360px) */
+@media (max-width: 360px) {
+  .storyStage {
+    width: 95%;
+    max-width: 310px;
+  }
+
+  .storyCard {
+    padding: 0.95rem 0.75rem;
+  }
+
+  .storyHeading {
+    font-size: 1.05rem;
+  }
+
+  .storyDescription {
+    font-size: 0.72rem;
+  }
+
+  .statValue {
+    font-size: 0.88rem;
+  }
+
+  .statLabel {
+    font-size: 0.54rem;
+  }
+}
+
+/* Short viewports & mobile landscape (height <= 600px) */
+@media (max-height: 600px) {
+  .storyStage {
+    max-height: calc(100vh - 20px);
+    max-width: 520px;
+  }
+
+  .storyCard {
+    padding: 0.75rem 1.25rem;
+    overflow-y: auto;
+  }
+
+  .eyebrowBadge {
+    margin-bottom: 0.25rem;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.62rem;
+  }
+
+  .storyHeading {
+    font-size: 1.15rem;
+    margin-bottom: 0.25rem;
   }
 
   .storyDescription {
     font-size: 0.78rem;
+    line-height: 1.4;
+    margin-bottom: 0.45rem;
+  }
+
+  .telemetryGrid {
+    padding-top: 0.35rem;
+    margin-bottom: 0.45rem;
+    gap: 0.5rem;
+  }
+
+  .statValue {
+    font-size: 0.95rem;
+  }
+
+  .statLabel {
+    font-size: 0.58rem;
+  }
+
+  .ctaWrapper {
+    margin-top: 0.15rem;
+  }
+
+  .ctaButton {
+    padding: 0.45rem 1.1rem;
+    font-size: 0.78rem;
+  }
+
+  .scrollIndicator {
+    display: none;
   }
 }
 
@@ -766,12 +973,21 @@
     left: auto;
     top: auto;
     transform: none;
-    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 2rem auto;
+    width: 90%;
+    max-width: 560px;
+    height: auto;
+    max-height: none;
   }
 
   .storyCard {
     position: relative;
+    height: auto;
     opacity: 1 !important;
+    visibility: visible !important;
     transform: none !important;
   }
 
